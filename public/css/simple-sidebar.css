@@ -3,8 +3,11 @@
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
+ @import url('https://fonts.googleapis.com/css?family=Righteous');
+
 body {
   overflow-x: hidden;
+  padding-bottom: 200px;
 }
 
 #sidebar-wrapper {
@@ -45,5 +48,29 @@ body {
 
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
+  }
+
+  .bg-active{
+    background-color: #D3D3D3;
+  }
+
+  .bg-active:hover{
+    background-color: #D3D3D3;
+  }
+
+  .sidebar-link{
+    margin-left: 10px;
+  }
+  .center{
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .text-center{
+    text-align: center;
+  }
+
+  .logo{
+    font-family: 'Righteous', cursive;
   }
 }

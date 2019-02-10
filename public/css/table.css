@@ -1,0 +1,79 @@
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #DCDCDC;
+    width: 100%;
+}
+th {
+    border: 1px  solid   #d3d3d3;
+    min-height: 50px;
+    text-align: center;
+    padding:5px;
+    background-color: #DCDCDC;
+}
+td{
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    min-height: 50px;
+    padding: 3px;
+}
+tr:nth-child(even) {background-color: #F5F5F5;}
+tr:nth-child(odd) {background-color: white;}
+
+.table-sm{
+  margin-top: 30px;
+  width: 50%;
+  font-size: 14px;
+}
+.table-md{
+  margin-top: 30px;
+  width: 70%;
+  font-size: 14px;
+}
+.table-lg{
+  margin-top: 30px;
+  width: 95%;
+  font-size: 14px;
+}
+
+.table-top{
+  padding-bottom: 10px;
+}
+
+.btn-add{
+  background-image: url('../images/btn-add.png');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;    border-radius: 50%;
+}
+
+.btn-delete{
+  background-image: url('../images/btn-delete.png');
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+}
+.btn-edit{
+  background-image: url('../images/btn-edit.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+}
+
+#search{
+    float: right;
+    background-image: url('../images/searchicon.png');
+    background-size: 20px 20px;
+    background-position: 10px 6px;
+    background-repeat: no-repeat;
+    width: 300px;
+    font-size: 14px;
+    padding: 6px 12px 6px 40px;
+    border: 1px solid #ddd;
+}
