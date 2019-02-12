@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{ url()->previous() }}" class="btn btn-secondary">← Regresar</a>
+<a href="{{ route('home') }}" class="btn btn-secondary">← Regresar a inicio</a>
 @endsection
 @section('content')
 <div class="container form-sm">
@@ -15,25 +15,25 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
-								<input readonly name="name" class="form-control" placeholder="Juan Perez" type="text" >
+								<input readonly name="name" class="form-control" value="Admin" type="text" >
 							</div>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 								</div>
-								<input readonly name="" class="form-control" placeholder="juanperez@correo.com" type="email">
+								<input readonly name="" class="form-control" value="admin@correo.com" type="email">
 							</div>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 								</div>
-								<input readonly name="" class="form-control" placeholder="99287377" type="text">
+								<input readonly name="" class="form-control" value="99287377" type="text">
 							</div>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-building"></i> </span>
 								</div>
-								<input readonly name="" class="form-control" placeholder="Odontólogo" type="text">
+								<input readonly name="" class="form-control" value="Odontólogo" type="text">
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block"> Editar información  </button>

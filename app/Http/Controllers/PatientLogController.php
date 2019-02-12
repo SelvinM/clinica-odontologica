@@ -23,7 +23,7 @@ class PatientLogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create_patient_log');
     }
 
     /**
@@ -56,7 +56,7 @@ class PatientLogController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.edit_patient_log');
     }
 
     /**

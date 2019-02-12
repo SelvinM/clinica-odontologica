@@ -39,7 +39,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-tint"></i> </span>
 								</div>
-								<select class="form-control" placeholder="Crear contraseña" type="password">
+								<select class="form-control" >
 									<option>Tipo de sangre</option>
 									<option>A+</option>
 									<option>A-</option>
@@ -55,7 +55,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-plus-circle"></i> </span>
 								</div>
-								<select class="form-control" placeholder="Crear contraseña" type="password">
+								<select class="form-control">
 									<option>Tipo de seguro</option>
 									<option>Opcion1</option>
 									<option>Opcion2</option>

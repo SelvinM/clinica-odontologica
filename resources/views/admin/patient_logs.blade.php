@@ -4,11 +4,11 @@
 @endsection
 @section('content')
 <div class="table-md center">
-	<h2>Expediente de Juan Perez</h2>
+	<h2>Expediente de Enrique Flores</h2>
 	<br>
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('create user') }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('create patient log') }}"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -34,7 +34,7 @@
 					<td><a href="">mostrar</a></td>
 					<td><a href="">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit user',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit patient log',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -49,7 +49,7 @@
 					<td><a href="">mostrar</a></td>
 					<td><a href="">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit user',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit patient log',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -64,7 +64,7 @@
 					<td><a href="">mostrar</a></td>
 					<td><a href="">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit user',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit patient log',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -79,7 +79,7 @@
 					<td><a href="">mostrar</a></td>
 					<td><a href="">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit user',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit patient log',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">

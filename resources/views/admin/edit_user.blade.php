@@ -15,19 +15,19 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
-								<input name="name" class="form-control" placeholder="Juan Perez" type="text">
+								<input name="name" class="form-control" value="Juan Perez" type="text">
 							</div>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 								</div>
-								<input name="" class="form-control" placeholder="juanperez@correo.com" type="email">
+								<input name="" class="form-control" value="juanperez@correo.com" type="email">
 							</div>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 								</div>
-								<input name="" class="form-control" placeholder="99287377" type="text">
+								<input name="" class="form-control" value="99287377" type="text">
 							</div>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
