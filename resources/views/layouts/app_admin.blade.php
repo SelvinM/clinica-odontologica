@@ -1,7 +1,7 @@
 @extends('layouts.app1')
 @section('sidebar')
 <div class="bg-light border-right" id="sidebar-wrapper">
-  <div class="sidebar-heading"> <h3 class="logo text-center">{{ config('app.name', 'Laravel') }}</h3>  </div>
+  <div class="sidebar-heading"> <h3 class="{{-- logo --}} text-center">{{ config('app.name', 'Laravel') }}</h3>  </div>
   <div class="list-group list-group-flush">
     <a href="{{ route('home') }}" class="list-group-item list-group-item-action @yield('bg dashboard link')"> @yield('dashboard selected') Inicio</a>
     <a href="{{ route('appointments') }}" class="list-group-item list-group-item-action @yield('bg appointments link')"> @yield('appointments selected') Citas</a>

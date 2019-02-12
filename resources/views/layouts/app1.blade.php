@@ -12,6 +12,8 @@
 
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/bootstrap.min.js') }}" rel="stylesheet">
+
 
   <!-- Custom styles for this template -->
   <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
@@ -49,7 +51,7 @@
                 {{ Auth::user()->name }}
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Mi perfil</a>
+                <a class="dropdown-item" href="{{ route('profile') }}">Mi perfil</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ url('/logout') }}">Cerrar Sesión</a>
               </div>

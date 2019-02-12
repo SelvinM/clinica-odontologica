@@ -25,12 +25,15 @@ Route::get('/usuarios', 'UserController@index')->name('users');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 Route::get('/editar-usuario/{user}','UserController@edit')->name('edit user');
-Route::get('/editar-cita/{appointment}','UserController@edit')->name('edit appointment');
-Route::get('/editar-paciente/{patient}','UserController@edit')->name('edit patient');
-Route::get('/editar-objeto/{item}','UserController@edit')->name('edit item');
+Route::get('/editar-cita/{appointment}','AppointmentController@edit')->name('edit appointment');
+Route::get('/editar-paciente/{patient}','PatientController@edit')->name('edit patient');
+Route::get('/editar-objeto/{item}','ItemController@edit')->name('edit item');
 
 Route::get('/agregar-usuario','UserController@create')->name('create user');
-Route::get('/agregar-cita','UserController@create')->name('create appointment');
-Route::get('/agregar-paciente','UserController@create')->name('create patient');
-Route::get('/agregar-objeto','UserController@create')->name('create item');
+Route::get('/agregar-cita','AppointmentController@create')->name('create appointment');
+Route::get('/agregar-paciente','PatientController@create')->name('create patient');
+Route::get('/agregar-objeto','ItemController@create')->name('create item');
 
+Route::view('/historial-paciente','admin.patient_logs')->name('patient logs');
+Route::view('/apuntes-paciente','admin.patient_notes')->name('patient notes');
+Route::view('/perfil','admin.profile')->name('profile');

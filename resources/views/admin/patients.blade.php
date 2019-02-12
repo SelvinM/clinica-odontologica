@@ -28,8 +28,8 @@
 					<th>Dirección</th>
 					<th>Tipo de seguro</th>
 					<th>Tipo de sangre</th>
-					<th>Alergias</th>
 					<th>Apuntes</th>
+					<th>Historial clínico</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
@@ -42,8 +42,8 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
+					<td><a href="{{ route('patient notes') }}">mostrar</a></td>
+					<td><a href="{{ route('patient logs') }}">mostrar</a></td>
 					<td>
 						<a class="btn-edit btn btn-success" href="{{ route('edit patient',1) }}"></a>
 					</td>
@@ -62,8 +62,8 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
+					<td><a href="{{ route('patient notes') }}">mostrar</a></td>
+					<td><a href="{{ route('patient logs') }}">mostrar</a></td>
 					<td>
 						<a class="btn-edit btn btn-success" href="{{ route('edit patient',1) }}"></a>
 					</td>
@@ -82,8 +82,8 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
+					<td><a href="{{ route('patient notes') }}">mostrar</a></td>
+					<td><a href="{{ route('patient logs') }}">mostrar</a></td>
 					<td>
 						<a class="btn-edit btn btn-success" href="{{ route('edit patient',1) }}"></a>
 					</td>
@@ -102,8 +102,8 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
+					<td><a href="{{ route('patient notes') }}">mostrar</a></td>
+					<td><a href="{{ route('patient logs') }}">mostrar</a></td>
 					<td>
 						<a class="btn-edit btn btn-success" href="{{ route('edit patient',1) }}"></a>
 					</td>

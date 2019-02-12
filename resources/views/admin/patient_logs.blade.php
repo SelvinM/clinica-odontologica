@@ -1,15 +1,14 @@
-@extends('layouts.app_admin')
-@section('title',config('app.name', 'Laravel'))
-@section('bg dashboard link','bg-light')
-@section('bg appointments link','bg-active') @section('appointments selected','→')
-@section('bg patients link','bg-light')
-@section('bg items link','bg-light')
-@section('bg users link','bg-light')
+@extends('layouts.app1')
+@section('toggle')
+<a href="{{ route('patients') }}" class="btn btn-secondary">← Pacientes</a>
+@endsection
 @section('content')
 <div class="table-md center">
+	<h2>Expediente de Juan Perez</h2>
+	<br>
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('create appointment') }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('create user') }}"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -22,11 +21,9 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Registrada por</th>
-					<th>Paciente</th>
-					<th>E-mail del paciente</th>
 					<th>Fecha y hora</th>
-					<th>Estado</th>
+					<th>Imágenes adjuntas</th>
+					<th>Apuntes</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
@@ -34,12 +31,10 @@
 			<tbody>
 				<tr>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Pendiente</td>
+					<td><a href="">mostrar</a></td>
+					<td><a href="">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit user',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -51,12 +46,10 @@
 				</tr>
 				<tr>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Pendiente</td>
+					<td><a href="">mostrar</a></td>
+					<td><a href="">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit user',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -68,12 +61,10 @@
 				</tr>
 				<tr>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Pendiente</td>
+					<td><a href="">mostrar</a></td>
+					<td><a href="">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit user',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -85,12 +76,10 @@
 				</tr>
 				<tr>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Pendiente</td>
+					<td><a href="">mostrar</a></td>
+					<td><a href="">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit user',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
