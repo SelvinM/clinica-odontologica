@@ -9,7 +9,7 @@
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('edit item',1) }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('create item',1) }}"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -22,10 +22,10 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Campo1</th>
-					<th>Campo2</th>
-					<th>Campo3</th>
-					<th>Campo4</th>
+					<th>Material</th>
+					<th>Tipo</th>
+					<th>Fecha de agregación</th>
+					<th>Fecha de caducidad</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
