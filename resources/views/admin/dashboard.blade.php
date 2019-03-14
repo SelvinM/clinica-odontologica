@@ -6,5 +6,5 @@
 @section('bg items link','bg-light')
 @section('bg users link','bg-light')
 @section('content')
-
+<div id='calendar'></div>
 @endsection

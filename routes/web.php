@@ -39,3 +39,4 @@ Route::get('/agregar-objeto','ItemController@create')->name('create item');
 
 Route::view('/apuntes-paciente','admin.patient_notes')->name('patient notes');
 Route::view('/perfil','admin.profile')->name('profile');
+ 
