@@ -42,6 +42,8 @@
     padding: 0 10px;
   }
 
+  /* .fc-content-skeleton */ 
+
 </style>
 
 </head>
@@ -91,12 +93,39 @@
   </div>
   <!-- /#wrapper -->
 
+  <div class="modal fade" tabindex="-1" role="dialog" id="modal-inicio">
+             
+              <div class="modal-dialog" role="document"  style="width:1000px;" >
+                <div class="modal-content">
+                   <div >
+                    <h4 class="modal-title" id="myModalLabel"><center><p class="titulo">Es un placer verte</p></center></h4>
+                    <hr>
+                  </div>
+                  
+                  <div class="modal-body">
+                      <center>
+                         <img src="foto1.png" style="width: 250px;height: 330px;">
+                        <div >
+                          <p class="subtitulo">Para que podamos contruir tu Deezer y crear tu Flow necesitamos que nos respondas a<br> un par de preguntas</p>
+                        </div>    
+                      </center>
+                       <div style="padding-top: 10px;padding-bottom: 10px">
+                          <center>
+                              <button type="button" onclick="cerrar_modal1_y_abrir_modal2()" class="btn btn-primary start"  id="start">INICIAR</button>
+                           </center>
+                      </div> 
+                </div><!-- /.modal-content -->
+                
+              </div><!-- /.modal-dialog --> 
+               
+          </div><!-- /.modal -->
+</div>
+
   <!-- Bootstrap core JavaScript -->
   <script src="{{ asset('jquery/jquery.min.js') }}" ></script>
   <script src="{{ asset('js/app.js') }}" ></script>
 
   <script src="{{ asset('fullcalendar/lib/moment.min.js') }}"></script>
-  <script src="{{ asset('fullcalendar/lib/jquery.min.js') }}"></script>
   <script src="{{ asset('fullcalendar/fullcalendar.min.js') }}"></script>
   <script src="{{ asset('fullcalendar/locale-all.js') }}"></script>
 
@@ -107,6 +136,10 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
+
+    function cerrar_modal1_y_abrir_modal2(){
+      $("#modal-inicio").modal("hide");
+    }
 
 
     $(document).ready(function() {
@@ -142,35 +175,68 @@
     navLinks: true, // can click day/week names to navigate views
     selectable: false,
     selectHelper: true,
-    select: function(start, end) {
-        var title = prompt('Event Title:');
-        var id = prompt('Event Id:');
-        var eventData;
-        if (title) {
-          eventData = {
-            id: id,
-            title: title,
-            start: start,
-            end: end,
-            editable: false // evita mover las citas y redimensionar
-          };
+    eventRender: function(eventObj, $el) {
+      $el.popover({
+        title: eventObj.title,
+        content: "<h1>"+eventObj.description+"</h1>"+eventObj.start.toISOString(),
+        trigger: 'hover',
+        placement: 'top',
+        container: 'body',
+        html: true
+      });
+    },
+    //select: function(start, end) {
+    //    var title = prompt('Event Title:');
+    //    var id = prompt('Event Id:');
+    //    var eventData;
+    //    if (title) {
+    //      eventData = {
+    //        id: id,
+    //        title: title,
+    //        start: start,
+    //        end: end,
+    //        editable: false // evita mover las citas y redimensionar
+    //      };
           //var estart = new Date(eventData.start)
           //var eend = new Date(eventData.end)
           //alert("titulo: "+eventData.title+" start: "+estart.toISOString()+" end: "+eend.toISOString());
           //enviar(eventData.title,x.toISOString(),e.toISOString());
-          $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true 
-        }
-        $('#calendar').fullCalendar('unselect');
-
-      },
+    //      $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true 
+    //    }
+    //    $('#calendar').fullCalendar('unselect');
+    //  },
       editable: true,
       eventLimit: true, // allow "more" link when too many events
       events: [
         {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2019-01-28',
-      editable: false
+          id:1,
+          title: 'sacar muela',
+          start: '2019-03-16',
+          description: 'description 1, el usuario tal dice que le duele bla bla bla bla',
+          editable: false
+        },
+        {
+          id:2,
+          title: 'endodoncia',
+          start: '2019-03-14',
+          description: 'description 2',
+          editable: false
+        }
+        ,
+        {
+          id:3,
+          title: 'limpieza',
+          start: '2019-03-16',
+          description: 'description 3',
+          editable: false
+        }
+        ,
+        {
+          id:4,
+          title: 'limpieza, endodoncia',
+          start: '2019-03-16',
+          description: 'description 4',
+          editable: false
         }
       ]
     });

@@ -70,6 +70,15 @@
         $('#calendar').fullCalendar('unselect');
 
       },
+      eventRender: function(eventObj, $el) {
+      $el.popover({
+        title: eventObj.title,
+        content: eventObj.description,
+        trigger: 'hover',
+        placement: 'top',
+        container: 'body'
+      });
+    },
       editable: true,
       eventLimit: true, // allow "more" link when too many events
       events: [
