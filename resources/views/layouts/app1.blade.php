@@ -93,33 +93,7 @@
   </div>
   <!-- /#wrapper -->
 
-  <div class="modal fade" tabindex="-1" role="dialog" id="modal-inicio">
-             
-              <div class="modal-dialog" role="document"  style="width:1000px;" >
-                <div class="modal-content">
-                   <div >
-                    <h4 class="modal-title" id="myModalLabel"><center><p class="titulo">Es un placer verte</p></center></h4>
-                    <hr>
-                  </div>
-                  
-                  <div class="modal-body">
-                      <center>
-                         <img src="foto1.png" style="width: 250px;height: 330px;">
-                        <div >
-                          <p class="subtitulo">Para que podamos contruir tu Deezer y crear tu Flow necesitamos que nos respondas a<br> un par de preguntas</p>
-                        </div>    
-                      </center>
-                       <div style="padding-top: 10px;padding-bottom: 10px">
-                          <center>
-                              <button type="button" onclick="cerrar_modal1_y_abrir_modal2()" class="btn btn-primary start"  id="start">INICIAR</button>
-                           </center>
-                      </div> 
-                </div><!-- /.modal-content -->
-                
-              </div><!-- /.modal-dialog --> 
-               
-          </div><!-- /.modal -->
-</div>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="{{ asset('jquery/jquery.min.js') }}" ></script>
@@ -177,8 +151,8 @@
     selectHelper: true,
     eventRender: function(eventObj, $el) {
       $el.popover({
-        title: eventObj.title,
-        content: "<h1>"+eventObj.description+"</h1>"+eventObj.start.toISOString(),
+        title: "<table><tr><th>"+eventObj.user+"</th></tr></table>",
+        content: "<table><tr><td style='text-align: left;'>"+eventObj.description+"</td></tr><tr><td style='text-align: left;'>"+eventObj.start.toISOString()+"</td></tr></table>",
         trigger: 'hover',
         placement: 'top',
         container: 'body',
@@ -211,13 +185,15 @@
         {
           id:1,
           title: 'sacar muela',
+          user:'Juan Soler',
           start: '2019-03-16',
           description: 'description 1, el usuario tal dice que le duele bla bla bla bla',
           editable: false
         },
         {
           id:2,
-          title: 'endodoncia',
+          title: 'endodoncia', 
+          user:'Maria Perez',
           start: '2019-03-14',
           description: 'description 2',
           editable: false
@@ -225,7 +201,8 @@
         ,
         {
           id:3,
-          title: 'limpieza',
+          title: 'limpieza', 
+          user:'Denis Henriquez',
           start: '2019-03-16',
           description: 'description 3',
           editable: false
@@ -233,7 +210,8 @@
         ,
         {
           id:4,
-          title: 'limpieza, endodoncia',
+          title: 'limpieza, endodoncia', 
+          user:'Selvin Mayes',
           start: '2019-03-16',
           description: 'description 4',
           editable: false
