@@ -13,7 +13,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('admin.items');
+        return view('doctor.items');
     }
 
     /**
@@ -23,7 +23,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('admin.create_item');
+        return view('doctor.create_item');
     }
 
     /**
@@ -55,7 +55,7 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.edit_item');
+        return view('doctor.edit_item');
     }
 
     /**

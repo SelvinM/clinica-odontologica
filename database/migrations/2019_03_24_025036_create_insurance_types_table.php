@@ -16,6 +16,8 @@ class CreateInsuranceTypesTable extends Migration {
 		{
 			$table->integer('id')->primary();
 			$table->string('name', 45);
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

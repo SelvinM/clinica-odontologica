@@ -1,15 +1,15 @@
-@extends('layouts.app_admin')
+@extends('layouts.app_doctor')
 @section('title',config('app.name', 'Laravel'))
 @section('bg dashboard link','bg-light')
-@section('bg appointments link','bg-light')
+@section('bg appointments link','bg-active') @section('appointments selected','→')
 @section('bg patients link','bg-light')
-@section('bg items link','bg-active')@section('items selected','→')
+@section('bg items link','bg-light')
 @section('bg users link','bg-light')
 @section('content')
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('create item',1) }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('create appointment') }}"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -22,10 +22,11 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Material</th>
-					<th>Tipo</th>
-					<th>Fecha de agregación</th>
-					<th>Fecha de caducidad</th>
+					<th>Registrada por</th>
+					<th>Paciente</th>
+					<th>E-mail del paciente</th>
+					<th>Fecha y hora</th>
+					<th>Estado</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
@@ -36,8 +37,9 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
+					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('create item') }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -52,8 +54,9 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
+					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit item',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -68,8 +71,9 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
+					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit item',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -84,8 +88,9 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
+					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit item',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">

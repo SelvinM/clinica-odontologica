@@ -1,4 +1,4 @@
-@extends('layouts.app_admin')
+@extends('layouts.app_doctor')
 @section('title',config('app.name', 'Laravel'))
 @section('bg dashboard link','bg-light')
 @section('bg appointments link','bg-light')

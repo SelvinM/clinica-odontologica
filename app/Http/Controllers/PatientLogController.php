@@ -13,7 +13,7 @@ class PatientLogController extends Controller
      */
     public function index()
     {
-        return view('admin.patient_logs');
+        return view('doctor.patient_logs');
     }
 
     /**
@@ -23,7 +23,7 @@ class PatientLogController extends Controller
      */
     public function create()
     {
-        return view('admin.create_patient_log');
+        return view('doctor.create_patient_log');
     }
 
     /**
@@ -56,7 +56,7 @@ class PatientLogController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.edit_patient_log');
+        return view('doctor.edit_patient_log');
     }
 
     /**

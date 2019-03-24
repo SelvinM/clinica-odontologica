@@ -37,6 +37,6 @@ Route::get('/agregar-paciente','PatientController@create')->name('create patient
 Route::get('/agregar-historial-paciente','PatientLogController@create')->name('create patient log');
 Route::get('/agregar-objeto','ItemController@create')->name('create item');
 
-Route::view('/apuntes-paciente','admin.patient_notes')->name('patient notes');
-Route::view('/perfil','admin.profile')->name('profile');
+Route::view('/apuntes-paciente','doctor.patient_notes')->name('patient notes');
+Route::view('/perfil','doctor.profile')->name('profile');
  

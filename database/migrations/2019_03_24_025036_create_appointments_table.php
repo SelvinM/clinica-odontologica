@@ -21,6 +21,7 @@ class CreateAppointmentsTable extends Migration {
 			$table->dateTime('date');
 			$table->string('description', 8000)->nullable();
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

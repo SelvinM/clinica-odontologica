@@ -25,6 +25,7 @@ class CreatePatientsTable extends Migration {
 			$table->string('home_address', 45);
 			$table->string('phone', 45);
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

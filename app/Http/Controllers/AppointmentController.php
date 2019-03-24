@@ -13,7 +13,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('admin.appointments');
+        return view('doctor.appointments');
     }
 
     /**
@@ -23,7 +23,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('admin.create_appointment');
+        return view('doctor.create_appointment');
     }
 
     /**
@@ -56,7 +56,7 @@ class AppointmentController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.edit_appointment');
+        return view('doctor.edit_appointment');
     }
 
     /**
