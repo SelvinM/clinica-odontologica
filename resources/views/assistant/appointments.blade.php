@@ -1,4 +1,4 @@
-@extends('layouts.app_admin')
+@extends('layouts.app_assistant')
 @section('title',config('app.name', 'Laravel'))
 @section('bg dashboard link','bg-light')
 @section('bg appointments link','bg-active') @section('appointments selected','→')
@@ -9,8 +9,8 @@
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('create appointment') }}"></a>
-		</div>
+			<a class="btn btn-primary btn-add" href="{{ route('create appointment a') }}"></a>
+		</div> 
 		<div class="col">
             <form method="get">
                 <input type="text" id="search" name="search" placeholder="Buscar...">
@@ -41,7 +41,7 @@
 					<td>Datos</td>
 					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit appointment a',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -59,7 +59,7 @@
 					<td>Datos</td>
 					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit appointment a',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -77,7 +77,7 @@
 					<td>Datos</td>
 					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit appointment a',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -95,7 +95,7 @@
 					<td>Datos</td>
 					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit appointment a',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -113,7 +113,7 @@
 					<td>Datos</td>
 					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit appointment a',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">

@@ -1,4 +1,4 @@
-@extends('layouts.app_admin')
+@extends('layouts.app_assistant')
 @section('title',config('app.name', 'Laravel'))
 @section('bg dashboard link','bg-light')
 @section('bg appointments link','bg-light')
@@ -9,7 +9,7 @@
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('create item',1) }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('create item a',1) }}"></a>
 		</div>
 		<div class="col">
 			<select  style="width: 105%" class="form-control">
@@ -45,7 +45,7 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('create item') }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('create item a') }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -61,7 +61,7 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit item',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit item a',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -77,7 +77,7 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit item',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit item a',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -93,7 +93,7 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit item',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('edit item a',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">

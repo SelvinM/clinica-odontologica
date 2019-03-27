@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Assistant;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class PatientLogController extends Controller
 {
     /** 
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('doctor.users');
+        return view('assistant.patient_logs');
     }
 
     /**
@@ -23,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('doctor.create_user');
+        return view('assistant.create_patient_log');
     }
 
     /**
@@ -56,7 +57,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('doctor.edit_user');
+        return view('assistant.edit_patient_log');
     }
 
     /**
