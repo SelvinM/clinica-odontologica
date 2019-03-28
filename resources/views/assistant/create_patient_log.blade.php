@@ -1,10 +1,10 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{ route('assistant patient log') }}" class="btn btn-secondary">← Pacientes</a>
+<a href="{{ route('assistant patient logs') }}" class="btn btn-secondary">← Pacientes</a>
 @endsection
 @section('content')
 <div class="container form-lg">
-	<table class="table table-striped">
+	<table class="table table-striped"> 
 		<tbody>
 			<tr>
 				<td>

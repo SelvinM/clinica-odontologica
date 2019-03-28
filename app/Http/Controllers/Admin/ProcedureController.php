@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Doctor;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PatientLogController extends Controller
+class ProcedureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PatientLogController extends Controller
      */
     public function index()
     {
-        return view('doctor.patient_logs');
+        return view('admin.procedures');
     }
 
     /**
@@ -24,7 +24,7 @@ class PatientLogController extends Controller
      */
     public function create()
     {
-        return view('doctor.create_patient_log');
+        //
     }
 
     /**
@@ -57,7 +57,7 @@ class PatientLogController extends Controller
      */
     public function edit($id)
     {
-        return view('doctor.edit_patient_log');
+        //
     }
 
     /**

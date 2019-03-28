@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class PaymentController extends Controller
 {
-    /** 
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('doctor.users');
+        return view('admin.payments');
     }
 
     /**
@@ -23,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('doctor.create_user');
+        //
     }
 
     /**
@@ -56,7 +57,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('doctor.edit_user');
+        //
     }
 
     /**

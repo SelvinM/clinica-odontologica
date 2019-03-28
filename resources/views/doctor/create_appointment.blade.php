@@ -12,6 +12,10 @@
 						<fieldset>
 							<legend>Registrar nueva cita</legend>
 							<div class="form-group input-group">
+  								<a class="btn btn-success btn-block" role="button" href="{{ route('doctor create patient 2') }}" aria-label="Left Align"><span <i class="fa fa-user-plus"></span> Agregar paciente</a>
+  							</div>
+  							<h6 class="center">O</h6>
+							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
@@ -28,6 +32,7 @@
 								</div>
 								<input type="datetime-local" name="" class="form-control">
 							</div>
+
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block"> Crear  </button>
 							</div>

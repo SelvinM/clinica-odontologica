@@ -1,15 +1,11 @@
-@extends('layouts.app_doctor')
+@extends('layouts.app_admin')
 @section('title',config('app.name', 'Laravel'))
-@section('bg dashboard link','bg-light')
-@section('bg appointments link','bg-light')
-@section('bg patients link','bg-light')
-@section('bg items link','bg-light')
-@section('bg users link','bg-active')@section('users selected','→')
+@section('bg payments link','bg-active') @section('payments selected','→')
 @section('content')
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('doctor create user') }}"></a>
+			<a class="btn btn-primary btn-add" href="#"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -22,10 +18,8 @@
 		<table>
 			<thead>
 				<tr>
+					<th>Codigo</th>
 					<th>Nombre</th>
-					<th>E-mail</th>
-					<th>Teléfono</th>
-					<th>Rol</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
@@ -34,10 +28,8 @@
 				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('doctor edit user',1) }}"></a>
+						<a class="btn-edit btn btn-success" href=""></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -50,10 +42,8 @@
 				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('doctor edit user',1) }}"></a>
+						<a class="btn-edit btn btn-success" href=""></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -66,10 +56,8 @@
 				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('doctor edit user',1) }}"></a>
+						<a class="btn-edit btn btn-success" href=""></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -82,10 +70,8 @@
 				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('doctor edit user',1) }}"></a>
+						<a class="btn-edit btn btn-success" href=""></a>
 					</td>
 					<td>
 						<form method="post" action="">

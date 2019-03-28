@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 @section('title',config('app.name', 'Laravel'))
-@section('bg dashboard link','bg-active') @section('dashboard selected','→')
+@section('bg insurances link','bg-active') @section('insurances selected','→')
 @section('content')
 <div class="table-md center">
 	<div class="table-top row">

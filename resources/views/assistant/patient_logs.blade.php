@@ -1,12 +1,12 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{ route('assistant patients a') }}" class="btn btn-secondary">← Pacientes</a>
+<a href="{{ route('assistant patients') }}" class="btn btn-secondary">← Pacientes</a>
 @endsection
 @section('content')
 <div class="table-md center">
 	<h2>Expediente de Enrique Flores</h2>
 	<br>
-	<div class="table-top row">
+	<div class="table-top row"> 
 		<div class="col">
 			<a class="btn btn-primary btn-add" href="{{ route('assistant create patient log') }}"></a>
 		</div>
