@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{ route('appointments a') }}" class="btn btn-secondary">← Citas</a>
+<a href="{{ route('assistant appointments') }}" class="btn btn-secondary">← Citas</a>
 @endsection
 @section('content')
 <div class="container form-sm">
