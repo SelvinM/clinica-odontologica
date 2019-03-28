@@ -27,20 +27,20 @@ Route::get('/pacientes', 'Doctor\PatientController@index')->name('doctor patient
 Route::get('/historial-paciente','Doctor\PatientLogController@index')->name('doctor patient logs');
 Route::get('/usuarios', 'Doctor\UserController@index')->name('doctor users');
 
-Route::get('/editar-usuario/{user}','Doctor\UserController@edit')->name('edit user');
-Route::get('/editar-cita/{appointment}','Doctor\AppointmentController@edit')->name('edit appointment');
-Route::get('/editar-paciente/{patient}','Doctor\PatientController@edit')->name('edit patient');
-Route::get('/agregar-historial-paciente/{patient_log}','Doctor\PatientLogController@edit')->name('edit patient log');
-Route::get('/editar-objeto/{item}','Doctor\ItemController@edit')->name('edit item');
+Route::get('/editar-usuario/{user}','Doctor\UserController@edit')->name('doctor edit user');
+Route::get('/editar-cita/{appointment}','Doctor\AppointmentController@edit')->name('doctor edit appointment');
+Route::get('/editar-paciente/{patient}','Doctor\PatientController@edit')->name('doctor edit patient');
+Route::get('/agregar-historial-paciente/{patient_log}','Doctor\PatientLogController@edit')->name('doctor edit patient log');
+Route::get('/editar-objeto/{item}','Doctor\ItemController@edit')->name('doctor edit item');
 
-Route::get('/agregar-usuario','Doctor\UserController@create')->name('create user');
-Route::get('/agregar-cita','Doctor\AppointmentController@create')->name('create appointment');
-Route::get('/agregar-paciente','Doctor\PatientController@create')->name('create patient');
-Route::get('/agregar-historial-paciente','Doctor\PatientLogController@create')->name('create patient log');
-Route::get('/agregar-objeto','Doctor\ItemController@create')->name('create item');
+Route::get('/agregar-usuario','Doctor\UserController@create')->name('doctor create user');
+Route::get('/agregar-cita','Doctor\AppointmentController@create')->name('doctor create appointment');
+Route::get('/agregar-paciente','Doctor\PatientController@create')->name('doctor create patient');
+Route::get('/agregar-historial-paciente','Doctor\PatientLogController@create')->name('doctor create patient log');
+Route::get('/agregar-objeto','Doctor\ItemController@create')->name('doctor create item');
 
-Route::view('/apuntes-paciente','doctor.patient_notes')->name('patient notes');
-Route::view('/perfil','doctor.profile')->name('profile');
+Route::view('/apuntes-paciente','doctor.patient_notes')->name('doctor patient notes');
+Route::view('/perfil','doctor.profile')->name('doctor profile');
  
 //rutas asistente
 
@@ -50,7 +50,7 @@ Route::get('/a_pacientes', 'Assistant\PatientController@index')->name('assistant
 Route::get('/a_historial-paciente','Assistant\PatientLogController@index')->name('assistant patient logs');
 
 Route::get('/a_editar-cita/{appointment}','Assistant\AppointmentController@edit')->name('assistant edit appointment');
-Route::get('/a_editar-paciente/{patient}','Assistant\PatientController@edit')->name('edit patient a');
+Route::get('/a_editar-paciente/{patient}','Assistant\PatientController@edit')->name('assistant edit patient');
 Route::get('/a_agregar-historial-paciente/{patient_log}','Assistant\PatientLogController@edit')->name('assistant edit patient log');
 Route::get('/a_editar-objeto/{item}','Assistant\ItemController@edit')->name('assistant edit item');
 
