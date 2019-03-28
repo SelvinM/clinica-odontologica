@@ -9,7 +9,7 @@
 <div class="table-lg center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('create patient a') }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('assistant create patient') }}"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -42,10 +42,10 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td><a href="{{ route('patient notes a') }}">mostrar</a></td>
-					<td><a href="{{ route('patient logs a') }}">mostrar</a></td>
+					<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
+					<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit patient a',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -62,10 +62,10 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td><a href="{{ route('patient notes a') }}">mostrar</a></td>
-					<td><a href="{{ route('patient logs a') }}">mostrar</a></td>
+					<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
+					<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit patient a',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -82,10 +82,10 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td><a href="{{ route('patient notes a') }}">mostrar</a></td>
-					<td><a href="{{ route('patient logs a') }}">mostrar</a></td>
+					<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
+					<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit patient a',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -102,10 +102,10 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td><a href="{{ route('patient notes a') }}">mostrar</a></td>
-					<td><a href="{{ route('patient logs a') }}">mostrar</a></td>
+					<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
+					<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit patient a',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">

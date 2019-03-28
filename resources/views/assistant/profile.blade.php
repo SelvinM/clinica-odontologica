@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{ route('home a') }}" class="btn btn-secondary">← Regresar a inicio</a>
+<a href="{{ route('home') }}" class="btn btn-secondary">← Regresar a inicio</a>
 @endsection
 @section('content')
 <div class="container form-sm">

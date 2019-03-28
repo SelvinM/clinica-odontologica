@@ -9,7 +9,7 @@
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('create appointment') }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('doctor create appointment') }}"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -39,7 +39,7 @@
 					<td>Datos</td>
 					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('doctor edit appointment',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -56,7 +56,7 @@
 					<td>Datos</td>
 					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('doctor edit appointment',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -73,7 +73,7 @@
 					<td>Datos</td>
 					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('doctor edit appointment',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -90,7 +90,7 @@
 					<td>Datos</td>
 					<td>Pendiente</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('edit appointment',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('doctor edit appointment',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
