@@ -87,6 +87,8 @@
       <div class="container-fluid">
         @yield('content')
       </div>
+      
+      @yield('modal')
     </div>
     <!-- /#page-content-wrapper -->
 
