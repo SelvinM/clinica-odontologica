@@ -73,3 +73,12 @@ Route::get('/ad_editar_usuario/{user}','Admin\UserController@edit')->name('admin
 
 
 Route::get('/ad_agregar-usuario','Admin\UserController@create')->name('admin create user');
+
+//Ruta para agregar materiales desde el admin
+Route::get('/ad_añadir_material','Admin\MaterialController@create')->name('admin añadir_material');
+//Ruta para editar materiales desde el admin
+Route::get('/ad_editar_material','Admin\MaterialController@edit')->name('admin editar_material');
+//Ruta para agregar un tipos de pago desde el admin
+Route::get('/ad_añadir_tipodepago','Admin\PaymentController@create')->name('admin añadir_tipodepago');
+//Ruta para editar un tipo de pago desde el admin
+Route::get('/ad_editar_tipopago','Admin\PaymentController@edit')->name('admin editar_tipopago');
