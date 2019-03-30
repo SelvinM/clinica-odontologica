@@ -12,13 +12,13 @@
 						<legend>Editar material</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
+								<span class="input-group-text"> <i class="fa  fa-flask"></i> </span>
 							</div>
 							<input name="" class="form-control" placeholder="Ingrese el nombre del material" type="text">
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
+								<span class="input-group-text"> <i class="fa  fa-flask"></i> </span>
 							</div>
                             	<select class="form-control">
 								<option selected=""> Seleccione el tipo</option>
@@ -36,7 +36,7 @@
 						</div>
 						<div class="form-group input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+									<span class="input-group-text"> <i class="fa fa-hourglass-half "></i> </span>
 								</div>
 								<input type="datetime-local" name="" class="form-control">
 						</div>
@@ -46,7 +46,7 @@
 						</div>
 						<div class="form-group input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+									<span class="input-group-text"> <i class="fa fa-hourglass-half "></i> </span>
 								</div>
 								<input type="datetime-local" name="" class="form-control">
 						</div>

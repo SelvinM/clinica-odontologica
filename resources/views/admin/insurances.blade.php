@@ -5,7 +5,7 @@
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href=""></a>
+			<a class="btn btn-primary btn-add" href="{{route('admin añadir_tipodeseguro')}}"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -19,7 +19,7 @@
 			<thead>
 				<tr>
 					<th>Codigo</th>
-					<th>Tipo</th>
+					<th>Tipo de seguro</th>
 
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
@@ -31,7 +31,7 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href=""></a>
+						<a class="btn-edit btn btn-success" href="{{route('admin editar_tipodeseguro')}}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -46,7 +46,7 @@
 					<td>Datos</td>
 					
 					<td>
-						<a class="btn-edit btn btn-success" href=""></a>
+						<a class="btn-edit btn btn-success" href="{{route('admin editar_tipodeseguro')}}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -61,7 +61,7 @@
 					<td>Datos</td>
 					
 					<td>
-						<a class="btn-edit btn btn-success" href=""></a>
+						<a class="btn-edit btn btn-success" href="{{route('admin editar_tipodeseguro')}}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -76,7 +76,7 @@
 					<td>Datos</td>
 					
 					<td>
-						<a class="btn-edit btn btn-success" href=""></a>
+						<a class="btn-edit btn btn-success" href="{{route('admin editar_tipodeseguro')}}"></a>
 					</td>
 					<td>
 						<form method="post" action="">

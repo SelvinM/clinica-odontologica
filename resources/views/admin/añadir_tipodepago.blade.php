@@ -12,13 +12,13 @@
 						<legend>Registrar nuevo metodo de pago</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
+								<span class="input-group-text"> <i class="fa  fa-money-bill-alt"></i> </span>
 							</div>
 							<input name="" class="form-control" placeholder="Ingrese el codigo de pago" type="text">
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
+								<span class="input-group-text"> <i class="fa  fa-money-bill-alt"></i> </span>
 							</div>
                             <select class="form-control">
 								<option selected=""> Seleccione el tipo</option>
@@ -32,6 +32,13 @@
 								
 							</select>
 						</div>											
+
+                        <div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-pen-square"></i> </span>
+								</div>
+								<textarea class="form-control form-textarea" >Agregue una descripcion para el tipo de pago.</textarea>
+						</div>
 
  						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block"> Guardar </button>

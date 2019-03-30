@@ -20,6 +20,7 @@
 				<tr>
 					<th>Codigo</th>
 					<th>Tipo de pago</th>
+					<th>Descripcion</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
@@ -28,19 +29,6 @@
 				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('admin editar_tipopago') }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>Datos</td>
 					<td>Datos</td>
 					<td>
 						<a class="btn-edit btn btn-success" href="{{ route('admin editar_tipopago') }}"></a>
@@ -56,6 +44,7 @@
 				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
+					<td>Datos</td>
 					<td>
 						<a class="btn-edit btn btn-success" href="{{ route('admin editar_tipopago') }}"></a>
 					</td>
@@ -68,6 +57,22 @@
 					</td>
 				</tr>
 				<tr>
+					<td>Datos</td>
+					<td>Datos</td>
+					<td>Datos</td>
+					<td>
+						<a class="btn-edit btn btn-success" href="{{ route('admin editar_tipopago') }}"></a>
+					</td>
+					<td>
+						<form method="post" action="">
+							@csrf
+							@method('DELETE')
+							<button type="submit" class="btn-delete btn btn-danger"></button>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>
