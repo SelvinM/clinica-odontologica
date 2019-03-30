@@ -113,9 +113,7 @@
       $("#wrapper").toggleClass("toggled");
     });
 
-    function cerrar_modal1_y_abrir_modal2(){
-      $("#modal-inicio").modal("hide");
-    }
+    
 
 
     $(document).ready(function() {

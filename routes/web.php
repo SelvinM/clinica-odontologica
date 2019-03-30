@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () { 
     return view('auth.login');
 });
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
@@ -63,7 +63,13 @@ Route::view('/a_apuntes-paciente','assistant.patient_notes')->name('assistant pa
 Route::view('/a_perfil','assistant.profile')->name('assistant profile');
 
 //rutas admin
+
 Route::get('/ad_procedimientos','Admin\ProcedureController@index')->name('admin procedures');
 Route::get('/ad_pagos','Admin\PaymentController@index')->name('admin payments');
 Route::get('/ad_materiales','Admin\MaterialController@index')->name('admin materials');
 Route::get('/ad_seguros','Admin\InsuranceController@index')->name('admin insurances');
+
+Route::get('/ad_editar_usuario/{user}','Admin\UserController@edit')->name('admin edit user');
+
+
+Route::get('/ad_agregar-usuario','Admin\UserController@create')->name('admin create user');
