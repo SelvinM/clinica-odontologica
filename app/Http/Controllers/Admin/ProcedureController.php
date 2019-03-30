@@ -24,7 +24,7 @@ class ProcedureController extends Controller
      */
     public function create()
     {
-        return view('admin.añadir_tipoprocedimiento');
+        return view('admin.create_procedure_type');
     }
 
     /**
@@ -57,7 +57,7 @@ class ProcedureController extends Controller
      */
     public function edit()
     {
-        return view('admin.editar_tipoprocedimiento');
+        return view('admin.edit_procedure_type');
     }
 
     /**

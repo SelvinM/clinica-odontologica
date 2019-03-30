@@ -24,7 +24,7 @@ class InsuranceController extends Controller
      */
     public function create()
     {
-        return view('admin.añadir_tipodeseguro');
+        return view('admin.create_insurance_type');
     }
 
     /**
@@ -55,9 +55,9 @@ class InsuranceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.editar_tipodeseguro');
+        return view('admin.edit_insurance_type');
     }
 
     /**

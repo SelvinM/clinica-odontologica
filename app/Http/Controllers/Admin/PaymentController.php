@@ -24,7 +24,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        return view('admin.añadir_tipodepago');
+        return view('admin.create_payment_type');
     }
 
     /**
@@ -55,9 +55,9 @@ class PaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.editar_tipopago');
+        return view('admin.edit_payment_type');
     }
 
     /**

@@ -5,7 +5,7 @@
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('admin añadir_tipodepago') }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('admin create payment type') }}"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -31,7 +31,7 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('admin editar_tipopago') }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit payment type',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -46,7 +46,7 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('admin editar_tipopago') }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit payment type',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -61,7 +61,7 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('admin editar_tipopago') }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit payment type',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -76,7 +76,7 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('admin editar_tipopago') }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit payment type',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">

@@ -24,7 +24,7 @@ class MaterialController extends Controller
      */
     public function create()
     {
-       return view('admin.añadir_material');
+       return view('admin.create_material');
     }
 
     /**
@@ -55,9 +55,9 @@ class MaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.editar_material');
+        return view('admin.edit_material');
     }
 
     /**

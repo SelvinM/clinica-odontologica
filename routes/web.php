@@ -69,24 +69,24 @@ Route::get('/ad_pagos','Admin\PaymentController@index')->name('admin payments');
 Route::get('/ad_materiales','Admin\MaterialController@index')->name('admin materials');
 Route::get('/ad_seguros','Admin\InsuranceController@index')->name('admin insurances');
 
-Route::get('/ad_editar_usuario/{user}','Admin\UserController@edit')->name('admin edit user');
-
-
+//Ruta para agregar usuarios desde el admin
 Route::get('/ad_agregar-usuario','Admin\UserController@create')->name('admin create user');
-
 //Ruta para agregar materiales desde el admin
-Route::get('/ad_añadir_material','Admin\MaterialController@create')->name('admin añadir_material');
-//Ruta para editar materiales desde el admin
-Route::get('/ad_editar_material','Admin\MaterialController@edit')->name('admin editar_material');
+Route::get('/ad_agregar_material','Admin\MaterialController@create')->name('admin create material');
 //Ruta para agregar un tipo de pago desde el admin
-Route::get('/ad_añadir_tipodepago','Admin\PaymentController@create')->name('admin añadir_tipodepago');
-//Ruta para editar un tipo de pago desde el admin
-Route::get('/ad_editar_tipopago','Admin\PaymentController@edit')->name('admin editar_tipopago');
+Route::get('/ad_agregar_tipodepago','Admin\PaymentController@create')->name('admin create payment type');
 //Ruta para agregar un tipo de seguro desde el admin
-Route::get('/ad_añadir_tipodeseguro','Admin\InsuranceController@create')->name('admin añadir_tipodeseguro');
-//Ruta para editar un tipo de seguro desde el admin
-Route::get('/ad_editar_tipodeseguro','Admin\InsuranceController@edit')->name('admin editar_tipodeseguro');
+Route::get('/ad_agregar_tipodeseguro','Admin\InsuranceController@create')->name('admin create insurance type');
 //Ruta para agregar un tipo de procedimiento desde el admin
-Route::get('/ad_añadir_tipoprocedimiento','Admin\ProcedureController@create')->name('admin añadir_tipoprocedimiento');
+Route::get('/ad_agregar_tipoprocedimiento','Admin\ProcedureController@create')->name('admin create procedure type');
+
+//Ruta para editar usuarios desde el admin
+Route::get('/ad_editar_usuario/{user}','Admin\UserController@edit')->name('admin edit user');
+//Ruta para editar materiales desde el admin
+Route::get('/ad_editar_material/{material}','Admin\MaterialController@edit')->name('admin edit material');
+//Ruta para editar un tipo de pago desde el admin
+Route::get('/ad_editar_tipopago/{payment}','Admin\PaymentController@edit')->name('admin edit payment type');
+//Ruta para editar un tipo de seguro desde el admin
+Route::get('/ad_editar_tipodeseguro/{insurance}','Admin\InsuranceController@edit')->name('admin edit insurance type');
 //Ruta para editar un tipo de procedimiento desde el admin
-Route::get('/ad_editar_tipoprocedimiento','Admin\ProcedureController@edit')->name('admin editar_tipoprocedimiento');
+Route::get('/ad_editar_tipoprocedimiento/{procedure}','Admin\ProcedureController@edit')->name('admin edit procedure type');

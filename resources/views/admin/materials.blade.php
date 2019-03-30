@@ -6,7 +6,7 @@
 	<div class="table-top row">
 		<div class="col">
 
-			<a class="btn btn-primary btn-add" href="{{ route('admin añadir_material') }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('admin create material') }}"></a>
                
 		</div>
 		<div class="col">
@@ -35,7 +35,7 @@
 					<td>Datos</td>
 					<td>
 						
-						<a class="btn-edit btn btn-success" href="{{ route('admin editar_material') }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit material',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -51,7 +51,7 @@
 					<td>Datos</td>
 					<td>
 
-						<a class="btn-edit btn btn-success" href="{{ route('admin editar_material') }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit material',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -67,7 +67,7 @@
 					<td>Datos</td>
 					<td>
 						
-						<a class="btn-edit btn btn-success" href="{{ route('admin editar_material') }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit material',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -83,7 +83,7 @@
 					<td>Datos</td>
 					<td>
 						
-						<a class="btn-edit btn btn-success" href="{{ route('admin editar_material') }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit material',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
