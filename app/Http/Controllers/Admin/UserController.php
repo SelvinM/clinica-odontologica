@@ -4,6 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
+use App\User;
+use App\Role;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserUpdateProfileRequest;
+use Illuminate\Support\Facades\Hash;
+
+
 
 class UserController extends Controller
 {
@@ -12,9 +22,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->input('search');
+        $users = User::where('id','!=',Auth::id())
+            ->orderBy('name','asc')
+            ->search($search)
+            ->paginate(20);
+        return view('admin.users',compact('users','search'));
     }
 
     /**
@@ -24,7 +39,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.create_user');
+        $roles = Role::all();
+        return view('admin.create_user',compact('roles'));
     }
 
     /**
@@ -33,9 +49,26 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        //
+        $role_id= $request->input('role_id');
+        $email = $request->input('email');
+        $user_deleted = User::onlyTrashed()->where('email',$email)->first();
+        if($user_deleted == NULL){
+            $user = new User([
+                                 'role_id'=>$role_id,
+                                 'name'=>$request->input('name'),
+                                 'email'=>$request->input('email'),
+                                 'password'=>Hash::make($request->input('password'))]);
+            $user->save();
+
+        }else{
+            $user_deleted->restore();
+            $user_deleted->update($request->except(['']));
+            $user_deleted->password = Hash::make($request->input('password'));
+            $user_deleted->save();
+        }
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -57,7 +90,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.edit_user');
+        $user=User::find($id);
+        $roles = Role::all();
+        return view('admin.edit_user',compact('user','roles'));
     }
 
     /**
@@ -67,9 +102,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        //
+        $user = User::find($id);
+        $email = $request->input('email');
+        $user_deleted = User::onlyTrashed()->where('email',$email)->first();
+        if($user_deleted == NULL){
+            $user->update($request->except(['']));
+        }else{
+            $user->delete();
+            $user_deleted->restore();
+            $user_deleted->update($request->except(['']));
+        }
+
+        return redirect()->route('usuarios.index');
     }
 
     /**

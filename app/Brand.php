@@ -2,15 +2,15 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 24 Mar 2019 03:13:18 +0000.
+ * Date: Mon, 01 Apr 2019 00:54:25 +0000.
  */
 
-namespace App\Models;
+namespace App;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class ItemType
+ * Class Brand
  * 
  * @property int $id
  * @property string $name
@@ -20,9 +20,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property \Illuminate\Database\Eloquent\Collection $items
  *
- * @package App\Models
+ * @package App
  */
-class ItemType extends Eloquent
+class Brand extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 	public $incrementing = false;
@@ -37,6 +37,6 @@ class ItemType extends Eloquent
 
 	public function items()
 	{
-		return $this->hasMany(\App\Models\Item::class);
+		return $this->hasMany(\App\Item::class);
 	}
 }

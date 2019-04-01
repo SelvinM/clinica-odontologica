@@ -5,11 +5,11 @@
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('admin create user') }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('usuarios.create') }}"></a>
 		</div>
 		<div class="col">
             <form method="get">
-                <input type="text" id="search" name="search" placeholder="Buscar...">
+                <input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar...">
                 <input type="submit" style="display: none" />
             </form>
         </div>
@@ -20,19 +20,19 @@
 				<tr>
 					<th>Nombre</th>
 					<th>Email</th>
-					<th>Tipo de usuario</th>
+					<th>Rol</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
 			</thead>
 			<tbody>
+			@foreach($users as $user)
 				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>dato</td>
+					<td>{{ $user->name }}</td>
+					<td>{{ $user->email }}</td>
+					<td>{{ $user->role->name }}</td>
 					<td>
-						{{-- <a class="btn-edit btn btn-success" href=""></a> --}}
-						<a class="btn-edit btn btn-success" href="{{route('admin edit user',1)}}"></a>
+						<a class="btn-edit btn btn-success" href="{{route('usuarios.edit',$user->id)}}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -42,6 +42,7 @@
 						</form>
 					</td>
 				</tr>
+			@endforeach
 			</tbody>
 		</table>
 	</div>

@@ -1,25 +1,25 @@
 <?php
 
 /**
- * Created by Reliese Model.
- * Date: Sun, 24 Mar 2019 03:13:18 +0000.
+ * Created by Illuminate Model.
+ * Date: Mon, 01 Apr 2019 00:54:25 +0000.
  */
 
-namespace App\Models;
+namespace App;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Gender
+ * Class BloodType
  * 
  * @property int $id
  * @property string $name
  * 
  * @property \Illuminate\Database\Eloquent\Collection $patients
  *
- * @package App\Models
+ * @package App
  */
-class Gender extends Eloquent
+class BloodType extends Eloquent
 {
 	public $incrementing = false;
 	public $timestamps = false;
@@ -34,6 +34,6 @@ class Gender extends Eloquent
 
 	public function patients()
 	{
-		return $this->hasMany(\App\Models\Patient::class);
+		return $this->hasMany(\App\Patient::class);
 	}
 }

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Created by Reliese Model.
- * Date: Sun, 24 Mar 2019 03:13:18 +0000.
+ * Created by Illiminate Model.
+ * Date: Mon, 01 Apr 2019 00:54:25 +0000.
  */
 
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class Appointment
