@@ -66,7 +66,7 @@ Route::view('/a_perfil','assistant.profile')->name('assistant profile');
 Route::get('/ad_usuarios','Admin\UserController@index')->name('admin users');
 Route::get('/ad_procedimientos','Admin\ProcedureController@index')->name('admin procedures');
 Route::get('/ad_pagos','Admin\PaymentController@index')->name('admin payments');
-Route::get('/ad_materiales','Admin\MaterialController@index')->name('admin materials');
+Route::get('/ad_tiposdemateriales','Admin\MaterialTypeController@index')->name('admin materials type');
 Route::get('/ad_seguros','Admin\InsuranceController@index')->name('admin insurances');
 
 //Ruta para agregar materiales desde el admin
