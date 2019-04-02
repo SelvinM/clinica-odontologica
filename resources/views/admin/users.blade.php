@@ -35,7 +35,7 @@
 						<a class="btn-edit btn btn-success" href="{{route('usuarios.edit',$user->id)}}"></a>
 					</td>
 					<td>
-						<form method="post" action="">
+						<form method="post" action="{{ route('usuarios.destroy',$user->id) }}">
 							@csrf
 							@method('DELETE')
 							<button type="submit" class="btn-delete btn btn-danger"></button>
