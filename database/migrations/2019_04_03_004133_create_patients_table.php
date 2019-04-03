@@ -16,7 +16,7 @@ class CreatePatientsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('patient_state_id')->unsigned()->index('fk_patients_patient_states_idx');
-			$table->integer('insurance_type_id')->index('fk_patients_insurance_types_idx');
+			$table->integer('insurance_type_id')->unsigned()->index('fk_patients_insurance_types_idx');
 			$table->integer('gender_id')->index('fk_patients_genders_idx');
 			$table->integer('blood_type_id')->unsigned()->index('fk_patients_blood_types_idx');
 			$table->string('description', 8000);

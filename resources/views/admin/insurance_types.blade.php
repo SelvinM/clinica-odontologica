@@ -1,15 +1,15 @@
 @extends('layouts.app_admin')
 @section('title',config('app.name', 'Laravel'))
-@section('bg insurance types link','bg-light')
-@section('bg item types link','bg-light')  
-@section('bg users link','bg-active') @section('users selected','→')
-@section('bg procedure types link','bg-light') 
-@section('bg payment types link','bg-light') 
+@section('bg insurance types link','bg-active') @section('insurance types selected','→')
+@section('bg item types link','bg-light')
+@section('bg users link','bg-light')
+@section('bg procedure types link','bg-light')
+@section('bg payment types link','bg-light')
 @section('content')
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('usuarios.create') }}"></a>
+			<a class="btn btn-primary btn-add" href="{{route('admin create insurance type')}}"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -23,23 +23,21 @@
 			<thead>
 				<tr>
 					<th>Nombre</th>
-					<th>Email</th>
-					<th>Rol</th>
+
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
+
 				</tr>
 			</thead>
 			<tbody>
-			@foreach($users as $user)
+			@foreach($insurance_types as $insurance_type)
 				<tr>
-					<td>{{ $user->name }}</td>
-					<td>{{ $user->email }}</td>
-					<td>{{ $user->role->name }}</td>
+					<td>{{ $insurance_type->name }}</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{route('usuarios.edit',$user->id)}}"></a>
+						<a class="btn-edit btn btn-success" href="{{route('admin edit insurance type',$insurance_type->id)}}"></a>
 					</td>
 					<td>
-						<form method="post" action="{{ route('usuarios.destroy',$user->id) }}">
+						<form method="post" action="{{ route('admin destroy insurance type',$insurance_type->id) }}">
 							@csrf
 							@method('DELETE')
 							<button type="submit" class="btn-delete btn btn-danger"></button>
@@ -51,5 +49,4 @@
 		</table>
 	</div>
 </div>
-
 @endsection

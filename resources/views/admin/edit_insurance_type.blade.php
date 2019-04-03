@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{ route('admin insurances') }}" class="btn btn-secondary">← Tipos de seguro</a>
+<a href="{{ route('admin insurance types') }}" class="btn btn-secondary">← Tipos de seguro</a>
 @endsection
 @section('content')
 <div class="container form-sm">
@@ -8,31 +8,22 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal">
+					<form class="well form-horizontal" method="post" action="{{ route('admin store insurance type') }}">
+						@csrf
 						<legend>Editar tipo de seguro</legend>
 						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa  fa-briefcase"></i> </span>
-							</div>
-							<input name="" class="form-control" placeholder="Ingrese el codigo de seguro" type="text">
-						</div>
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa  fa-briefcase"></i> </span>
-							</div>
-                            <select class="form-control">
-								<option selected=""> Seleccione el tipo</option>
-								<option>Publico</option>
-								<option>Privado</option>					
-							</select>
-						</div>											
-
+			              <div class="input-group-prepend">
+			                <span class="input-group-text"> <i class="fa fa-briefcase"></i> </span>
+			              </div>
+			              <input name="name" class="form-control" value="{{ $insurance_type->name }}" type="text">
+			            </div>
+			            @if($errors->has('name'))
+			            <div class="alert alert-danger">
+			                <span>{{ $errors->first('name') }}</span>
+			            </div>
+			            @endif
  						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block"> Guardar cambios </button>
-						</div>
-
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block"> Cancelar cambios  </button>
+							<button type="submit" class="btn btn-primary btn-block"> Guardar cambios  </button>
 						</div>
 
 					</form>
