@@ -35,13 +35,21 @@
 				</tr>
 			</thead>
 			<tbody>
+			<?php  
+			$patients=DB::table("patients")
+					->join('insurance_types','insurance_types.id','patients.insurance_type_id')
+					->join('blood_types','blood_types.id','patients.blood_type_id')
+					->select('patients.*', 'insurance_types.name AS name_insurance', 'blood_types.name AS name_blood')
+					->get()
+			?>
+			@foreach($patients as $patient)
 				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
+					<td>{{ $patient->name }}</td>
+					<td>{{ $patient->email }}</td>
+					<td>{{ $patient->phone }}</td>
+					<td>{{ $patient->home_address }}</td>
+					<td>{{ $patient->name_insurance}}</td>
+					<td>{{ $patient->name_blood}}</td>
 					<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
 					<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
 					<td>
@@ -55,66 +63,7 @@
 						</form>
 					</td>
 				</tr>
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
-					<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
-					<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
-					<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
+			@endforeach
 			</tbody>
 		</table>
 	</div>
