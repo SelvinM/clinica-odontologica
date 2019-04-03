@@ -14,7 +14,7 @@ class MaterialTypeController extends Controller
      */
     public function index()
     {
-        return view('admin.materials_type');
+        return view('admin.materials');
     }
 
     /**
