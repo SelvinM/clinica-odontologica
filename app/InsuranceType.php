@@ -35,6 +35,12 @@ class InsuranceType extends Eloquent
 		'name'
 	];
 
+	public function scopeSearch($query, $search){
+        return $query
+            ->where('name','like','%'.$search.'%');
+            
+    }
+
 	public function patients()
 	{
 		return $this->hasMany(\App\Patient::class);
