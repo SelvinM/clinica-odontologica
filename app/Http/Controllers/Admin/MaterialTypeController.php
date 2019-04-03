@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Item;
+use App\ItemType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

@@ -14,7 +14,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="Material" type="text">
+							<input name="material" class="form-control" placeholder="Material" type="text">
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
@@ -22,13 +22,41 @@
 							</div>
 							<select class="form-control">
 								<option selected=""> Seleccione el tipo de material</option>
-								<option>Opcion1</option>
-								<option>Opcion2</option>
+								@foreach($types_items as $type_item)
+									<option value="{{ $type_item->id }}">{{ $type_item->name }}</option>
+								@endforeach
 							</select>
 						</div>
 						<div class="form-group input-group">
-							<label class="control-label">Fecha de caducidad:</label>
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa  fa-trademark"></i> </span>
+							</div>
+							<select class="form-control">
+								<option selected=""> Seleccione la marca del material</option>
+								@foreach($brands as $brand)
+									<option value="{{ $brand->id }}">{{ $brand->name }}</option>
+								@endforeach
+							</select>
 						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa  fa-dollar-sign"></i> </span>
+							</div>
+							<input name="precio" class="form-control" placeholder="Precio" type="text">
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa  fa-dollar-sign"></i> </span>
+							</div>
+							<input name="costo" class="form-control" placeholder="Costo" type="text">
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa  fa-align-justify"></i> </span>
+							</div>
+							<input name="cantidad" class="form-control" placeholder="Cantidad" type="text">
+						</div>
+							<h5>Fecha de caducidad:</h5>
 						<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>

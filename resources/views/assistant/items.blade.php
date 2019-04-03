@@ -9,7 +9,7 @@
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('assistant create item',1) }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('assistant create item') }}"></a>
 		</div>
 		<div class="col">
 			<select  style="width: 105%" class="form-control">
@@ -32,6 +32,10 @@
 				<tr>
 					<th>Material</th>
 					<th>Tipo</th>
+					<th>Marca</th>
+					<th>Precio</th>
+					<th>Costo</th>
+					<th>Cantidad</th>
 					<th>Fecha de agregación</th>
 					<th>Fecha de caducidad</th>
 					<th width="60px">Editar</th>
@@ -44,18 +48,6 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('assistant create item') }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
-				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
@@ -71,23 +63,13 @@
 						</form>
 					</td>
 				</tr>
+				
+				
 				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('assistant edit item',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
-				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>Datos</td>

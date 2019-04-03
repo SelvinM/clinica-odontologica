@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Doctor;
 
+use App\Item;
+use App\ItemType;
+use App\Brand;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,7 +27,9 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('doctor.create_item');
+        $types_items = ItemType::all();
+        $brands = Brand::all();
+        return view('doctor.create_item',compact('types_items','brands'));
     }
 
     /**
@@ -56,6 +61,7 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
+
         return view('doctor.edit_item');
     }
 

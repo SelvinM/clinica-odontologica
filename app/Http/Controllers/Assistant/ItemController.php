@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Assistant;
 
+use App\Item;
+use App\ItemType;
+use App\Brand;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ItemController extends Controller
 {
-    /** 
+    /**  
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -16,7 +19,7 @@ class ItemController extends Controller
     {
         return view('assistant.items');
     }
-
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +27,9 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('assistant.create_item');
+        $types_items = ItemType::all();
+        $brands = Brand::all();
+        return view('assistant.create_item',compact('types_items','brands'));
     }
 
     /**
