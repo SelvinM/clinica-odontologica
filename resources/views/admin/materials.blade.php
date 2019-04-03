@@ -6,7 +6,7 @@
 	<div class="table-top row">
 		<div class="col">
 
-			<a class="btn btn-primary btn-add" href="{{ route('admin create material type') }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('admin create material') }}"></a>
                
 		</div>
 		<div class="col">
@@ -35,7 +35,7 @@
 					<td>Datos</td>
 					<td>
 						
-						<a class="btn-edit btn btn-success" href="{{ route('admin edit material type',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit material',1) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -45,7 +45,54 @@
 						</form>
 					</td>
 				</tr>
-		
+				<tr>
+					<td>Datos</td>
+					<td>Datos</td>
+					<td>Datos</td>
+					<td>
+
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit material',1) }}"></a>
+					</td>
+					<td>
+						<form method="post" action="">
+							@csrf
+							@method('DELETE')
+							<button type="submit" class="btn-delete btn btn-danger"></button>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>Datos</td>
+					<td>Datos</td>
+					<td>Datos</td>
+					<td>
+						
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit material',1) }}"></a>
+					</td>
+					<td>
+						<form method="post" action="">
+							@csrf
+							@method('DELETE')
+							<button type="submit" class="btn-delete btn btn-danger"></button>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>Datos</td>
+					<td>Datos</td>
+					<td>Datos</td>
+					<td>
+						
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit material',1) }}"></a>
+					</td>
+					<td>
+						<form method="post" action="">
+							@csrf
+							@method('DELETE')
+							<button type="submit" class="btn-delete btn btn-danger"></button>
+						</form>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

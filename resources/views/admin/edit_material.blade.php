@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{ route('admin materials') }}" class="btn btn-secondary">← Tipos de materiales</a>
+<a href="{{ route('admin materials') }}" class="btn btn-secondary">← Materiales</a>
 @endsection
 @section('content')
 <div class="container form-sm">
@@ -9,14 +9,14 @@
 			<tr>
 				<td>
 					<form class="well form-horizontal">
-						<legend>Agregar tipo de material</legend>
+						<legend>Editar material</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-flask"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="Nombre del tipo de material" type="text">
+							<input name="" class="form-control" placeholder="Ingrese el nombre del material" type="text">
 						</div>
-						{{-- <div class="form-group input-group">
+						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-flask"></i> </span>
 							</div>
@@ -36,7 +36,7 @@
 						</div>
 						<div class="form-group input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-hourglass-half"></i> </span>
+									<span class="input-group-text"> <i class="fa fa-hourglass-half "></i> </span>
 								</div>
 								<input type="datetime-local" name="" class="form-control">
 						</div>
@@ -46,7 +46,7 @@
 						</div>
 						<div class="form-group input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-hourglass-half"></i> </span>
+									<span class="input-group-text"> <i class="fa fa-hourglass-half "></i> </span>
 								</div>
 								<input type="datetime-local" name="" class="form-control">
 						</div>
@@ -59,11 +59,15 @@
 									<span class="input-text">  </span>
 								</div>
 								<input type="input-text" name="" class="form-control">
-						</div> --}}
+						</div>
 
 
  						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block"> Guardar  </button>
+							<button type="submit" class="btn btn-primary btn-block"> Guardar cambios  </button>
+						</div>
+
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-block"> Cancelar cambios  </button>
 						</div>
 
 					</form>

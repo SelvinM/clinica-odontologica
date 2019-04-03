@@ -70,7 +70,7 @@ Route::get('/ad_materiales','Admin\MaterialController@index')->name('admin mater
 Route::get('/ad_seguros','Admin\InsuranceController@index')->name('admin insurances');
 
 //Ruta para agregar materiales desde el admin
-Route::get('/ad_agregar_tipodematerial','Admin\MaterialTypeController@create')->name('admin create material type');
+Route::get('/ad_agregar_material','Admin\MaterialController@create')->name('admin create material');
 //Ruta para agregar un tipo de pago desde el admin
 Route::get('/ad_agregar_tipodepago','Admin\PaymentController@create')->name('admin create payment type');
 //Ruta para agregar un tipo de seguro desde el admin
@@ -79,7 +79,7 @@ Route::get('/ad_agregar_tipodeseguro','Admin\InsuranceController@create')->name(
 Route::get('/ad_agregar_tipoprocedimiento','Admin\ProcedureController@create')->name('admin create procedure type');
 
 //Ruta para editar materiales desde el admin
-Route::get('/ad_editar_tipodematerial/{material}','Admin\MaterialTyepController@edit')->name('admin edit material type');
+Route::get('/ad_editar_material/{material}','Admin\MaterialController@edit')->name('admin edit material');
 //Ruta para editar un tipo de pago desde el admin
 Route::get('/ad_editar_tipopago/{payment}','Admin\PaymentController@edit')->name('admin edit payment type');
 //Ruta para editar un tipo de seguro desde el admin
