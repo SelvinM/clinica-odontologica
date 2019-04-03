@@ -1,6 +1,10 @@
 @extends('layouts.app_admin')
 @section('title',config('app.name', 'Laravel'))
-@section('bg insurances link','bg-active') @section('insurances selected','→')
+@section('bg insurance types link','bg-active') @section('insurance types selected','→')
+@section('bg item types link','bg-light')
+@section('bg users link','bg-light')
+@section('bg procedure types link','bg-light')
+@section('bg payment types link','bg-light')
 @section('content')
 <div class="table-md center">
 	<div class="table-top row">

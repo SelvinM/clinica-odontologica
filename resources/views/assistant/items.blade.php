@@ -11,14 +11,7 @@
 		<div class="col">
 			<a class="btn btn-primary btn-add" href="{{ route('assistant create item',1) }}"></a>
 		</div>
-		<div class="col">
-			<select  style="width: 105%" class="form-control">
-				<option>Odontologo1</option>
-				<option>Odontologo2</option>
-				<option>Odontologo3</option>
-				<option>Odontologo4</option>
-			</select>
-		</div>
+		
 		<div class="col">
             <form method="get">
                 <input type="text" id="search" name="search" placeholder="Buscar...">
