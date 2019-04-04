@@ -38,7 +38,8 @@ class Item extends Eloquent
 		'item_type_id' => 'int',
 		'price' => 'float',
 		'cost' => 'float',
-		'quantity' => 'int'
+		'quantity' => 'int',
+		'expiration_date' => 'date'
 	];
 
 	protected $fillable = [
@@ -47,7 +48,8 @@ class Item extends Eloquent
 		'name',
 		'price',
 		'cost',
-		'quantity'
+		'quantity',
+		'expiration_date'
 	];
 
 	public function brand()

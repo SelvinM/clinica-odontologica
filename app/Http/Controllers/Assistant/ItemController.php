@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Assistant;
 
+
+
 use App\Item;
 use App\ItemType;
 use App\Brand;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\ItemStoreRequest;
+use App\Http\Requests\ItemUpdateRequest;
+use App\Http\Controllers\Controller; 
 
 class ItemController extends Controller
 {
@@ -17,7 +21,11 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('assistant.items');
+        //$search = $request->input('search');
+        $items = Item::orderBy('name','asc')
+            //->search($search)
+            ->paginate(20);
+        return view('assistant.items',compact('items','search'));
     }
  
     /**
@@ -38,9 +46,19 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemStoreRequest $request)
     {
-        //
+        $item = new Item([
+                            'brand_id'=>$request->input('brand_id'),
+                            'item_type_id'=>$request->input('item_type_id'),
+                            'name'=>$request->input('name'),
+                            'price'=>$request->input('price'),
+                            'cost'=>$request->input('cost'),
+                            'quantity'=>$request->input('quantity'),
+                            'expiration_date'=>$request->input('expiration_date')]);
+                            
+        $item->save();
+        return redirect()->route('assistant items');
     }
 
     /**
@@ -62,7 +80,10 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        return view('assistant.edit_item');
+        $item=Item::find($id);
+        $types_items=ItemType::all();
+        $brands=Brand::all();
+        return view('assistant.edit_item',compact('item','types_items','brands'));
     }
 
     /**
@@ -72,9 +93,17 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(ItemUpdateRequest $request, Item $item)
+    {   
+        $item->brand_id = $request->input('brand_id');
+        $item->item_type_id = $request->input('item_type_id');
+        $item->name = $request->input('name');
+        $item->price = $request->input('price');
+        $item->cost = $request->input('cost');
+        $item->quantity = $request->input('quantity');
+        $item->expiration_date = $request->input('expiration_date');
+        $item->save();
+        return redirect()->route('assistant items');
     }
 
     /**
@@ -83,8 +112,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Item $item)
     {
-        //
+        $item->delete();
+        return redirect()->route('assistant items');
     }
 }

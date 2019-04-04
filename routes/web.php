@@ -90,7 +90,11 @@ Route::post('/ad_tiposeguro/guardar','Admin\InsuranceTypeController@store')->nam
 Route::get('/ad_tipodeseguro/editar/{insurance_type}','Admin\InsuranceTypeController@edit')->name('admin edit insurance type');
 Route::put('/ad_tiposeguro/update/{insurance_type}','Admin\InsuranceTypeController@update')->name('admin update insurance type');
 Route::delete('/ad_tiposeguro/eliminar/{insurance_type}','Admin\InsuranceTypeController@destroy')->name('admin destroy insurance type');
-
+ 
+//Rutas para el CRUD de items desde asistente
+Route::post('/a_material/guardar','Assistant\ItemController@store')->name('assistant store item');
+Route::put('/a_material/update/{item}','Assistant\ItemController@update')->name('assistant update item');
+Route::delete('/a_material/eliminar/{item}','Assistant\ItemController@destroy')->name('assistant destroy item');
 
 //Rutas para el CRUD de usuarios con resource
 Route::resource('usuarios','Admin\UserController');
