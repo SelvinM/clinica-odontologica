@@ -8,8 +8,9 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal" method="post" action="{{ route('admin store insurance type') }}">
+					<form class="well form-horizontal" method="post" action="{{ route('admin update insurance type',$insurance_type->id) }}">
 						@csrf
+						@method('PUT')
 						<legend>Editar tipo de seguro</legend>
 						<div class="form-group input-group">
 			              <div class="input-group-prepend">

@@ -14,7 +14,7 @@ class InsuranceTypeUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:insurance_types,name,'.$this->insurance_type,
+            'name'=>'required|unique:insurance_types,name,'.$this->insurance_type->id
         ];
     }
 
