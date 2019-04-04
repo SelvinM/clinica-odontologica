@@ -8,15 +8,19 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal">
+					<form class="well form-horizontal" method="get" action="{{route('admin store material type')}}">
 						<legend>Nuevo tipo de material</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-flask"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="Ingrese el tipo de material" type="text" autofocus="">
+							<input name="name" class="form-control" placeholder="Ingrese el tipo de material" type="text" autofocus="">
 						</div>
-
+						@if($errors->has('name'))
+				            <div class="alert alert-danger">
+				                <span>{{ $errors->first('name') }}</span>
+				            </div>
+            			@endif
  						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block"> Guardar  </button>
 						</div>

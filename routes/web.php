@@ -68,8 +68,10 @@ Route::get('/ad_procedimientos','Admin\ProcedureController@index')->name('admin 
 Route::get('/ad_pagos','Admin\PaymentController@index')->name('admin payments');
 Route::get('/ad_materiales','Admin\MaterialController@index')->name('admin materials');
 
-//Ruta para agregar materiales desde el admin
+//Ruta para agregar tipos materiales desde el admin
 Route::get('/ad_material/agregar','Admin\MaterialController@create')->name('admin create material');
+
+
 //Ruta para agregar un tipo de pago desde el admin
 Route::get('/ad_tipodepago/agregar','Admin\PaymentController@create')->name('admin create payment type');
 //Ruta para agregar un tipo de seguro desde el admin
@@ -94,3 +96,11 @@ Route::delete('/ad_tiposeguro/eliminar/{insurance_type}','Admin\InsuranceTypeCon
 
 //Rutas para el CRUD de usuarios con resource
 Route::resource('usuarios','Admin\UserController');
+
+
+//Rutas CRUD tipos de materiales
+
+// Guardado en la tabla tipo de materiales
+Route::get('/ad_tiposdemateriales/guardar', 'Admin\MaterialController@store')->name('admin store material type');
+
+// Fin CRUD tipos de materiales

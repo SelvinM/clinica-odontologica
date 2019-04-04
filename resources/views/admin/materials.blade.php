@@ -15,7 +15,7 @@
 		</div>
 		<div class="col">
             <form method="get">
-                <input type="text" id="search" name="search" placeholder="Buscar..." autofocus="">
+                <input type="text" id="search" name="search" placeholder="Buscar..." autofocus="" value="{{ isset($search) ? $search : ''}}">
                 <input type="submit" style="display: none" />
             </form>
         </div>
@@ -30,11 +30,12 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach($items_type as $item_type)
 				<tr>
-					<td>Datos</td>
+					<td>{{$item_type->name}}</td>
 					<td>
 						
-						<a class="btn-edit btn btn-success" href="{{ route('admin edit material',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit material',$item_type->id) }}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -44,7 +45,7 @@
 						</form>
 					</td>
 				</tr>
-				
+				@endforeach
 			</tbody>
 		</table>
 	</div>
