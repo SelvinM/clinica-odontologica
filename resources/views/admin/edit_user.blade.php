@@ -17,7 +17,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                 </div>
-                <input name="name" class="form-control" value="{{ $user->name }}" type="text">
+                <input name="name" class="form-control" value="{{ $user->name }}" type="text" autofocus="">
               </div>
               @if($errors->has('name'))
               <div class="alert alert-danger">
