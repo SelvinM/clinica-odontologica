@@ -95,14 +95,7 @@ class ItemController extends Controller
      */
     public function update(ItemUpdateRequest $request, Item $item)
     {   
-        $item->brand_id = $request->input('brand_id');
-        $item->item_type_id = $request->input('item_type_id');
-        $item->name = $request->input('name');
-        $item->price = $request->input('price');
-        $item->cost = $request->input('cost');
-        $item->quantity = $request->input('quantity');
-        $item->expiration_date = $request->input('expiration_date');
-        $item->save();
+        $item->update($request->except(['']));
         return redirect()->route('assistant items');
     }
 

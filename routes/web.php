@@ -44,20 +44,17 @@ Route::view('/perfil','doctor.profile')->name('doctor profile');
 //rutas asistente
 
 Route::get('/a_citas', 'Assistant\AppointmentController@index')->name('assistant appointments');
-Route::get('/a_inventario', 'Assistant\ItemController@index')->name('assistant items');
 Route::get('/a_pacientes', 'Assistant\PatientController@index')->name('assistant patients');
 Route::get('/a_historial-paciente','Assistant\PatientLogController@index')->name('assistant patient logs');
 
 Route::get('/a_cita/editar/{appointment}','Assistant\AppointmentController@edit')->name('assistant edit appointment');
 Route::get('/a_paciente/editar/{patient}','Assistant\PatientController@edit')->name('assistant edit patient');
 Route::get('/a_historialpaciente/editar/{patient_log}','Assistant\PatientLogController@edit')->name('assistant edit patient log');
-Route::get('/a_objeto/editar/{item}','Assistant\ItemController@edit')->name('assistant edit item');
 
 Route::get('/a_cita/agregar','Assistant\AppointmentController@create')->name('assistant create appointment');
 Route::get('/a_pacientes/agregar','Assistant\PatientController@create')->name('assistant create patient');
 Route::view('/a_paciente/agregar','assistant.create_patient_2')->name('assistant create patient 2');
 Route::get('/a_historialpaciente/agregar','Assistant\PatientLogController@create')->name('assistant create patient log');
-Route::get('/a_objeto/agregar','Assistant\ItemController@create')->name('assistant create item');
 
 Route::view('/a_apuntespaciente','assistant.patient_notes')->name('assistant patient notes');
 Route::view('/a_perfil','assistant.profile')->name('assistant profile');
@@ -94,6 +91,9 @@ Route::put('/ad_tiposeguro/update/{insurance_type}','Admin\InsuranceTypeControll
 Route::delete('/ad_tiposeguro/eliminar/{insurance_type}','Admin\InsuranceTypeController@destroy')->name('admin destroy insurance type');
  
 //Rutas para el CRUD de items desde asistente
+Route::get('/a_materiales', 'Assistant\ItemController@index')->name('assistant items');
+Route::get('/a_material/editar/{item}','Assistant\ItemController@edit')->name('assistant edit item');
+Route::get('/a_material/agregar','Assistant\ItemController@create')->name('assistant create item');
 Route::post('/a_material/guardar','Assistant\ItemController@store')->name('assistant store item');
 Route::put('/a_material/update/{item}','Assistant\ItemController@update')->name('assistant update item');
 Route::delete('/a_material/eliminar/{item}','Assistant\ItemController@destroy')->name('assistant destroy item');

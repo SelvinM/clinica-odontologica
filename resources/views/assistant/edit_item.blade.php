@@ -8,7 +8,9 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal" method="post" action="{{ route('assistant update item',$item->id) }}"> @csrf
+					<form class="well form-horizontal" method="post" action="{{ route('assistant update item',$item->id) }}"> 
+					@csrf
+					@method('PUT')
 						<legend>Registrar nuevo material</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
