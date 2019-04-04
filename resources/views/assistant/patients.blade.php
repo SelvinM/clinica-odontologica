@@ -2,8 +2,8 @@
 @section('title',config('app.name', 'Laravel'))
 @section('bg dashboard link','bg-light')
 @section('bg appointments link','bg-light')
-@section('bg patients link','bg-active')@section('patients selected','→')
-@section('bg items link','bg-light')
+@section('bg patients link','bg-light')
+@section('bg items link','bg-active')@section('items selected','→')
 @section('bg users link','bg-light')
 @section('content')
 <div class="table-lg center">
@@ -13,7 +13,7 @@
 		</div>
 		<div class="col">
             <form method="get">
-                <input type="text" id="search" name="search" placeholder="Buscar...">
+                <input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar..." autofocus="">
                 <input type="submit" style="display: none" />
             </form>
         </div>
@@ -35,35 +35,28 @@
 				</tr>
 			</thead>
 			<tbody>
-			<?php  
-			$patients=DB::table("patients")
-					->join('insurance_types','insurance_types.id','patients.insurance_type_id')
-					->join('blood_types','blood_types.id','patients.blood_type_id')
-					->select('patients.*', 'insurance_types.name AS name_insurance', 'blood_types.name AS name_blood')
-					->get()
-			?>
-			@foreach($patients as $patient)
-				<tr>
-					<td>{{ $patient->name }}</td>
-					<td>{{ $patient->email }}</td>
-					<td>{{ $patient->phone }}</td>
-					<td>{{ $patient->home_address }}</td>
-					<td>{{ $patient->name_insurance}}</td>
-					<td>{{ $patient->name_blood}}</td>
-					<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
-					<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
-			@endforeach
+				@foreach($patients as $patient)
+					<tr>
+						<td>{{ $patient->name }}</td>
+						<td>{{ $patient->email }}</td>
+						<td>{{ $patient->phone }}</td>
+						<td>{{ $patient->home_address }}</td>
+						<td>{{ $patient->insurance_type_id}}</td>
+						<td>{{ $patient->blood_type_id}}</td>
+						<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
+						<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
+						<td>
+							<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',1) }}"></a>
+						</td>
+						<td>
+							<form method="post" action="">
+								@csrf
+								@method('DELETE')
+								<button type="submit" class="btn-delete btn btn-danger"></button>
+							</form>
+						</td>
+					</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>

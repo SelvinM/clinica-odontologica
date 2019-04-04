@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers\Assistant;
 
+use App\Patient;
+use App\BloodType;
+use App\Person;
+use App\InsuranceType;
+
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\InsuranceTypeStoreRequest;
+use App\Http\Requests\InsuranceTypeUpdateRequest;
+use App\Http\Controllers\Controller; 
 
 class PatientController extends Controller
 {
@@ -12,9 +19,14 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('assistant.patients');
+        //$search = $request->input('search');
+        $patients = Patient::orderBy('name','asc')
+            //->search($search)
+            ->orderBy('name','asc')
+            ->paginate(20);
+        return view('assistant.patients', compact('patients','search'));
     }
 
     /**
@@ -36,6 +48,19 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         //
+        $patient = new Patient([
+                            'patient_state_id'=>$request->input('patient_state_id'),
+                            'insurance_type_id'=>$request->input('insurance_type_id'),
+                            'gender_id'=>$request->input('gender_id'),
+                            'blood_type_id'=>$request->input('blood_type_id'),
+                            'description'=>$request->input('description'),
+                            'name'=>$request->input('name'),
+                            'home_address'=>$request->input('home_address'),
+                            'phone'=>$request->input('phone'),
+                            'email'=>$request->input('email')]);
+                            
+        $patient->save();
+        return redirect()->route('assistant patients');
     }
 
     /**
