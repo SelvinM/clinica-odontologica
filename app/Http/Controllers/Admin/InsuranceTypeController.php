@@ -82,7 +82,7 @@ class InsuranceTypeController extends Controller
     {
         $insurance_type->name = $request->input('name');
         $insurance_type->save();
-        return redirect()->route('admin update insurance types');
+        return redirect()->route('admin insurance types');
     }
 
     /**

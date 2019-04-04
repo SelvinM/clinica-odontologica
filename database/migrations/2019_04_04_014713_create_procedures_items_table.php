@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateProceduresXItemsTable extends Migration {
+class CreateProceduresItemsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateProceduresXItemsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('procedures_x_items', function(Blueprint $table)
+		Schema::create('procedures_items', function(Blueprint $table)
 		{
 			$table->integer('items_id')->unsigned()->index('fk_items_idx');
 			$table->integer('procedures_id')->unsigned();
@@ -28,7 +28,7 @@ class CreateProceduresXItemsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('procedures_x_items');
+		Schema::drop('procedures_items');
 	}
 
 }

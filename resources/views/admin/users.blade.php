@@ -13,7 +13,7 @@
 		</div>
 		<div class="col">
             <form method="get">
-                <input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar...">
+                <input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar..." autofocus="">
                 <input type="submit" style="display: none" />
             </form>
         </div>

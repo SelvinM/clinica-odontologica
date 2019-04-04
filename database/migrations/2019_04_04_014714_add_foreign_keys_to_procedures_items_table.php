@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToProceduresXItemsTable extends Migration {
+class AddForeignKeysToProceduresItemsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class AddForeignKeysToProceduresXItemsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('procedures_x_items', function(Blueprint $table)
+		Schema::table('procedures_items', function(Blueprint $table)
 		{
 			$table->foreign('items_id', 'fk_items')->references('id')->on('items')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('procedures_id', 'fk_procedures')->references('id')->on('procedures')->onUpdate('NO ACTION')->onDelete('NO ACTION');
@@ -27,7 +27,7 @@ class AddForeignKeysToProceduresXItemsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('procedures_x_items', function(Blueprint $table)
+		Schema::table('procedures_items', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_items');
 			$table->dropForeign('fk_procedures');

@@ -17,7 +17,7 @@ class AddForeignKeysToPatientsTable extends Migration {
 			$table->foreign('blood_type_id', 'fk_patients_blood_types')->references('id')->on('blood_types')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('gender_id', 'fk_patients_genders')->references('id')->on('genders')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('insurance_type_id', 'fk_patients_insurance_types')->references('id')->on('insurance_types')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('patient_state_id', 'fk_patients_patient_states')->references('id')->on('patient_states')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('patient_state_id', 'fk_patients_patien_states')->references('id')->on('patient_states')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -34,7 +34,7 @@ class AddForeignKeysToPatientsTable extends Migration {
 			$table->dropForeign('fk_patients_blood_types');
 			$table->dropForeign('fk_patients_genders');
 			$table->dropForeign('fk_patients_insurance_types');
-			$table->dropForeign('fk_patients_patient_states');
+			$table->dropForeign('fk_patients_patien_states');
 		});
 	}
 

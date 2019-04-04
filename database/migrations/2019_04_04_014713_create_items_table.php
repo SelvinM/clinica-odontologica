@@ -15,12 +15,13 @@ class CreateItemsTable extends Migration {
 		Schema::create('items', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('brand_id')->unsigned()->index('fk_items_brands1_idx');
-			$table->integer('item_type_id')->unsigned()->index('fk_items_item_types1_idx');
+			$table->integer('brand_id')->unsigned()->index('fk_items_brands_idx');
+			$table->integer('item_type_id')->unsigned()->index('fk_items_item_types_idx');
 			$table->string('name', 45);
 			$table->decimal('price', 10, 0);
 			$table->decimal('cost', 10, 0);
 			$table->integer('quantity');
+			$table->dateTime('expiration_date')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

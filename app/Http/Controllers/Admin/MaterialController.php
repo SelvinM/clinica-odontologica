@@ -1,11 +1,15 @@
 <?php
 
+/* Recodar que este hace referenia a tipos de materiales *** OJO ***/
+
 namespace App\Http\Controllers\Admin;
 
 use App\Item;
 use App\ItemType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+use App\Http\Requests\ItemTypeRequest;
 
 class MaterialController extends Controller
 {
@@ -14,9 +18,12 @@ class MaterialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.materials');
+        $search = $request->input('search');
+        $items_type = ItemType::all();
+
+        return view('admin.materials', compact('items_type', 'search'));
     }
 
     /**
@@ -35,9 +42,15 @@ class MaterialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemTypeRequest $request)
     {
         //
+        $tipo = new ItemType;
+
+        $tipo->name = $request->name;
+        $tipo->save();
+        
+        return redirect()->route('admin materials');
     }
 
     /**

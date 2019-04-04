@@ -26,7 +26,7 @@ class MaterialTypeController extends Controller
      */
     public function create()
     {
-       return view('admin.create_material_type');
+       //return view('admin.create_material_type');
     }
 
     /**
@@ -37,6 +37,7 @@ class MaterialTypeController extends Controller
      */
     public function store(Request $request)
     {
+       return "hola desde la funcion store";
         //
     }
 

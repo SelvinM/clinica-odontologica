@@ -14,8 +14,8 @@ class AddForeignKeysToItemsTable extends Migration {
 	{
 		Schema::table('items', function(Blueprint $table)
 		{
-			$table->foreign('brand_id', 'fk_items_brands1')->references('id')->on('brands')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('item_type_id', 'fk_items_item_types1')->references('id')->on('item_types')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('brand_id', 'fk_items_brands')->references('id')->on('brands')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('item_type_id', 'fk_items_item_types')->references('id')->on('item_types')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToItemsTable extends Migration {
 	{
 		Schema::table('items', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_items_brands1');
-			$table->dropForeign('fk_items_item_types1');
+			$table->dropForeign('fk_items_brands');
+			$table->dropForeign('fk_items_item_types');
 		});
 	}
 

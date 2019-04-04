@@ -14,7 +14,7 @@ class CreatePatientStatesTable extends Migration {
 	{
 		Schema::create('patient_states', function(Blueprint $table)
 		{
-			$table->integer('id')->unsigned()->primary();
+			$table->increments('id');
 			$table->string('name', 10);
 			$table->timestamps();
 			$table->softDeletes();
