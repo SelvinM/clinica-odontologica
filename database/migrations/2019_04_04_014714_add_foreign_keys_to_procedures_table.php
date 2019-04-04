@@ -14,8 +14,8 @@ class AddForeignKeysToProceduresTable extends Migration {
 	{
 		Schema::table('procedures', function(Blueprint $table)
 		{
-			$table->foreign('appointment_id', 'fk_procedures_appointments1')->references('id')->on('appointments')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('procedure_type_id', 'fk_procedures_procedure_types1')->references('id')->on('procedure_types')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('appointment_id', 'fk_procedures_appointments')->references('id')->on('appointments')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('procedure_type_id', 'fk_procedures_procedure_types')->references('id')->on('procedure_types')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToProceduresTable extends Migration {
 	{
 		Schema::table('procedures', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_procedures_appointments1');
-			$table->dropForeign('fk_procedures_procedure_types1');
+			$table->dropForeign('fk_procedures_appointments');
+			$table->dropForeign('fk_procedures_procedure_types');
 		});
 	}
 
