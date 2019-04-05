@@ -24,6 +24,7 @@
 		<table>
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>Tipo</th>									
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
@@ -32,13 +33,14 @@
 			<tbody>
 				@foreach($items_type as $item_type)
 				<tr>
+					<td>{{$loop->iteration}}</td>
 					<td>{{$item_type->name}}</td>
 					<td>
 						
 						<a class="btn-edit btn btn-success" href="{{ route('admin edit material',$item_type->id) }}"></a>
 					</td>
 					<td>
-						<form method="post" action="">
+						<form method="post" action="{{route('admin destroy material type', $item_type->id)}}">
 							@csrf
 							@method('DELETE')
 							<button type="submit" class="btn-delete btn btn-danger"></button>

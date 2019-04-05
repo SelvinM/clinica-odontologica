@@ -39,4 +39,9 @@ class ItemType extends Eloquent
 	{
 		return $this->hasMany(\App\Item::class);
 	}
+
+	public function scopeSearch($query, $search){
+        return $query
+            ->where('name','LIKE','%'.$search.'%');
+    }
 }

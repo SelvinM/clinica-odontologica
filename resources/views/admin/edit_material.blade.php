@@ -8,15 +8,21 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal">
+					<form class="well form-horizontal" method="post" action="{{route('admin update material type', $item_type->id)}}">
+						@csrf
+            			@method('PUT')
 						<legend>Editar tipo de material</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-flask"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="" type="text" autofocus="">
+							<input name="name" class="form-control" value="{{$item_type->name}}" type="text" autofocus="">
 						</div>
-
+						@if($errors->has('name'))
+				            <div class="alert alert-danger">
+				                <span>{{ $errors->first('name') }}</span>
+				            </div>
+            			@endif
  						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block"> Guardar cambios  </button>
 						</div>

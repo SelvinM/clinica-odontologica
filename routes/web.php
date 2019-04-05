@@ -100,7 +100,10 @@ Route::resource('usuarios','Admin\UserController');
 
 //Rutas CRUD tipos de materiales
 
-// Guardado en la tabla tipo de materiales
-Route::get('/ad_tiposdemateriales/guardar', 'Admin\MaterialController@store')->name('admin store material type');
-
+// Guardado 
+Route::get('/ad_tiposdemateriales/save', 'Admin\MaterialController@store')->name('admin store material type');
+// Actualizamdo
+Route::put('/ad_tiposdemateriales/update/{item_type}', 'Admin\MaterialController@update')->name('admin update material type');
+// Borrado
+Route::delete('ad_tiposdemateriales/delete/{item_type}', 'Admin\MaterialController@destroy')->name('admin destroy material type');
 // Fin CRUD tipos de materiales

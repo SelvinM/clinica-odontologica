@@ -21,7 +21,9 @@ class MaterialController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $items_type = ItemType::all();
+        $items_type = ItemType::search($search)
+            ->orderBy('name', 'asc')
+            ->paginate(20);
 
         return view('admin.materials', compact('items_type', 'search'));
     }
@@ -45,10 +47,20 @@ class MaterialController extends Controller
     public function store(ItemTypeRequest $request)
     {
         //
-        $tipo = new ItemType;
 
-        $tipo->name = $request->name;
-        $tipo->save();
+        $item_type_delete = ItemType::onlyTrashed()
+            ->where('name', $request->name)
+            ->first();
+        
+        if ($item_type_delete == NULL) {
+            $tipo = new ItemType;
+
+            $tipo->name = $request->name;
+            $tipo->save();
+        } else {
+            $item_type_delete->restore();
+            $item_type_delete->update($request->except(['']));
+        }
         
         return redirect()->route('admin materials');
     }
@@ -72,7 +84,8 @@ class MaterialController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.edit_material');
+        $item_type = ItemType::find($id);
+        return view('admin.edit_material', compact('item_type'));
     }
 
     /**
@@ -82,9 +95,23 @@ class MaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ItemTypeRequest $request, $id)
     {
-        //
+        $item_type = ItemType::find($id);
+
+        $item_type_delete = ItemType::onlyTrashed()
+            ->where('name', $request->name)
+            ->first();
+        
+        if ($item_type_delete == NULL) {
+            $item_type->update($request->except(['']));
+        } else {
+            $item_type->delete();
+            $item_type_delete->restore();
+            $item_type_delete->update($request->except(['']));
+        }
+
+        return redirect()->route('admin materials');
     }
 
     /**
@@ -95,6 +122,8 @@ class MaterialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = ItemType::find($id);
+        $user->delete();
+        return redirect()->route('admin materials');
     }
 }
