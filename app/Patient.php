@@ -29,37 +29,40 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
  *
  * @package App
  */
-class Item extends Eloquent
+class Patient extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'brand_id' => 'int',
-		'item_type_id' => 'int',
-		'price' => 'float',
-		'cost' => 'float',
-		'quantity' => 'int',
-		'expiration_date' => 'date'
+		'insurance_type_id' => 'int',
+		'gender_id' => 'int',
+		'blood_type_id' => 'float',
+		'description' => 'VARCHAR',
+		'name' => 'VARCHAR',
+		'email' => 'VARCHAR',
+		'home_address' => 'VARCHAR',
+		'phone' => 'VARCHAR'
 	];
 
 	protected $fillable = [
-		'brand_id',
-		'item_type_id',
+		'insurance_type_id',
+		'gender_id',
+		'blood_type_id',
+		'description',
 		'name',
-		'price',
-		'cost',
-		'quantity',
-		'expiration_date'
+		'email',
+		'home_address',
+		'phone'
 	];
 
-	public function brand()
+	public function InsuranceType()
 	{
-		return $this->belongsTo(\App\Brand::class);
+		return $this->belongsTo(\App\InsuranceType::class);
 	}
 
-	public function item_type()
+	public function BloodType()
 	{
-		return $this->belongsTo(\App\ItemType::class);
+		return $this->belongsTo(\App\BloodType::class);
 	}
 
 	public function procedures()

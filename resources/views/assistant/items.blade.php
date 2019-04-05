@@ -36,48 +36,34 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('assistant edit item',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
+				@foreach($items as $item)
+					<tr>
+						<td>{{ $item->name }}</td>
+						<td>{{ $item->item_type->name }}</td>
+						<td>{{ $item->brand->name }}</td>
+						<td>{{ $item->price }}</td>
+						<td>{{ $item->cost }}</td>
+						<td>{{ $item->quantity }}</td>
+						<td>{{ $item->created_at }}</td>
+						<td>@if(isset($item->expiration_date))
+								{{date( 'Y-m-d', strtotime($item->expiration_date))}}
+							@endif
+						</td>
+							
+						<td>
+							<a class="btn-edit btn btn-success" href="{{ route('assistant edit item',$item->id) }}"></a>
+						</td>
+						<td>
+							<form method="post" action="{{ route('assistant destroy item',$item->id) }}">
+								@csrf
+								@method('DELETE')
+								<button type="submit" class="btn-delete btn btn-danger"></button>
+							</form>
+						</td>
+					</tr>
+				@endforeach
 				
 				
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('assistant edit item',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>

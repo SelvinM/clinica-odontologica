@@ -2,12 +2,12 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 01 Apr 2019 00:54:25 +0000.
+ * Date: Sun, 24 Mar 2019 03:13:18 +0000.
  */
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class Item
@@ -23,11 +23,10 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \App\Brand $brand
- * @property \App\ItemType $item_type
- * @property \Illuminate\Database\Eloquent\Collection $procedures
+ * @property \App\Models\Brand $brand
+ * @property \App\Models\ItemType $item_type
  *
- * @package App
+ * @package App\Models
  */
 class Item extends Eloquent
 {
@@ -38,8 +37,7 @@ class Item extends Eloquent
 		'item_type_id' => 'int',
 		'price' => 'float',
 		'cost' => 'float',
-		'quantity' => 'int',
-		'expiration_date' => 'date'
+		'quantity' => 'int'
 	];
 
 	protected $fillable = [
@@ -48,22 +46,16 @@ class Item extends Eloquent
 		'name',
 		'price',
 		'cost',
-		'quantity',
-		'expiration_date'
+		'quantity'
 	];
 
 	public function brand()
 	{
-		return $this->belongsTo(\App\Brand::class);
+		return $this->belongsTo(\App\Models\Brand::class);
 	}
 
 	public function item_type()
 	{
-		return $this->belongsTo(\App\ItemType::class);
-	}
-
-	public function procedures()
-	{
-		return $this->belongsToMany(\App\Procedure::class, 'procedures_x_items', 'items_id', 'procedures_id');
+		return $this->belongsTo(\App\Models\ItemType::class);
 	}
 }

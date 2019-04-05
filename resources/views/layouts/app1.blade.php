@@ -113,10 +113,11 @@
       $("#wrapper").toggleClass("toggled");
     });
 
-    
+   
 
 
     $(document).ready(function() {
+      
     /*
     function enviar(title,start,end){
     var parametros="title="+title+"&"+"start="+start+"&"+"end="+end;
