@@ -13,83 +13,38 @@
 		</div>
 		<div class="col">
             <form method="get">
-                <input type="text" id="search" name="search" placeholder="Buscar...">
+                <input type="text" id="search" name="search" placeholder="Buscar..." value="{{ isset($search) ? $search : ''}}" autofocus="">
                 <input type="submit" style="display: none" />
             </form>
         </div>
 	</div>
-	<div class="table-responsive" >
+	<div class="table-responsive table-hover" >
 		<table>
 			<thead>
 				<tr>
-					<th>Codigo</th>
+					<th width="45px">#</th>
 					<th>Tipo de pago</th>
-					<th>Descripcion</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
 			</thead>
 			<tbody>
+				@foreach($payment_methods as $payment_method)
 				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
+					<td>{{$loop->iteration}}</td>
+					<td>{{$payment_method->name}}</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('admin edit payment type',1) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit payment type', $payment_method->id) }}"></a>
 					</td>
 					<td>
-						<form method="post" action="">
+						<form method="post" action="{{route('admin destroy payment method', $payment_method->id)}}">
 							@csrf
 							@method('DELETE')
 							<button type="submit" class="btn-delete btn btn-danger"></button>
 						</form>
 					</td>
 				</tr>
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('admin edit payment type',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('admin edit payment type',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('admin edit payment type',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>

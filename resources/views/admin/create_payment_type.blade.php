@@ -8,15 +8,20 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal">
-						<legend>Registrar nuevo metodo de pago</legend>
+					<form method="get" action="{{route('admin store payment method')}}" class="well form-horizontal">
+						<legend>Crear método de pago</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-money-bill-alt"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="Ingrese el codigo de pago" type="text">
+							<input name="name" class="form-control" placeholder="Ingrese el método de pago" type="text" autofocus="">
+							@if($errors->has('name'))
+				            	<div class="alert alert-danger">
+				                	<span>{{ $errors->first('name') }}</span>
+				            	</div>
+            				@endif
 						</div>
-						<div class="form-group input-group">
+						{{-- <div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-money-bill-alt"></i> </span>
 							</div>
@@ -31,21 +36,17 @@
 								<option>Moneda extranjera</option>
 								
 							</select>
-						</div>											
+						</div>	 --}}										
 
-                        <div class="form-group input-group">
+                        {{-- <div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-pen-square"></i> </span>
 								</div>
 								<textarea class="form-control form-textarea" >Agregue una descripcion para el tipo de pago.</textarea>
-						</div>
+						</div> --}}
 
  						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block"> Guardar </button>
-						</div>
-
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block"> Cancelar  </button>
 						</div>
 
 					</form>

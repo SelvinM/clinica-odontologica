@@ -104,10 +104,20 @@ Route::resource('usuarios','Admin\UserController');
 
 //Rutas CRUD tipos de materiales
 
-// Guardado 
+// Guardando 
 Route::get('/ad_tiposdemateriales/save', 'Admin\MaterialController@store')->name('admin store material type');
 // Actualizamdo
 Route::put('/ad_tiposdemateriales/update/{item_type}', 'Admin\MaterialController@update')->name('admin update material type');
 // Borrado
 Route::delete('ad_tiposdemateriales/delete/{item_type}', 'Admin\MaterialController@destroy')->name('admin destroy material type');
 // Fin CRUD tipos de materiales
+
+
+// Rutas CRUD metodos de pago
+// Guardando
+Route::get('/ad_tiposdemetodosdepago/save', 'Admin\PaymentController@store')->name('admin store payment method');
+// Acualizando
+Route::put('/ad_tiposdemetodosdepago/update/{payment_method}', 'Admin\PaymentController@update')->name('admin update payment method');
+// Borrado
+Route::delete('/ad_tiposdemetodosdepago/delete/{payment_method}', 'Admin\PaymentController@destroy')->name('admin destroy payment method');
+// Fin CRUD metodos de pago

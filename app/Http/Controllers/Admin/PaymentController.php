@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\PaymentMethodRequest;
+use App\PaymentMethod;
+
 class PaymentController extends Controller
 {
     /**
@@ -12,9 +15,14 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $request)
     {
-        return view('admin.payments');
+        $search = $request->input('search');
+        $payment_methods = PaymentMethod::search($search)
+            ->orderBy('name', 'asc')
+            ->paginate(20);
+
+        return view('admin.payments', compact('payment_methods', 'search'));
     }
 
     /**
@@ -33,9 +41,23 @@ class PaymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PaymentMethodRequest $request)
     {
-        //
+        $payment_method_delete = PaymentMethod::onlyTrashed()
+            ->where('name', $request->name)
+            ->first();
+        
+        if ($payment_method_delete == NULL) {
+            $payment_method = new PaymentMethod;
+
+            $payment_method->name = $request->name;
+            $payment_method->save();
+        } else {
+            $payment_method_delete->restore();
+            $payment_method_delete->update($request->except(['']));
+        }
+        
+        return redirect()->route('admin payments');
     }
 
     /**
@@ -57,7 +79,9 @@ class PaymentController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.edit_payment_type');
+        $payment_method = PaymentMethod::find($id);
+
+        return view('admin.edit_payment_type', compact('payment_method'));
     }
 
     /**
@@ -67,9 +91,24 @@ class PaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PaymentMethodRequest $request, $id)
     {
         //
+        $payment_method = PaymentMethod::find($id);
+
+        $payment_method_delete = PaymentMethod::onlyTrashed()
+            ->where('name', $request->name)
+            ->first();
+        
+        if ($payment_method_delete == NULL) {
+            $payment_method->update($request->except(['']));
+        } else {
+            $payment_method->delete();
+            $payment_method_delete->restore();
+            $payment_method_delete->update($request->except(['']));
+        }
+
+        return redirect()->route('admin payments');
     }
 
     /**
@@ -81,5 +120,8 @@ class PaymentController extends Controller
     public function destroy($id)
     {
         //
+        $payment_method = PaymentMethod::find($id);
+        $payment_method->delete();
+        return redirect()->route('admin payments');
     }
 }

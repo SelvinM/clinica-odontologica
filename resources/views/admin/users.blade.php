@@ -18,11 +18,11 @@
             </form>
         </div>
 	</div>
-	<div class="table-responsive" >
+	<div class="table-responsive table-hover" >
 		<table>
 			<thead>
 				<tr>
-					<th>#</th>
+					<th width="45px">#</th>
 					<th>Nombre</th>
 					<th>Email</th>
 					<th>Rol</th>

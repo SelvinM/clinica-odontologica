@@ -20,11 +20,11 @@
             </form>
         </div>
 	</div>
-	<div class="table-responsive" >
+	<div class="table-responsive table-hover" >
 		<table>
 			<thead>
 				<tr>
-					<th>#</th>
+					<th width="45px">#</th>
 					<th>Tipo</th>									
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>

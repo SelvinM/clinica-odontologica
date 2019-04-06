@@ -8,15 +8,22 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal">
+					<form class="well form-horizontal" method="post" action="{{route('admin update payment method', $payment_method->id)}}">
+						@csrf
+            			@method('PUT')
 						<legend>Editar metodo de pago</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-money-bill-alt"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="Ingrese el nuevo codigo de pago" type="text">
+							<input name="name" class="form-control" placeholder="Ingrese el metodo de pago" type="text" autofocus="" value="{{$payment_method->name}}">
+							@if($errors->has('name'))
+				            	<div class="alert alert-danger">
+				                	<span>{{ $errors->first('name') }}</span>
+				            	</div>
+            				@endif
 						</div>
-						<div class="form-group input-group">
+						{{-- <div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-money-bill-alt"></i> </span>
 							</div>
@@ -38,17 +45,12 @@
 									<span class="input-group-text"> <i class="fa fa-sticky-note"></i> </span>
 								</div>
 								<textarea class="form-control form-textarea" >Agregue una descripcion para el tipo de pago.</textarea>
-						</div>
+						</div> --}}
 
 
  						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block"> Guardar cambios  </button>
+							<button type="submit" class="btn btn-primary btn-block"> Finalizar </button>
 						</div>
-
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block"> Cancelar cambios </button>
-						</div>
-
 					</form>
 				</td>
 			</tr>
