@@ -8,64 +8,110 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal">
+					<form class="well form-horizontal" method="post" action="{{ route('assistant update patient',$patient->id) }}">
+						@csrf
+						@method('PUT')
 						<fieldset>
 							<legend>Editar perfil de paciente</legend>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
-								<input name="" class="form-control" value="Enrique Flores" type="text">
+								<input name="name" class="form-control" value="{{$patient->name}}" {{ old('name') == $patient->name ? 'selected' : ''  }} type="text"> 
 							</div>
+							@if($errors->has('name'))
+			            	<div class="alert alert-danger">
+			                	<span>{{ $errors->first('name') }}</span>
+			            	</div>
+			            	@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 								</div>
-								<input name="" class="form-control" value="enrique@correo.com" type="email">
+								<input name="email" class="form-control" value="{{$patient->email}}" {{ old('email') == $patient->email ? 'selected' : ''  }} type="email">
 							</div>
+							@if($errors->has('email'))
+			            	<div class="alert alert-danger">
+			                	<span>{{ $errors->first('email') }}</span>
+			            	</div>
+			            	@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 								</div>
-								<input name="" class="form-control" value="99876543" type="text">
+								<input name="phone" class="form-control" value="{{$patient->phone}}" 
+								{{ old('phone') == $patient->phone ? 'selected' : ''  }} type="text">
 							</div>
+							@if($errors->has('phone'))
+			            	<div class="alert alert-danger">
+			                	<span>{{ $errors->first('phone') }}</span>
+			            	</div>
+			            	@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-home"></i> </span>
 								</div>
-								<input name="" class="form-control" value="Col. 21 de Octubre" type="text">
+								<input name="home_address" class="form-control" value="{{$patient->home_address}}" 
+								{{ old('home_address') == $patient->home_address ? 'selected' : ''  }} type="text">
 							</div>
+							@if($errors->has('home_address'))
+			            	<div class="alert alert-danger">
+			                	<span>{{ $errors->first('home_address') }}</span>
+			            	</div>
+			            	@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-tint"></i> </span>
 								</div>
-								<select class="form-control">
-									<option>Tipo de sangre</option>
-									<option selected="">A+</option>
-									<option>A-</option>
-									<option>B+</option>
-									<option>B-</option>
-									<option>O+</option>
-									<option>O-</option>
-									<option>AB+</option>
-									<option>AB-</option>
+								<select  name="blood_type_id"  class="form-control">
+									<option selected="">Seleccione el tipo de sangre</option>
+									@foreach($blood_types as $blood_type)
+										@if($blood_type->id == $patient->blood_type_id)
+											 	<option value="{{ $blood_type->id }}" selected="">{{ $blood_type->name }}</option>
+											@else
+												<option value="{{ $blood_type->id }}" {{ old('blood_type_id') == $patient->blood_type ? 'selected' : '' }}>{{ $blood_type->name }}</option>
+											@endif
+									@endforeach
 								</select>
 							</div>
+							@if($errors->has('blood_type_id'))
+			            	<div class="alert alert-danger">
+			                	<span>{{ $errors->first('blood_type_id') }}</span>
+			            	</div>
+			            	@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-plus-circle"></i> </span>
 								</div>
-								<select class="form-control">
-									<option selected="">Opcion1</option>
-									<option>Opcion2</option>
+								<select name="insurance_type_id" class="form-control">
+									<option selected="">Seleccione el tipo de seguro</option>
+									@foreach($insurance_types as $insurance_type)
+										@if($insurance_type->id == $patient->insurance_type_id)
+											 	<option value="{{ $insurance_type->id }}" selected="">{{ $insurance_type->name }}</option>
+											@else
+												<option value="{{ $insurance_type->id }}" {{ old('blood_type_id') == $patient->insurance_type ? 'selected' : '' }}>{{ $insurance_type->name }}</option>
+											@endif
+									@endforeach
 								</select>
 							</div>
+							@if($errors->has('insurace_type_id'))
+			            	<div class="alert alert-danger">
+			                	<span>{{ $errors->first('insurance_type_id') }}</span>
+			            	</div>
+			            	@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-sticky-note"></i> </span>
 								</div>
-								<textarea class="form-control form-textarea" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+								<textarea name="description" class="form-control form-textarea" >
+								{{$patient->description}}{{ old('description') == $patient->description ? 'selected' : ''  }}
+								</textarea>
 							</div>
+							@if($errors->has('description'))
+			            	<div class="alert alert-danger">
+			                	<span>{{ $errors->first('description') }}</span>
+			            	</div>
+			            	@endif
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block"> Editar</button>
 							</div>

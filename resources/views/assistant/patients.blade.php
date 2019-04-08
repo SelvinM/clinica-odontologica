@@ -2,8 +2,8 @@
 @section('title',config('app.name', 'Laravel'))
 @section('bg dashboard link','bg-light')
 @section('bg appointments link','bg-light')
-@section('bg patients link','bg-light')
-@section('bg items link','bg-active')@section('items selected','→')
+@section('bg patients link','bg-active')@section('patients selected','→')
+@section('bg items link','bg-light')
 @section('bg users link','bg-light')
 @section('content')
 <div class="table-lg center">
@@ -41,15 +41,15 @@
 						<td>{{ $patient->email }}</td>
 						<td>{{ $patient->phone }}</td>
 						<td>{{ $patient->home_address }}</td>
-						<td>{{ $patient->insurance_type_id}}</td>
-						<td>{{ $patient->blood_type_id}}</td>
+						<td>{{ $patient->insurance_type->name}}</td>
+						<td>{{ $patient->blood_type->name}}</td>
 						<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
 						<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
 						<td>
-							<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',1) }}"></a>
+							<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',$patient->id) }}"></a>
 						</td>
 						<td>
-							<form method="post" action="">
+							<form method="post" action="{{ route('assistant destroy patient',$patient->id) }}">
 								@csrf
 								@method('DELETE')
 								<button type="submit" class="btn-delete btn btn-danger"></button>

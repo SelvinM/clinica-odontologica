@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
  *
  * @package App
  */
-class Gender extends Model
+class Gender extends Eloquent
 {
 	public $incrementing = false;
 	public $timestamps = false;

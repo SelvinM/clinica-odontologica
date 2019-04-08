@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Assistant;
 
 use App\Patient;
 use App\BloodType;
-use App\Person;
 use App\InsuranceType;
-
+use App\Gender;
 use Illuminate\Http\Request;
-use App\Http\Requests\InsuranceTypeStoreRequest;
-use App\Http\Requests\InsuranceTypeUpdateRequest;
+use App\Http\Requests\PatientStoreRequest;
+use App\Http\Requests\PatientUpdateRequest;
 use App\Http\Controllers\Controller; 
 
 class PatientController extends Controller
@@ -36,7 +35,10 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('assistant.create_patient');
+        $genders=Gender::all();
+        $insurance_types=InsuranceType::all();
+        $blood_types=BloodType::all();
+        return view('assistant.create_patient',compact('insurance_types','blood_types','genders'));
     }
 
     /**
@@ -45,11 +47,10 @@ class PatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PatientStoreRequest $request)
     {
         //
         $patient = new Patient([
-                            'patient_state_id'=>$request->input('patient_state_id'),
                             'insurance_type_id'=>$request->input('insurance_type_id'),
                             'gender_id'=>$request->input('gender_id'),
                             'blood_type_id'=>$request->input('blood_type_id'),
@@ -59,7 +60,7 @@ class PatientController extends Controller
                             'phone'=>$request->input('phone'),
                             'email'=>$request->input('email')]);
                             
-        $patient->save();
+    $patient->save();
         return redirect()->route('assistant patients');
     }
 
@@ -82,7 +83,10 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        return view('assistant.edit_patient');
+        $patient=Patient::find($id);
+        $insurance_types=InsuranceType::all();
+        $blood_types=BloodType::all();
+        return view('assistant.edit_patient',compact('patient','insurance_types','blood_types'));
     }
 
     /**
@@ -92,9 +96,10 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PatientUpdateRequest $request, Patient $patient)
     {
-        //
+        $patient->update($request->except(['']));
+        return redirect()->route('assistant patients');
     }
 
     /**
@@ -103,8 +108,9 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Patient $patient)
     {
-        //
+        $patient->delete();
+        return redirect()->route('assistant patients');
     }
 }

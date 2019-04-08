@@ -97,6 +97,9 @@ Route::get('/a_material/agregar','Assistant\ItemController@create')->name('assis
 Route::post('/a_material/guardar','Assistant\ItemController@store')->name('assistant store item');
 Route::put('/a_material/update/{item}','Assistant\ItemController@update')->name('assistant update item');
 Route::delete('/a_material/eliminar/{item}','Assistant\ItemController@destroy')->name('assistant destroy item');
+Route::put('/a_paciente/update/{patient}','Assistant\PatientController@update')->name('assistant update patient');
+Route::post('/a_paciente/guardar','Assistant\PatientController@store')->name('assistant store patient');
+Route::delete('/a_paciente/eliminar/{patient}','Assistant\PatientController@destroy')->name('assistant destroy patient');
 
 //Rutas para el CRUD de usuarios con resource
 Route::resource('usuarios','Admin\UserController');

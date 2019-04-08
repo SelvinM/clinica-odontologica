@@ -55,12 +55,12 @@ class Patient extends Eloquent
 		'phone'
 	];
 
-	public function InsuranceType()
+	public function insurance_type()
 	{
 		return $this->belongsTo(\App\InsuranceType::class);
 	}
 
-	public function BloodType()
+	public function blood_type()
 	{
 		return $this->belongsTo(\App\BloodType::class);
 	}
