@@ -16,111 +16,97 @@ Route::get('/', function () {
 });
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Route::get('/inicio', 'HomeController@index')->name('home');
+Route::view('/perfil','profile')->name('profile');
+
 Auth::routes(); 
 
-//rutas doctor
+//==================================================RUTAS DOCTOR================================================
+
+//CRUD citas
+Route::get('/d_citas', 'Doctor\AppointmentController@index')->name('doctor appointments');
+Route::get('/d_citas/agregar','Doctor\AppointmentController@create')->name('doctor create appointment');
+Route::get('/d_citas/editar/{appointment}','Doctor\AppointmentController@edit')->name('doctor edit appointment');
+
+//CRUD articulos
+Route::get('/d_articulos', 'Doctor\ItemController@index')->name('doctor items');
+Route::get('/d_articulos/editar/{item}','Doctor\ItemController@edit')->name('doctor edit item');
+Route::get('/d_articulos/agregar','Doctor\ItemController@create')->name('doctor create item');
+
+//CRUD pacientes
+Route::get('/d_pacientes', 'Doctor\PatientController@index')->name('doctor patients');
+Route::get('/d_pacientes/editar/{patient}','Doctor\PatientController@edit')->name('doctor edit patient');
+Route::get('/d_pacientes/agregar','Doctor\PatientController@create')->name('doctor create patient');
+Route::view('/d_pacientes/apuntes','doctor.patient_notes')->name('doctor patient notes');
+
+//CRUD historial paciente
+Route::get('/d_pacientes/historial','Doctor\PatientLogController@index')->name('doctor patient logs');
+Route::get('/d_pacientes/historial/editar/{patient_log}','Doctor\PatientLogController@edit')->name('doctor edit patient log');
+Route::get('/d_pacientes/historial/agregar','Doctor\PatientLogController@create')->name('doctor create patient log');
 
 
-Route::get('/citas', 'Doctor\AppointmentController@index')->name('doctor appointments');
-Route::get('/inventario', 'Doctor\ItemController@index')->name('doctor items');
-Route::get('/pacientes', 'Doctor\PatientController@index')->name('doctor patients');
-Route::get('/historialpaciente','Doctor\PatientLogController@index')->name('doctor patient logs');
-
-Route::get('/cita/editar/{appointment}','Doctor\AppointmentController@edit')->name('doctor edit appointment');
-Route::get('/paciente/editar/{patient}','Doctor\PatientController@edit')->name('doctor edit patient');
-Route::get('/historialpaciente/editar/{patient_log}','Doctor\PatientLogController@edit')->name('doctor edit patient log');
-Route::get('/objeto/editar/{item}','Doctor\ItemController@edit')->name('doctor edit item');
-
-Route::get('/cita/agregar','Doctor\AppointmentController@create')->name('doctor create appointment');
-Route::view('/pacientes/agregar','doctor.create_patient_2')->name('doctor create patient 2');
-Route::get('/paciente/agregar','Doctor\PatientController@create')->name('doctor create patient');
-Route::get('/historial-paciente/agregar','Doctor\PatientLogController@create')->name('doctor create patient log');
-
-Route::get('/objeto/agregar','Doctor\ItemController@create')->name('doctor create item');
-
-Route::view('/apuntes-paciente','doctor.patient_notes')->name('doctor patient notes');
-Route::view('/perfil','doctor.profile')->name('doctor profile');
  
-//rutas asistente
+//==================================================RUTAS ASISTENTE================================================
 
+//CRUD citas
 Route::get('/a_citas', 'Assistant\AppointmentController@index')->name('assistant appointments');
+Route::get('/a_citas/agregar','Assistant\AppointmentController@create')->name('assistant create appointment');
+Route::get('/a_citas/editar/{appointment}','Assistant\AppointmentController@edit')->name('assistant edit appointment');
+
+//CRUD pacientes
 Route::get('/a_pacientes', 'Assistant\PatientController@index')->name('assistant patients');
-Route::get('/a_historial-paciente','Assistant\PatientLogController@index')->name('assistant patient logs');
-
-Route::get('/a_cita/editar/{appointment}','Assistant\AppointmentController@edit')->name('assistant edit appointment');
-Route::get('/a_paciente/editar/{patient}','Assistant\PatientController@edit')->name('assistant edit patient');
-Route::get('/a_historialpaciente/editar/{patient_log}','Assistant\PatientLogController@edit')->name('assistant edit patient log');
-
-Route::get('/a_cita/agregar','Assistant\AppointmentController@create')->name('assistant create appointment');
 Route::get('/a_pacientes/agregar','Assistant\PatientController@create')->name('assistant create patient');
-Route::view('/a_paciente/agregar','assistant.create_patient_2')->name('assistant create patient 2');
-Route::get('/a_historialpaciente/agregar','Assistant\PatientLogController@create')->name('assistant create patient log');
+Route::get('/a_pacientes/editar/{patient}','Assistant\PatientController@edit')->name('assistant edit patient');
+Route::view('/a_pacientes/apuntes','assistant.patient_notes')->name('assistant patient notes');
+Route::put('/a_pacientes/actualizar/{patient}','Assistant\PatientController@update')->name('assistant update patient');
+Route::post('/a_pacientes/guardar','Assistant\PatientController@store')->name('assistant store patient');
+Route::delete('/a_pacientes/eliminar/{patient}','Assistant\PatientController@destroy')->name('assistant destroy patient');
 
-Route::view('/a_apuntespaciente','assistant.patient_notes')->name('assistant patient notes');
-Route::view('/a_perfil','assistant.profile')->name('assistant profile');
+//CRUD historial paciente
+Route::get('/a_pacientes/historial','Assistant\PatientLogController@index')->name('assistant patient logs');
+Route::get('/a_pacientes/historial/agregar','Assistant\PatientLogController@create')->name('assistant create patient log');
+Route::get('/a_pacientes/historial/editar/{patient_log}','Assistant\PatientLogController@edit')->name('assistant edit patient log');
 
-//rutas admin
+//CRUD articulos
+Route::get('/a_articulos', 'Assistant\ItemController@index')->name('assistant items');
+Route::get('/a_articulos/editar/{item}','Assistant\ItemController@edit')->name('assistant edit item');
+Route::get('/a_articulos/agregar','Assistant\ItemController@create')->name('assistant create item');
+Route::post('/a_articulos/guardar','Assistant\ItemController@store')->name('assistant store item');
+Route::put('/a_articulos/actualizar/{item}','Assistant\ItemController@update')->name('assistant update item');
+Route::delete('/a_articulos/eliminar/{item}','Assistant\ItemController@destroy')->name('assistant destroy item');
+
+
+//==================================================RUTAS ADMIN================================================
+
+//CRUD usuarios
 Route::get('/ad_usuarios','Admin\UserController@index')->name('admin users');
-Route::get('/ad_procedimientos','Admin\ProcedureController@index')->name('admin procedures');
-Route::get('/ad_pagos','Admin\PaymentController@index')->name('admin payments');
-Route::get('/ad_materiales','Admin\MaterialController@index')->name('admin materials');
-
-//Ruta para agregar tipos materiales desde el admin
-Route::get('/ad_material/agregar','Admin\MaterialController@create')->name('admin create material');
-
-
-//Ruta para agregar un tipo de pago desde el admin
-Route::get('/ad_tipodepago/agregar','Admin\PaymentController@create')->name('admin create payment type');
-//Ruta para agregar un tipo de seguro desde el admin
-//Ruta para agregar un tipo de procedimiento desde el admin
-Route::get('/ad_tipoprocedimiento/agregar','Admin\ProcedureController@create')->name('admin create procedure type');
-
-//Ruta para editar materiales desde el admin
-Route::get('/ad_material/editar/{material}','Admin\MaterialController@edit')->name('admin edit material');
-//Ruta para editar un tipo de pago desde el admin
-Route::get('/ad_tipopago/editar/{payment}','Admin\PaymentController@edit')->name('admin edit payment type');
-//Ruta para editar un tipo de procedimiento desde el admin
-Route::get('/ad_tipoprocedimiento/editar/{procedure}','Admin\ProcedureController@edit')->name('admin edit procedure type');
-
-//Rutas para el CRUD de tipos de seguros desde el admin
-Route::get('/ad_tiposseguros','Admin\InsuranceTypeController@index')->name('admin insurance types');
-Route::get('/ad_tipodeseguro/agregar','Admin\InsuranceTypeController@create')->name('admin create insurance type');
-Route::post('/ad_tiposeguro/guardar','Admin\InsuranceTypeController@store')->name('admin store insurance type');
-Route::get('/ad_tipodeseguro/editar/{insurance_type}','Admin\InsuranceTypeController@edit')->name('admin edit insurance type');
-Route::put('/ad_tiposeguro/update/{insurance_type}','Admin\InsuranceTypeController@update')->name('admin update insurance type');
-Route::delete('/ad_tiposeguro/eliminar/{insurance_type}','Admin\InsuranceTypeController@destroy')->name('admin destroy insurance type');
- 
-//Rutas para el CRUD de items desde asistente
-Route::get('/a_materiales', 'Assistant\ItemController@index')->name('assistant items');
-Route::get('/a_material/editar/{item}','Assistant\ItemController@edit')->name('assistant edit item');
-Route::get('/a_material/agregar','Assistant\ItemController@create')->name('assistant create item');
-Route::post('/a_material/guardar','Assistant\ItemController@store')->name('assistant store item');
-Route::put('/a_material/update/{item}','Assistant\ItemController@update')->name('assistant update item');
-Route::delete('/a_material/eliminar/{item}','Assistant\ItemController@destroy')->name('assistant destroy item');
-Route::put('/a_paciente/update/{patient}','Assistant\PatientController@update')->name('assistant update patient');
-Route::post('/a_paciente/guardar','Assistant\PatientController@store')->name('assistant store patient');
-Route::delete('/a_paciente/eliminar/{patient}','Assistant\PatientController@destroy')->name('assistant destroy patient');
-
-//Rutas para el CRUD de usuarios con resource
 Route::resource('usuarios','Admin\UserController');
 
+//CRUD tipos de procedimiento
+Route::get('/ad_tipos_procedimiento','Admin\ProcedureTypeController@index')->name('admin procedure types');
+Route::get('/ad_tipos_procedimiento/agregar','Admin\ProcedureController@create')->name('admin create procedure type');
+Route::get('/ad_tipos_procedimiento/editar/{procedure}','Admin\ProcedureController@edit')->name('admin edit procedure type');
 
-//Rutas CRUD tipos de materiales
+//CRUD metodos de pago
+Route::get('/ad_metodos_pagos','Admin\PaymentMethodController@index')->name('admin payment methods');
+Route::get('/ad_metodos_pago/agregar','Admin\PaymentMethodController@create')->name('admin create payment method');
+Route::get('/ad_metodos_pago/editar/{payment}','Admin\PaymentMethodController@edit')->name('admin edit payment method');
+Route::get('/ad_metodos_pago/guardar', 'Admin\PaymentMethodController@store')->name('admin store payment method');
+Route::put('/ad_metodos_pago/actualizar/{payment_method}', 'Admin\PaymentMethodController@update')->name('admin update payment method');
+Route::delete('/ad_metodos_pago/eliminar/{payment_method}', 'Admin\PaymentMethodController@destroy')->name('admin destroy payment method');
 
-// Guardando 
-Route::get('/ad_tiposdemateriales/save', 'Admin\MaterialController@store')->name('admin store material type');
-// Actualizamdo
-Route::put('/ad_tiposdemateriales/update/{item_type}', 'Admin\MaterialController@update')->name('admin update material type');
-// Borrado
-Route::delete('ad_tiposdemateriales/delete/{item_type}', 'Admin\MaterialController@destroy')->name('admin destroy material type');
-// Fin CRUD tipos de materiales
+//CRUD tipos de articulo
+Route::get('/ad_tipos_articulo','Admin\ItemTypeController@index')->name('admin item types');
+Route::get('/ad_tipos_articulo/agregar','Admin\ItemTypeController@create')->name('admin create item type');
+Route::get('/ad_tipos_articulo/editar/{material}','Admin\ItemTypeController@edit')->name('admin edit item type');
+Route::get('/ad_tipos_articulo/guardar', 'Admin\ItemTypeController@store')->name('admin store item type');
+Route::put('/ad_tipos_articulo/actualizar/{item_type}', 'Admin\ItemTypeController@update')->name('admin update item type');
+Route::delete('/ad_tipos_articulo/eliminar/{item_type}', 'Admin\ItemTypeController@destroy')->name('admin destroy item type');
 
+//CRUD tipos de seguro
+Route::get('/ad_tipos_seguro','Admin\InsuranceTypeController@index')->name('admin insurance types');
+Route::get('/ad_tipos_seguro/agregar','Admin\InsuranceTypeController@create')->name('admin create insurance type');
+Route::post('/ad_tipos_seguro/guardar','Admin\InsuranceTypeController@store')->name('admin store insurance type');
+Route::get('/ad_tipos_seguro/editar/{insurance_type}','Admin\InsuranceTypeController@edit')->name('admin edit insurance type');
+Route::put('/ad_tipos_seguro/actualizar/{insurance_type}','Admin\InsuranceTypeController@update')->name('admin update insurance type');
+Route::delete('/ad_tipos_seguro/eliminar/{insurance_type}','Admin\InsuranceTypeController@destroy')->name('admin destroy insurance type');
 
-// Rutas CRUD metodos de pago
-// Guardando
-Route::get('/ad_tiposdemetodosdepago/save', 'Admin\PaymentController@store')->name('admin store payment method');
-// Acualizando
-Route::put('/ad_tiposdemetodosdepago/update/{payment_method}', 'Admin\PaymentController@update')->name('admin update payment method');
-// Borrado
-Route::delete('/ad_tiposdemetodosdepago/delete/{payment_method}', 'Admin\PaymentController@destroy')->name('admin destroy payment method');
-// Fin CRUD metodos de pago

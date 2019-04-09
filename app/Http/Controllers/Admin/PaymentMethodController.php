@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PaymentMethodRequest;
 use App\PaymentMethod;
 
-class PaymentController extends Controller
+class PaymentMethodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class PaymentController extends Controller
             ->orderBy('name', 'asc')
             ->paginate(20);
 
-        return view('admin.payments', compact('payment_methods', 'search'));
+        return view('admin.payment_methods', compact('payment_methods', 'search'));
     }
 
     /**
@@ -32,7 +32,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        return view('admin.create_payment_type');
+        return view('admin.create_payment_method');
     }
 
     /**
@@ -57,7 +57,7 @@ class PaymentController extends Controller
             $payment_method_delete->update($request->except(['']));
         }
         
-        return redirect()->route('admin payments');
+        return redirect()->route('admin payment methods');
     }
 
     /**
@@ -81,7 +81,7 @@ class PaymentController extends Controller
     {
         $payment_method = PaymentMethod::find($id);
 
-        return view('admin.edit_payment_type', compact('payment_method'));
+        return view('admin.edit_payment_method', compact('payment_method'));
     }
 
     /**
@@ -108,7 +108,7 @@ class PaymentController extends Controller
             $payment_method_delete->update($request->except(['']));
         }
 
-        return redirect()->route('admin payments');
+        return redirect()->route('admin payment methods');
     }
 
     /**
@@ -122,6 +122,6 @@ class PaymentController extends Controller
         //
         $payment_method = PaymentMethod::find($id);
         $payment_method->delete();
-        return redirect()->route('admin payments');
+        return redirect()->route('admin payment methods');
     }
 }

@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ItemTypeRequest;
 
-class MaterialController extends Controller
+class ItemTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +21,11 @@ class MaterialController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $items_type = ItemType::search($search)
+        $items_types = ItemType::search($search)
             ->orderBy('name', 'asc')
             ->paginate(20);
 
-        return view('admin.materials', compact('items_type', 'search'));
+        return view('admin.item_types', compact('items_types', 'search'));
     }
 
     /**
@@ -35,7 +35,7 @@ class MaterialController extends Controller
      */
     public function create()
     {
-       return view('admin.create_material');
+       return view('admin.create_item_type');
     }
 
     /**
@@ -62,7 +62,7 @@ class MaterialController extends Controller
             $item_type_delete->update($request->except(['']));
         }
         
-        return redirect()->route('admin materials');
+        return redirect()->route('admin item types');
     }
 
     /**
@@ -85,7 +85,7 @@ class MaterialController extends Controller
     public function edit($id)
     {
         $item_type = ItemType::find($id);
-        return view('admin.edit_material', compact('item_type'));
+        return view('admin.edit_item_type', compact('item_type'));
     }
 
     /**
@@ -111,7 +111,7 @@ class MaterialController extends Controller
             $item_type_delete->update($request->except(['']));
         }
 
-        return redirect()->route('admin materials');
+        return redirect()->route('admin item types');
     }
 
     /**
@@ -124,6 +124,6 @@ class MaterialController extends Controller
     {
         $user = ItemType::find($id);
         $user->delete();
-        return redirect()->route('admin materials');
+        return redirect()->route('admin item types');
     }
 }

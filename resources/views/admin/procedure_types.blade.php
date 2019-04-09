@@ -1,11 +1,15 @@
 @extends('layouts.app_admin')
 @section('title',config('app.name', 'Laravel'))
-@section('bg insurances link','bg-active') @section('insurances selected','→')
+@section('bg insurance types link','bg-light')
+@section('bg item types link','bg-light')  
+@section('bg users link','bg-light')
+@section('bg procedure types link','bg-active') @section('procedure types selected','→')
+@section('bg payment methods link','bg-light') 
 @section('content')
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{route('admin create insurance type')}}"></a>
+			<a class="btn btn-primary btn-add" href="{{route('admin create procedure type')}}"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -19,11 +23,9 @@
 			<thead>
 				<tr>
 					<th>Codigo</th>
-					<th>Tipo de seguro</th>
-
+					<th>Tipo de procedimiento</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
-
 				</tr>
 			</thead>
 			<tbody>
@@ -31,7 +33,7 @@
 					<td>Datos</td>
 					<td>Datos</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{route('admin edit insurance type',1)}}"></a>
+						<a class="btn-edit btn btn-success" href="{{route('admin edit procedure type',1)}}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -44,9 +46,8 @@
 				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
-					
 					<td>
-						<a class="btn-edit btn btn-success" href="{{route('admin edit insurance type',1)}}"></a>
+						<a class="btn-edit btn btn-success" href="{{route('admin edit procedure type',1)}}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -59,9 +60,8 @@
 				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
-					
 					<td>
-						<a class="btn-edit btn btn-success" href="{{route('admin edit insurance type',1)}}"></a>
+						<a class="btn-edit btn btn-success" href="{{route('admin edit procedure type',1)}}"></a>
 					</td>
 					<td>
 						<form method="post" action="">
@@ -74,9 +74,8 @@
 				<tr>
 					<td>Datos</td>
 					<td>Datos</td>
-					
 					<td>
-						<a class="btn-edit btn btn-success" href="{{route('admin edit insurance type',1)}}"></a>
+						<a class="btn-edit btn btn-success" href="{{route('admin edit procedure type',1)}}"></a>
 					</td>
 					<td>
 						<form method="post" action="">

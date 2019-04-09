@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{ route('admin procedures') }}" class="btn btn-secondary">← Tipos de procedimientos</a>
+<a href="{{ route('admin procedure types') }}" class="btn btn-secondary">← Tipos de procedimientos</a>
 @endsection
 @section('content')
 <div class="container form-sm">

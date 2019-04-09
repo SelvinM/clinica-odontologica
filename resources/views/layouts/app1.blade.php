@@ -75,7 +75,7 @@
                 {{ Auth::user()->name }}
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('doctor profile') }}">Mi perfil</a>
+                <a class="dropdown-item" href="{{ route('profile') }}">Mi perfil</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ url('/logout') }}">Cerrar Sesión</a>
               </div>
