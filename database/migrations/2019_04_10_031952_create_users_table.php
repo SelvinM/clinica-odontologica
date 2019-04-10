@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 			$table->integer('role_id')->unsigned()->index('fk_users_roles_idx');
 			$table->string('name');
+			$table->integer('assigned_doctor')->unsigned()->nullable()->index('fk_users_users_idx');
 			$table->string('email')->unique();
 			$table->dateTime('email_verified_at')->nullable();
 			$table->string('password');

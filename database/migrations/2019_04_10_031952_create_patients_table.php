@@ -15,7 +15,6 @@ class CreatePatientsTable extends Migration {
 		Schema::create('patients', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('patient_state_id')->unsigned()->index('fk_patients_patien_states_idx');
 			$table->integer('insurance_type_id')->unsigned()->index('fk_patients_insurance_types_idx');
 			$table->integer('gender_id')->index('fk_patients_genders_idx');
 			$table->integer('blood_type_id')->unsigned()->index('fk_patients_blood_types_idx');
@@ -23,9 +22,11 @@ class CreatePatientsTable extends Migration {
 			$table->string('name', 45);
 			$table->string('email', 45);
 			$table->string('home_address', 45);
-			$table->string('phone', 45);
+			$table->dateTime('birthdate');
+			$table->string('phone', 45)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
+			$table->integer('doctor_id')->unsigned()->index('fk_patients_users_idx');
 		});
 	}
 
