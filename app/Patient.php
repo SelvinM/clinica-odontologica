@@ -41,7 +41,9 @@ class Patient extends Eloquent
 		'name' => 'VARCHAR',
 		'email' => 'VARCHAR',
 		'home_address' => 'VARCHAR',
-		'phone' => 'VARCHAR'
+		'birthdate' => 'DATE',
+		'phone' => 'VARCHAR',
+		'doctor_id' => 'int'
 	];
 
 	protected $fillable = [
@@ -52,7 +54,9 @@ class Patient extends Eloquent
 		'name',
 		'email',
 		'home_address',
-		'phone'
+		'birthdate',
+		'phone',
+		'doctor_id'
 	];
 
 	public function insurance_type()

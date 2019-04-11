@@ -11,45 +11,62 @@
 					<form class="well form-horizontal"method="post" action="{{ route('assistant store patient') }}"> @csrf
 						<fieldset>
 							<legend>Crear perfil de paciente</legend>
+							<input name="id_doctor" class="form-control" placeholder="Nombre completo" value="{{$id_doctor->assigned_doctor}}{{ old('email') }}" type="hidden">
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
 								<input name="name" class="form-control" placeholder="Nombre completo" value="{{ old('name') }}" type="text">
-								</div>
-								@if($errors->has('name'))
+							</div>
+							@if($errors->has('name'))
 			            		<div class="alert alert-danger">
 			                		<span>{{ $errors->first('name') }}</span>
 			           			</div>
-			            		@endif
+			            	@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 								</div>
 								<input name="email" class="form-control" placeholder="Correo" value="{{ old('email') }}" type="email">
 							</div>
-								@if($errors->has('email'))
+							@if($errors->has('email'))
 			            		<div class="alert alert-danger">
 			                		<span>{{ $errors->first('email') }}</span>
 			            		</div>
-			           			 @endif
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 								</div>
 								<input name="phone" class="form-control" placeholder="Número telefónico" value="{{ old('phone') }}" type="text">
 							</div>
-								@if($errors->has('phone'))
+							@if($errors->has('phone'))
 			            		<div class="alert alert-danger">
 			                		<span>{{ $errors->first('phone') }}</span>
 			            		</div>
-			           			 @endif
+			           		@endif
+			           		<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+								</div>
+								<input name="birthdate" class="form-control" placeholder="Fecha de nacimiento" value="{{ old('birthdate') }}" type="date">
+							</div>
+							@if($errors->has('birthdate'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('birthdate') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-home"></i> </span>
 								</div>
-								<input name="home_address" class="form-control" placeholder="Dirección (opcional)" value="{{ old('home_address') }}" type="text">
+								<input name="home_address" class="form-control" placeholder="Dirección" value="{{ old('home_address') }}" type="text">
 							</div>
+							@if($errors->has('home_address'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('home_address') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-tint"></i> </span>
@@ -61,6 +78,11 @@
      								@endforeach
 								</select>
 							</div>
+							@if($errors->has('blood_type_id'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('blood_type_id') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-tint"></i> </span>
@@ -72,6 +94,11 @@
      								@endforeach
 								</select>
 							</div>
+							@if($errors->has('gender_id'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('gender_id') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-plus-circle"></i> </span>
@@ -83,12 +110,22 @@
      								@endforeach
 								</select>
 							</div>
+							@if($errors->has('insurance_type_id'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('insurance_type_id') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-sticky-note"></i> </span>
 								</div>
 								<textarea name="description" class="form-control form-textarea" placeholder="Ingrese una descripcion" value="{{ old('description') }}"></textarea>
 							</div>
+							@if($errors->has('description'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('description') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block"> Crear  </button>
 							</div>

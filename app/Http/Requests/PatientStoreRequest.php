@@ -14,11 +14,14 @@ class PatientStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'insurance_type_id'=>'integer',
-            'gender_id'=>'integer',
-            'blood_type_id'=>'integer',
-            'name'=>'max:45', // nombres validos => a,a1,ans2n2n3 invalidos 5,3d,_ds,dsd4_x4
-            'email'=>'required|unique:users,email',
+            'insurance_type_id'=>'required|integer',
+            'gender_id'=>'required|integer',
+            'blood_type_id'=>'required|integer',
+            'name'=>'required|max:8000', 
+            'description'=>'required|max:45',
+            'home_address'=>'required|max:45',
+            'email'=>'required',
+            'birthdate'=>'required',
             'phone' => 'required|numeric'
         ];
     }
@@ -27,15 +30,18 @@ class PatientStoreRequest extends FormRequest
     public function messages()
     {
         return [
+            'insurance_type_id.required' => "El paciente debe tener un tipo de seguro",
             'insurance_type_id.integer' => "El paciente debe tener un tipo de seguro",
-            'gender_id.integer' => "El paciente debe tener uu genero",
+            'gender_id.required' => "El paciente debe tener un genero",
+            'gender_id.integer' => "El paciente debe tener un genero",
             'description.required' => "El campo 'Descripcion' es obligatorio",
+            'blood_type_id.required' => "El paciente debe tener un tipo de sangre",
             'blood_type_id.integer' => "El paciente debe tener un tipo de sangre",
             'name.required' => "El campo 'Nombre' es obligatorio",
-            'name.regex' => "Caracteres permitidos 'A-Za-z0-9' ejemplo: a,a3,A3a434s ",
+            'home_address.required' => "El campo 'Nombre' es obligatorio",
             'email.required' => "El campo 'Correo' es obligatorio",
-            'email.unique' => 'Este correo ya esta en uso',
             'phone.required' => "El campo 'Telefono' es obligatorio",
+            'birthdate.required' => "El campo 'Fecha de nacimiento' es obligatorio",
             'phone.numeric' => "El campo 'Telefono' debe ser numerico => ejemplo: 84848593,0191928331"
         ];
     }

@@ -28,6 +28,7 @@
 					<th>Dirección</th>
 					<th>Tipo de seguro</th>
 					<th>Tipo de sangre</th>
+					<th>Fecha de cumpleaños</th>
 					<th>Apuntes</th>
 					<th>Historial clínico</th>
 					<th width="60px">Editar</th>
@@ -43,6 +44,7 @@
 						<td>{{ $patient->home_address }}</td>
 						<td>{{ $patient->insurance_type->name}}</td>
 						<td>{{ $patient->blood_type->name}}</td>
+						<td>{{ $patient->birthdate}}</td>
 						<td><a href="{{ route('assistant patient notes') }}">mostrar</a></td>
 						<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
 						<td>

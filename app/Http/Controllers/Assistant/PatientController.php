@@ -6,10 +6,13 @@ use App\Patient;
 use App\BloodType;
 use App\InsuranceType;
 use App\Gender;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\PatientStoreRequest;
 use App\Http\Requests\PatientUpdateRequest;
 use App\Http\Controllers\Controller; 
+use Illuminate\Support\Facades\DB;
 
 class PatientController extends Controller
 {
@@ -38,7 +41,8 @@ class PatientController extends Controller
         $genders=Gender::all();
         $insurance_types=InsuranceType::all();
         $blood_types=BloodType::all();
-        return view('assistant.create_patient',compact('insurance_types','blood_types','genders'));
+        $id_doctor = DB::table('users')->select('assigned_doctor')->where('id', '=', Auth::id())->first();
+        return view('assistant.create_patient',compact('insurance_types','blood_types','genders','id_doctor'));
     }
 
     /**
@@ -51,12 +55,15 @@ class PatientController extends Controller
     {
         //
         $patient = new Patient([
+                            'doctor_id'=>$request->input('id_doctor'),
                             'insurance_type_id'=>$request->input('insurance_type_id'),
+                            'id_doctor'=>$request->input('id_doctor'),
                             'gender_id'=>$request->input('gender_id'),
                             'blood_type_id'=>$request->input('blood_type_id'),
                             'description'=>$request->input('description'),
                             'name'=>$request->input('name'),
                             'home_address'=>$request->input('home_address'),
+                            'birthdate'=>$request->input('birthdate'),
                             'phone'=>$request->input('phone'),
                             'email'=>$request->input('email')]);
                             

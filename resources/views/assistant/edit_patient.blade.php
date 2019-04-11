@@ -13,6 +13,7 @@
 						@method('PUT')
 						<fieldset>
 							<legend>Editar perfil de paciente</legend>
+							<input name="id_doctor" class="form-control" placeholder="Nombre completo" value="{{$patient->doctor_id}}" type="hidden">
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -47,6 +48,17 @@
 			                	<span>{{ $errors->first('phone') }}</span>
 			            	</div>
 			            	@endif
+			            	<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+								</div>
+								<input name="birthdate" class="form-control" value="{{$patient->birthdate}}" {{ old('birthdate') == $patient->birthdate ? 'selected' : ''  }}  type="text">
+							</div>
+							@if($errors->has('birthdate'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('birthdate') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-home"></i> </span>
@@ -103,8 +115,9 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-sticky-note"></i> </span>
 								</div>
-								<textarea name="description" class="form-control form-textarea" >
-								{{$patient->description}}{{ old('description') == $patient->description ? 'selected' : ''  }}
+								<textarea name="description" class="form-control form-textarea" 
+								>
+								{{$patient->description}}
 								</textarea>
 							</div>
 							@if($errors->has('description'))
