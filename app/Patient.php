@@ -69,6 +69,11 @@ class Patient extends Eloquent
 		return $this->belongsTo(\App\BloodType::class);
 	}
 
+	public function gender()
+	{
+		return $this->belongsTo(\App\Gender::class);
+	}
+
 	public function procedures()
 	{
 		return $this->belongsToMany(\App\Procedure::class, 'procedures_x_items', 'items_id', 'procedures_id');

@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class Gender
- * 
  * @property int $id
  * @property string $name
  * 

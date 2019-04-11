@@ -26,6 +26,7 @@
 					<th>E-mail</th>
 					<th>Teléfono</th>
 					<th>Dirección</th>
+					<th>Genero</th>
 					<th>Tipo de seguro</th>
 					<th>Tipo de sangre</th>
 					<th>Fecha de cumpleaños</th>
@@ -42,6 +43,7 @@
 						<td>{{ $patient->email }}</td>
 						<td>{{ $patient->phone }}</td>
 						<td>{{ $patient->home_address }}</td>
+						<td>{{ $patient->gender->name }}</td>
 						<td>{{ $patient->insurance_type->name}}</td>
 						<td>{{ $patient->blood_type->name}}</td>
 						<td>{{ $patient->birthdate}}</td>

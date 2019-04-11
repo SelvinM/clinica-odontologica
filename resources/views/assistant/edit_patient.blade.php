@@ -9,8 +9,8 @@
 			<tr>
 				<td>
 					<form class="well form-horizontal" method="post" action="{{ route('assistant update patient',$patient->id) }}">
-						@csrf
-						@method('PUT')
+					@csrf
+            		@method('PUT')
 						<fieldset>
 							<legend>Editar perfil de paciente</legend>
 							<input name="id_doctor" class="form-control" placeholder="Nombre completo" value="{{$patient->doctor_id}}" type="hidden">
@@ -52,7 +52,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
 								</div>
-								<input name="birthdate" class="form-control" value="{{$patient->birthdate}}" {{ old('birthdate') == $patient->birthdate ? 'selected' : ''  }}  type="text">
+								<input name="birthdate" class="form-control" value="{{date( 'Y-m-d', strtotime($patient->birthdate))}}" {{ old('birthdate') == $patient->birthdate ? 'selected' : ''  }}  type="date">
 							</div>
 							@if($errors->has('birthdate'))
 			            		<div class="alert alert-danger">
@@ -91,6 +91,26 @@
 			                	<span>{{ $errors->first('blood_type_id') }}</span>
 			            	</div>
 			            	@endif
+			            	<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-tint"></i> </span>
+								</div>
+								<select  name="gender_id"  class="form-control">
+									<option selected="">Seleccione el tipo de genero</option>
+									@foreach($genders as $gender)
+										@if($gender->id == $patient->gender_id)
+											 	<option value="{{ $gender->id }}" selected="">{{ $gender->name }}</option>
+											@else
+												<option value="{{ $gender->id }}" {{ old('gender_id') == $patient->gender_id ? 'selected' : '' }}>{{ $gender->name }}</option>
+											@endif
+									@endforeach
+								</select>
+							</div>
+							@if($errors->has('gender_id'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('gender_id') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-plus-circle"></i> </span>
@@ -116,9 +136,7 @@
 									<span class="input-group-text"> <i class="fa fa-sticky-note"></i> </span>
 								</div>
 								<textarea name="description" class="form-control form-textarea" 
-								>
-								{{$patient->description}}
-								</textarea>
+								>{{$patient->description}}</textarea>
 							</div>
 							@if($errors->has('description'))
 			            	<div class="alert alert-danger">
@@ -128,7 +146,7 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block"> Editar</button>
 							</div>
-						</fieldset>
+						 </fieldset>
 					</form>
 				</td>
 			</tr>

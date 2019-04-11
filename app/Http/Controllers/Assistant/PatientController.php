@@ -26,7 +26,6 @@ class PatientController extends Controller
         //$search = $request->input('search');
         $patients = Patient::orderBy('name','asc')
             //->search($search)
-            ->orderBy('name','asc')
             ->paginate(20);
         return view('assistant.patients', compact('patients','search'));
     }
@@ -93,7 +92,8 @@ class PatientController extends Controller
         $patient=Patient::find($id);
         $insurance_types=InsuranceType::all();
         $blood_types=BloodType::all();
-        return view('assistant.edit_patient',compact('patient','insurance_types','blood_types'));
+        $genders=Gender::all();
+        return view('assistant.edit_patient',compact('patient','insurance_types','blood_types','genders'));
     }
 
     /**
