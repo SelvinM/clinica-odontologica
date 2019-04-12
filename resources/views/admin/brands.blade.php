@@ -9,7 +9,7 @@
 <div class="table-md center">
 	<div class="table-top row">
 		<div class="col">
-			<a class="btn btn-primary btn-add" href="{{ route('admin create payment method') }}"></a>
+			<a class="btn btn-primary btn-add" href="{{ route('admin create brand') }}"></a>
 		</div>
 		<div class="col">
             <form method="get">
@@ -29,22 +29,22 @@
 				</tr>
 			</thead>
 			<tbody>
-				{{-- @foreach($payment_methods as $payment_method)
+				@foreach($brands as $brand)
 				<tr>
 					<td>{{$loop->iteration}}</td>
-					<td>{{$payment_method->name}}</td>
+					<td>{{$brand->name}}</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('admin edit payment method', $payment_method->id) }}"></a>
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit brand', $brand->id) }}"></a>
 					</td>
 					<td>
-						<form method="post" action="{{route('admin destroy payment method', $payment_method->id)}}">
+						<form method="post" action="{{route('admin destroy brand', $brand->id)}}">
 							@csrf
 							@method('DELETE')
 							<button type="submit" class="btn-delete btn btn-danger"></button>
 						</form>
 					</td>
 				</tr>
-				@endforeach --}}
+				@endforeach
 			</tbody>
 		</table>
 	</div>

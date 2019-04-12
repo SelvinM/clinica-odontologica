@@ -4,12 +4,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Item;
-use App\ItemType;
+use App\Brand;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\ItemTypeRequest;
+use App\Http\Requests\BrandRequest;
 
 class BrandController extends Controller
 {
@@ -20,12 +19,12 @@ class BrandController extends Controller
      */
     public function index(Request $request)
     {
-        /*$search = $request->input('search');
-        $items_types = ItemType::search($search)
+        $search = $request->input('search');
+        $brands = Brand::search($search)
             ->orderBy('name', 'asc')
-            ->paginate(20);*/
+            ->paginate(20);
 
-        return view('admin.brands');
+        return view('admin.brands', compact('brands', 'search'));
     }
 
     /**
@@ -35,7 +34,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-       return view('admin.create_item_type');
+       return view('admin.create_brand');
     }
 
     /**
@@ -44,25 +43,25 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ItemTypeRequest $request)
+    public function store(BrandRequest $request)
     {
         //
 
-        $item_type_delete = ItemType::onlyTrashed()
+        $brand_delete = Brand::onlyTrashed()
             ->where('name', $request->name)
             ->first();
         
-        if ($item_type_delete == NULL) {
-            $tipo = new ItemType;
+        if ($brand_delete == NULL) {
+            $marca = new Brand;
 
-            $tipo->name = $request->name;
-            $tipo->save();
+            $marca->name = $request->name;
+            $marca->save();
         } else {
-            $item_type_delete->restore();
-            $item_type_delete->update($request->except(['']));
+            $brand_delete->restore();
+            $brand_delete->update($request->except(['']));
         }
         
-        return redirect()->route('admin item types');
+        return redirect()->route('admin brands');
     }
 
     /**
@@ -84,8 +83,8 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        $item_type = ItemType::find($id);
-        return view('admin.edit_item_type', compact('item_type'));
+        $brand = Brand::find($id);
+        return view('admin.edit_brand', compact('brand'));
     }
 
     /**
@@ -95,23 +94,23 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ItemTypeRequest $request, $id)
+    public function update(BrandRequest $request, $id)
     {
-        $item_type = ItemType::find($id);
+        $brand = Brand::find($id);
 
-        $item_type_delete = ItemType::onlyTrashed()
+        $brand_delete = brand::onlyTrashed()
             ->where('name', $request->name)
             ->first();
         
-        if ($item_type_delete == NULL) {
-            $item_type->update($request->except(['']));
+        if ($brand_delete == NULL) {
+            $brand->update($request->except(['']));
         } else {
-            $item_type->delete();
-            $item_type_delete->restore();
-            $item_type_delete->update($request->except(['']));
+            $brand->delete();
+            $brand_delete->restore();
+            $brand_delete->update($request->except(['']));
         }
 
-        return redirect()->route('admin item types');
+        return redirect()->route('admin brands');
     }
 
     /**
@@ -122,8 +121,8 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        $user = ItemType::find($id);
-        $user->delete();
-        return redirect()->route('admin item types');
+        $brand = Brand::find($id);
+        $brand->delete();
+        return redirect()->route('admin brands');
     }
 }
