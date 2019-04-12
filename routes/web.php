@@ -94,6 +94,9 @@ Route::get('/ad_metodos_pago/guardar', 'Admin\PaymentMethodController@store')->n
 Route::put('/ad_metodos_pago/actualizar/{payment_method}', 'Admin\PaymentMethodController@update')->name('admin update payment method');
 Route::delete('/ad_metodos_pago/eliminar/{payment_method}', 'Admin\PaymentMethodController@destroy')->name('admin destroy payment method');
 
+//CRUD Marcas
+Route::get('/ad_marcas', 'Admin\BrandController@index')->name('admin brands');
+
 //CRUD tipos de articulo
 Route::get('/ad_tipos_articulo','Admin\ItemTypeController@index')->name('admin item types');
 Route::get('/ad_tipos_articulo/agregar','Admin\ItemTypeController@create')->name('admin create item type');
