@@ -94,13 +94,18 @@ Route::get('/ad_metodos_pago/guardar', 'Admin\PaymentMethodController@store')->n
 Route::put('/ad_metodos_pago/actualizar/{payment_method}', 'Admin\PaymentMethodController@update')->name('admin update payment method');
 Route::delete('/ad_metodos_pago/eliminar/{payment_method}', 'Admin\PaymentMethodController@destroy')->name('admin destroy payment method');
 
-//CRUD Marcas
-Route::get('/ad_marcas', 'Admin\BrandController@index')->name('admin brands');
+//CRUD marcas
+Route::get('/ad_brands','Admin\BrandController@index')->name('admin brands');
+Route::get('/ad_brands/agregar','Admin\BrandController@create')->name('admin create brand');
+Route::get('/ad_brands/editar/{brand}','Admin\BrandController@edit')->name('admin edit brand');
+Route::get('/ad_brands/guardar', 'Admin\BrandController@store')->name('admin store brand');
+Route::put('/ad_brands/actualizar/{brand}', 'Admin\BrandController@update')->name('admin update brand');
+Route::delete('/ad_brands/eliminar/{brand}', 'Admin\BrandController@destroy')->name('admin destroy brand');
 
 //CRUD tipos de articulo
 Route::get('/ad_tipos_articulo','Admin\ItemTypeController@index')->name('admin item types');
 Route::get('/ad_tipos_articulo/agregar','Admin\ItemTypeController@create')->name('admin create item type');
-Route::get('/ad_tipos_articulo/editar/{material}','Admin\ItemTypeController@edit')->name('admin edit item type');
+Route::get('/ad_tipos_articulo/editar/{item_type}','Admin\ItemTypeController@edit')->name('admin edit item type');
 Route::get('/ad_tipos_articulo/guardar', 'Admin\ItemTypeController@store')->name('admin store item type');
 Route::put('/ad_tipos_articulo/actualizar/{item_type}', 'Admin\ItemTypeController@update')->name('admin update item type');
 Route::delete('/ad_tipos_articulo/eliminar/{item_type}', 'Admin\ItemTypeController@destroy')->name('admin destroy item type');
