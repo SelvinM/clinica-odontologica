@@ -76,16 +76,16 @@ class Item extends Eloquent
 
 	public function brand()
 	{
-		return $this->belongsTo(\App\Models\Brand::class);
+		return $this->belongsTo(\App\Brand::class);
 	}
 
 	public function item_type()
 	{
-		return $this->belongsTo(\App\Models\ItemType::class);
+		return $this->belongsTo(\App\ItemType::class);
 	}
 
 	public function procedures()
 	{
-		return $this->belongsToMany(\App\Models\Procedure::class, 'procedures_items', 'items_id', 'procedures_id');
+		return $this->belongsToMany(\App\Procedure::class, 'procedures_items', 'items_id', 'procedures_id');
 	}
 }

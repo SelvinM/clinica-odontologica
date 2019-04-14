@@ -9,6 +9,7 @@
 			<tr>
 				<td>
 					<form class="well form-horizontal">
+						@csrf
 						<legend>Editar tipo de procedimiento</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">

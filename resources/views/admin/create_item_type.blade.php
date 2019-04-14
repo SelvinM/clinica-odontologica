@@ -8,7 +8,8 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal" method="get" action="{{route('admin store item type')}}">
+					<form class="well form-horizontal" method="post" action="{{route('admin store item type')}}">
+						@csrf
 						<legend>Nuevo tipo de inventario</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">

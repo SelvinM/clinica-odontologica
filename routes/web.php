@@ -28,9 +28,12 @@ Route::get('/d_citas/agregar','Doctor\AppointmentController@create')->name('doct
 Route::get('/d_citas/editar/{appointment}','Doctor\AppointmentController@edit')->name('doctor edit appointment');
 
 //CRUD productos
-Route::get('/d_productos', 'Doctor\ItemController@index')->name('doctor items');
-Route::get('/d_productos/editar/{item}','Doctor\ItemController@edit')->name('doctor edit item');
+Route::get('/d_productos','Doctor\ItemController@index')->name('doctor items');
 Route::get('/d_productos/agregar','Doctor\ItemController@create')->name('doctor create item');
+Route::get('/d_productos/editar/{item}','Doctor\ItemController@edit')->name('doctor edit item');
+Route::post('/d_productos/guardar', 'Doctor\ItemController@store')->name('doctor store item');
+Route::put('/d_productos/actualizar/{item}', 'Doctor\ItemController@update')->name('doctor update item');
+Route::delete('/d_productos/eliminar/{item}', 'Doctor\ItemController@destroy')->name('doctor destroy item');
 
 //CRUD pacientes
 Route::get('/d_pacientes', 'Doctor\PatientController@index')->name('doctor patients');
@@ -85,7 +88,7 @@ Route::resource('usuarios','Admin\UserController');
 Route::get('/ad_tipos_procedimiento','Admin\ProcedureTypeController@index')->name('admin procedure types');
 Route::get('/ad_tipos_procedimiento/agregar','Admin\ProcedureTypeController@create')->name('admin create procedure type');
 Route::get('/ad_tipos_procedimiento/editar/{procedure_type}','Admin\ProcedureTypeController@edit')->name('admin edit procedure type');
-Route::get('/ad_tipos_procedimiento/guardar', 'Admin\ProcedureTypeController@store')->name('admin store procedure type');
+Route::post('/ad_tipos_procedimiento/guardar', 'Admin\ProcedureTypeController@store')->name('admin store procedure type');
 Route::put('/ad_tipos_procedimiento/actualizar/{procedure_type}', 'Admin\ProcedureTypeController@update')->name('admin update procedure type');
 Route::delete('/ad_tipos_procedimiento/eliminar/{procedure_type}', 'Admin\ProcedureTypeController@destroy')->name('admin destroy procedure type');
 
@@ -93,7 +96,7 @@ Route::delete('/ad_tipos_procedimiento/eliminar/{procedure_type}', 'Admin\Proced
 Route::get('/ad_brands','Admin\BrandController@index')->name('admin brands');
 Route::get('/ad_brands/agregar','Admin\BrandController@create')->name('admin create brand');
 Route::get('/ad_brands/editar/{brand}','Admin\BrandController@edit')->name('admin edit brand');
-Route::get('/ad_brands/guardar', 'Admin\BrandController@store')->name('admin store brand');
+Route::post('/ad_brands/guardar', 'Admin\BrandController@store')->name('admin store brand');
 Route::put('/ad_brands/actualizar/{brand}', 'Admin\BrandController@update')->name('admin update brand');
 Route::delete('/ad_brands/eliminar/{brand}', 'Admin\BrandController@destroy')->name('admin destroy brand');
 
@@ -101,7 +104,7 @@ Route::delete('/ad_brands/eliminar/{brand}', 'Admin\BrandController@destroy')->n
 Route::get('/ad_tipos_producto','Admin\ItemTypeController@index')->name('admin item types');
 Route::get('/ad_tipos_producto/agregar','Admin\ItemTypeController@create')->name('admin create item type');
 Route::get('/ad_tipos_producto/editar/{item_type}','Admin\ItemTypeController@edit')->name('admin edit item type');
-Route::get('/ad_tipos_producto/guardar', 'Admin\ItemTypeController@store')->name('admin store item type');
+Route::post('/ad_tipos_producto/guardar', 'Admin\ItemTypeController@store')->name('admin store item type');
 Route::put('/ad_tipos_producto/actualizar/{item_type}', 'Admin\ItemTypeController@update')->name('admin update item type');
 Route::delete('/ad_tipos_producto/eliminar/{item_type}', 'Admin\ItemTypeController@destroy')->name('admin destroy item type');
 

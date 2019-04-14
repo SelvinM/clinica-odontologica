@@ -8,13 +8,14 @@
 		<tbody>
 			<tr>
 				<td>
-					<form method="get" action="{{route('admin store brand')}}" class="well form-horizontal">
+					<form method="post" action="{{route('admin store brand')}}" class="well form-horizontal">
+						@csrf
 						<legend>Crear marca</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-money-bill-alt"></i> </span>
 							</div>
-							<input name="name" class="form-control" placeholder="Ingrese la marca" type="text" autofocus="">
+							<input name="name" class="form-control" placeholder="Ingrese el nombre de la marca" type="text">
 							
 						</div>
 
