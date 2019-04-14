@@ -18,7 +18,6 @@ class CreateAppointmentsTable extends Migration {
 			$table->integer('appointer')->unsigned()->index('fk_appointments_appointer_idx');
 			$table->integer('doctor')->unsigned()->index('fk_appointments_doctor_idx');
 			$table->integer('patient_id')->unsigned()->index('fk_appointments_patients_idx');
-			$table->integer('invoice_id')->unsigned()->nullable();
 			$table->dateTime('date');
 			$table->string('description', 8000)->nullable();
 			$table->timestamps();
