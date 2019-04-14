@@ -39,7 +39,12 @@ class Item extends Eloquent
 		'price' => 'float',
 		'cost' => 'float',
 		'quantity' => 'int',
-		'expiration_date' => 'date'
+		'batch' => 'int'
+	];
+
+	protected $dates = [
+		'purchase_date',
+		'expiration_date'
 	];
 
 	protected $fillable = [
@@ -49,21 +54,24 @@ class Item extends Eloquent
 		'price',
 		'cost',
 		'quantity',
-		'expiration_date'
+		'batch',
+		'purchase_date',
+		'expiration_date',
+		'description'
 	];
 
 	public function brand()
 	{
-		return $this->belongsTo(\App\Brand::class);
+		return $this->belongsTo(\App\Models\Brand::class);
 	}
 
 	public function item_type()
 	{
-		return $this->belongsTo(\App\ItemType::class);
+		return $this->belongsTo(\App\Models\ItemType::class);
 	}
 
 	public function procedures()
 	{
-		return $this->belongsToMany(\App\Procedure::class, 'procedures_x_items', 'items_id', 'procedures_id');
+		return $this->belongsToMany(\App\Models\Procedure::class, 'procedures_items', 'items_id', 'procedures_id');
 	}
 }

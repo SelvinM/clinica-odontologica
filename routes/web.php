@@ -27,10 +27,10 @@ Route::get('/d_citas', 'Doctor\AppointmentController@index')->name('doctor appoi
 Route::get('/d_citas/agregar','Doctor\AppointmentController@create')->name('doctor create appointment');
 Route::get('/d_citas/editar/{appointment}','Doctor\AppointmentController@edit')->name('doctor edit appointment');
 
-//CRUD articulos
-Route::get('/d_articulos', 'Doctor\ItemController@index')->name('doctor items');
-Route::get('/d_articulos/editar/{item}','Doctor\ItemController@edit')->name('doctor edit item');
-Route::get('/d_articulos/agregar','Doctor\ItemController@create')->name('doctor create item');
+//CRUD productos
+Route::get('/d_productos', 'Doctor\ItemController@index')->name('doctor items');
+Route::get('/d_productos/editar/{item}','Doctor\ItemController@edit')->name('doctor edit item');
+Route::get('/d_productos/agregar','Doctor\ItemController@create')->name('doctor create item');
 
 //CRUD pacientes
 Route::get('/d_pacientes', 'Doctor\PatientController@index')->name('doctor patients');
@@ -66,13 +66,13 @@ Route::get('/a_pacientes/historial','Assistant\PatientLogController@index')->nam
 Route::get('/a_pacientes/historial/agregar','Assistant\PatientLogController@create')->name('assistant create patient log');
 Route::get('/a_pacientes/historial/editar/{patient_log}','Assistant\PatientLogController@edit')->name('assistant edit patient log');
 
-//CRUD articulos
-Route::get('/a_articulos', 'Assistant\ItemController@index')->name('assistant items');
-Route::get('/a_articulos/editar/{item}','Assistant\ItemController@edit')->name('assistant edit item');
-Route::get('/a_articulos/agregar','Assistant\ItemController@create')->name('assistant create item');
-Route::post('/a_articulos/guardar','Assistant\ItemController@store')->name('assistant store item');
-Route::put('/a_articulos/actualizar/{item}','Assistant\ItemController@update')->name('assistant update item');
-Route::delete('/a_articulos/eliminar/{item}','Assistant\ItemController@destroy')->name('assistant destroy item');
+//CRUD productos
+Route::get('/a_productos', 'Assistant\ItemController@index')->name('assistant items');
+Route::get('/a_productos/editar/{item}','Assistant\ItemController@edit')->name('assistant edit item');
+Route::get('/a_productos/agregar','Assistant\ItemController@create')->name('assistant create item');
+Route::post('/a_productos/guardar','Assistant\ItemController@store')->name('assistant store item');
+Route::put('/a_productos/actualizar/{item}','Assistant\ItemController@update')->name('assistant update item');
+Route::delete('/a_productos/eliminar/{item}','Assistant\ItemController@destroy')->name('assistant destroy item');
 
 
 //==================================================RUTAS ADMIN================================================
@@ -83,16 +83,11 @@ Route::resource('usuarios','Admin\UserController');
 
 //CRUD tipos de procedimiento
 Route::get('/ad_tipos_procedimiento','Admin\ProcedureTypeController@index')->name('admin procedure types');
-Route::get('/ad_tipos_procedimiento/agregar','Admin\ProcedureController@create')->name('admin create procedure type');
-Route::get('/ad_tipos_procedimiento/editar/{procedure}','Admin\ProcedureController@edit')->name('admin edit procedure type');
-
-//CRUD metodos de pago
-Route::get('/ad_metodos_pagos','Admin\PaymentMethodController@index')->name('admin payment methods');
-Route::get('/ad_metodos_pago/agregar','Admin\PaymentMethodController@create')->name('admin create payment method');
-Route::get('/ad_metodos_pago/editar/{payment}','Admin\PaymentMethodController@edit')->name('admin edit payment method');
-Route::get('/ad_metodos_pago/guardar', 'Admin\PaymentMethodController@store')->name('admin store payment method');
-Route::put('/ad_metodos_pago/actualizar/{payment_method}', 'Admin\PaymentMethodController@update')->name('admin update payment method');
-Route::delete('/ad_metodos_pago/eliminar/{payment_method}', 'Admin\PaymentMethodController@destroy')->name('admin destroy payment method');
+Route::get('/ad_tipos_procedimiento/agregar','Admin\ProcedureTypeController@create')->name('admin create procedure type');
+Route::get('/ad_tipos_procedimiento/editar/{procedure_type}','Admin\ProcedureTypeController@edit')->name('admin edit procedure type');
+Route::get('/ad_tipos_procedimiento/guardar', 'Admin\ProcedureTypeController@store')->name('admin store procedure type');
+Route::put('/ad_tipos_procedimiento/actualizar/{procedure_type}', 'Admin\ProcedureTypeController@update')->name('admin update procedure type');
+Route::delete('/ad_tipos_procedimiento/eliminar/{procedure_type}', 'Admin\ProcedureTypeController@destroy')->name('admin destroy procedure type');
 
 //CRUD marcas
 Route::get('/ad_brands','Admin\BrandController@index')->name('admin brands');
@@ -102,19 +97,12 @@ Route::get('/ad_brands/guardar', 'Admin\BrandController@store')->name('admin sto
 Route::put('/ad_brands/actualizar/{brand}', 'Admin\BrandController@update')->name('admin update brand');
 Route::delete('/ad_brands/eliminar/{brand}', 'Admin\BrandController@destroy')->name('admin destroy brand');
 
-//CRUD tipos de articulo
-Route::get('/ad_tipos_articulo','Admin\ItemTypeController@index')->name('admin item types');
-Route::get('/ad_tipos_articulo/agregar','Admin\ItemTypeController@create')->name('admin create item type');
-Route::get('/ad_tipos_articulo/editar/{item_type}','Admin\ItemTypeController@edit')->name('admin edit item type');
-Route::get('/ad_tipos_articulo/guardar', 'Admin\ItemTypeController@store')->name('admin store item type');
-Route::put('/ad_tipos_articulo/actualizar/{item_type}', 'Admin\ItemTypeController@update')->name('admin update item type');
-Route::delete('/ad_tipos_articulo/eliminar/{item_type}', 'Admin\ItemTypeController@destroy')->name('admin destroy item type');
+//CRUD tipos de producto
+Route::get('/ad_tipos_producto','Admin\ItemTypeController@index')->name('admin item types');
+Route::get('/ad_tipos_producto/agregar','Admin\ItemTypeController@create')->name('admin create item type');
+Route::get('/ad_tipos_producto/editar/{item_type}','Admin\ItemTypeController@edit')->name('admin edit item type');
+Route::get('/ad_tipos_producto/guardar', 'Admin\ItemTypeController@store')->name('admin store item type');
+Route::put('/ad_tipos_producto/actualizar/{item_type}', 'Admin\ItemTypeController@update')->name('admin update item type');
+Route::delete('/ad_tipos_producto/eliminar/{item_type}', 'Admin\ItemTypeController@destroy')->name('admin destroy item type');
 
-//CRUD tipos de seguro
-Route::get('/ad_tipos_seguro','Admin\InsuranceTypeController@index')->name('admin insurance types');
-Route::get('/ad_tipos_seguro/agregar','Admin\InsuranceTypeController@create')->name('admin create insurance type');
-Route::post('/ad_tipos_seguro/guardar','Admin\InsuranceTypeController@store')->name('admin store insurance type');
-Route::get('/ad_tipos_seguro/editar/{insurance_type}','Admin\InsuranceTypeController@edit')->name('admin edit insurance type');
-Route::put('/ad_tipos_seguro/actualizar/{insurance_type}','Admin\InsuranceTypeController@update')->name('admin update insurance type');
-Route::delete('/ad_tipos_seguro/eliminar/{insurance_type}','Admin\InsuranceTypeController@destroy')->name('admin destroy insurance type');
 

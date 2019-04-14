@@ -32,7 +32,8 @@ class ItemType extends Eloquent
 	];
 
 	protected $fillable = [
-		'name'
+		'name',
+		'description'
 	];
 
 	public function items()

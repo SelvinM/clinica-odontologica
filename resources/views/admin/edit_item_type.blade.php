@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{ route('admin item types') }}" class="btn btn-secondary">← Tipos de materiales</a>
+<a href="{{ route('admin item types') }}" class="btn btn-secondary">← Tipos de inventario</a>
 @endsection
 @section('content')
 <div class="container form-sm">
@@ -11,7 +11,7 @@
 					<form class="well form-horizontal" method="post" action="{{route('admin update item type', $item_type->id)}}">
 						@csrf
             			@method('PUT')
-						<legend>Editar tipo de material</legend>
+						<legend>Editar tipo de inventario</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-flask"></i> </span>

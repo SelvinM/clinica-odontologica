@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id',
+        'name', 'email', 'password','role_id','assigned_doctor',
     ];
 
     /**
@@ -47,6 +47,7 @@ class User extends Authenticatable
             ->orWhereHas('role',function($q)use($search){
                 $q->where('name','like','%'.$search.'%');
             });
+            
     }
 
     public function role()
@@ -54,10 +55,6 @@ class User extends Authenticatable
         return $this->belongsTo(\App\Role::class);
     }
 
-    public function invoices()
-    {
-        return $this->hasMany(\App\Invoice::class);
-    }
 
     public function appointments()
     {

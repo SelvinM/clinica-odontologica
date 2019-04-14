@@ -31,10 +31,8 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 class Appointment extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
-	public $incrementing = false;
 
 	protected $casts = [
-		'id' => 'int',
 		'appointer' => 'int',
 		'doctor' => 'int',
 		'patient_id' => 'int'
@@ -51,7 +49,7 @@ class Appointment extends Eloquent
 		'date',
 		'description'
 	];
-
+	
 	public function user()
 	{
 		return $this->belongsTo(\App\Models\User::class, 'doctor');
