@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Appointment;
 
 class HomeController extends Controller
 {
@@ -27,8 +28,11 @@ class HomeController extends Controller
         if(Auth::user()->role_id === 1){
             return redirect()->route('usuarios.index');
         }elseif(Auth::user()->role_id === 2){
+            Appointment::Appointments();
             return view('doctor.dashboard');
+
         }elseif(Auth::user()->role_id === 3){
+            Appointment::Appointments();
             return view('assistant.dashboard');
         }
     }

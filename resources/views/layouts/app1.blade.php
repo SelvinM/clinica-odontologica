@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+ 
   <title>@yield('title')</title>
   <!-- calendario js -->
      <link href="{{ asset('fullcalendar/fullcalendar.min.css') }}" rel='stylesheet' />
@@ -108,7 +108,7 @@
 
   <!-- Menu Toggle Script -->
   <script>
-    $("#menu-toggle").click(function(e) {
+    $("#menu-toggle").click(function(e) { 
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
@@ -145,15 +145,18 @@
       },
       aspectRatio: 2.3,
       locale: 'es',
+      timeFormat: 'h(:mm)A',
       buttonIcons: false, // show the prev/next text
       weekNumbers: true,
     navLinks: true, // can click day/week names to navigate views
     selectable: false,
     selectHelper: true,
     eventRender: function(eventObj, $el) {
+      date = eventObj.start.toLocaleString();
+
       $el.popover({
-        title: "<table><tr><th>"+eventObj.user+"</th></tr></table>",
-        content: "<table><tr><td style='text-align: left;'>"+eventObj.description+"</td></tr><tr><td style='text-align: left;'>"+eventObj.start.toISOString()+"</td></tr></table>",
+        title: "<table><tr><th>"+eventObj.title+"</th></tr></table>",
+        content: "<table><tr><td style='text-align: left;'>"+eventObj.description+"</td></tr></table>",
         trigger: 'hover',
         placement: 'top',
         container: 'body',
@@ -182,42 +185,9 @@
     //  },
       editable: true,
       eventLimit: true, // allow "more" link when too many events
-      events: [
-        {
-          id:1,
-          title: 'sacar muela',
-          user:'Juan Soler',
-          start: '2019-03-16',
-          description: 'description 1, el usuario tal dice que le duele bla bla bla bla',
-          editable: false
-        },
-        {
-          id:2,
-          title: 'endodoncia', 
-          user:'Maria Perez',
-          start: '2019-03-14',
-          description: 'description 2',
-          editable: false
-        }
-        ,
-        {
-          id:3,
-          title: 'limpieza', 
-          user:'Denis Henriquez',
-          start: '2019-03-16',
-          description: 'description 3',
-          editable: false
-        }
-        ,
-        {
-          id:4,
-          title: 'limpieza, endodoncia', 
-          user:'Selvin Mayes',
-          start: '2019-03-16',
-          description: 'description 4',
-          editable: false
-        }
-      ]
+      events: {
+        url: "{{ asset('fullcalendar/demos/php/get-events.php') }}",
+      }
     });
 
     

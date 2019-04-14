@@ -5,8 +5,9 @@
  * Date: Mon, 01 Apr 2019 00:54:25 +0000.
  */
 
-namespace App\Models;
+namespace App;
 
+use Auth;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -49,19 +50,35 @@ class Appointment extends Eloquent
 		'date',
 		'description'
 	];
+
+	public static function Appointments(){
+		if (Auth::user()->role_id==2) {
+			$appointments = Appointment::all()->where('doctor',Auth::id());
+		}else{
+			$appointments = Appointment::all()->where('appointer',Auth::id());
+		}
+            
+            #$json_arr=array($appointments);
+            foreach ($appointments as $appointment) {
+                $json_arr[]=array("id"=>$appointment->id,"title"=>$appointment->patient->name,"description"=>$appointment->description,"start"=>"".$appointment->date."","editable"=>false);
+            } 
+
+            file_get_contents(public_path('/fullcalendar/demos/json/events.json'));
+            file_put_contents(public_path('/fullcalendar/demos/json/events.json'), json_encode($json_arr));
+	}
 	
 	public function user()
 	{
-		return $this->belongsTo(\App\Models\User::class, 'doctor');
+		return $this->belongsTo(\App\User::class, 'doctor');
 	}
 
 	public function patient()
 	{
-		return $this->belongsTo(\App\Models\Patient::class);
+		return $this->belongsTo(\App\Patient::class);
 	}
 
 	public function procedures()
 	{
-		return $this->hasMany(\App\Models\Procedure::class);
+		return $this->hasMany(\App\Procedure::class);
 	}
 }
