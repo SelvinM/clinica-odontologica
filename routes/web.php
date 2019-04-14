@@ -31,6 +31,9 @@ Route::get('/d_citas/editar/{appointment}','Doctor\AppointmentController@edit')-
 Route::get('/d_articulos', 'Doctor\ItemController@index')->name('doctor items');
 Route::get('/d_articulos/editar/{item}','Doctor\ItemController@edit')->name('doctor edit item');
 Route::get('/d_articulos/agregar','Doctor\ItemController@create')->name('doctor create item');
+Route::post('/d_articulos/guardar','Doctor\ItemController@store')->name('doctor store item');
+Route::put('/d_articulos/actualizar/{item}','Doctor\ItemController@update')->name('doctor update item');
+Route::delete('/d_articulos/eliminar/{item}','Doctor\ItemController@destroy')->name('doctor destroy item');
 
 //CRUD pacientes
 Route::get('/d_pacientes', 'Doctor\PatientController@index')->name('doctor patients');

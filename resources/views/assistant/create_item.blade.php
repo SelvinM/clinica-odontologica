@@ -21,6 +21,17 @@
 			                <span>{{ $errors->first('name') }}</span>
 			            </div>
 			            @endif
+			            <div class="form-group input-group">
+  							<div class="input-group-prepend">
+    							<span class="input-group-text"><i class="fa  fa-info-circle"></i> </span>
+  							</div>
+  							<textarea class="form-control" name="description" placeholder="Descripcion (opcional)" aria-label="With textarea">{{ old('description') }}</textarea>
+						</div>
+						@if($errors->has('description'))
+			            <div class="alert alert-danger">
+			                <span>{{ $errors->first('description') }}</span>
+			            </div>
+			            @endif
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
@@ -53,17 +64,7 @@
 			                <span>{{ $errors->first('brand_id') }}</span>
 			            </div>
 			            @endif
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa  fa-dollar-sign"></i> </span>
-							</div>
-							<input name="price" class="form-control" placeholder="Precio" value="{{ old('price') }}" type="text">
-						</div>
-						@if($errors->has('price'))
-			            <div class="alert alert-danger">
-			                <span>{{ $errors->first('price') }}</span>
-			            </div>
-			            @endif
+						
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-dollar-sign"></i> </span>
@@ -84,6 +85,29 @@
 						@if($errors->has('quantity'))
 			            <div class="alert alert-danger">
 			                <span>{{ $errors->first('quantity') }}</span>
+			            </div>
+			            @endif
+			            <div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa  fa-lock"></i> </span>
+							</div>
+							<input name="batch" class="form-control" placeholder="Lote" value="{{ old('batch') }}" type="text">
+						</div>
+						@if($errors->has('batch'))
+			            <div class="alert alert-danger">
+			                <span>{{ $errors->first('batch') }}</span>
+			            </div>
+			            @endif
+							<h5>Fecha de compra:</h5>
+						<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+								</div>
+								<input type="date" name="purchase_date" value="{{ old('purchase_date') }}" class="form-control">
+						</div>
+						@if($errors->has('purchase_date'))
+			            <div class="alert alert-danger">
+			                <span>{{ $errors->first('purchase_date') }}</span>
 			            </div>
 			            @endif
 							<h5>Fecha de caducidad:</h5>

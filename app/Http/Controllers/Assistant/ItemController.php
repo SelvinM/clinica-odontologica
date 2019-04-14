@@ -19,11 +19,11 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //$search = $request->input('search');
+        $search = $request->input('search');
         $items = Item::orderBy('name','asc')
-            //->search($search)
+            ->search($search)
             ->paginate(20);
         return view('assistant.items',compact('items','search'));
     }
@@ -52,10 +52,15 @@ class ItemController extends Controller
                             'brand_id'=>$request->input('brand_id'),
                             'item_type_id'=>$request->input('item_type_id'),
                             'name'=>$request->input('name'),
-                            'price'=>$request->input('price'),
                             'cost'=>$request->input('cost'),
                             'quantity'=>$request->input('quantity'),
-                            'expiration_date'=>$request->input('expiration_date')]);
+                            'expiration_date'=>$request->input('expiration_date'),
+                            'purchase_date'=>$request->input('purchase_date'),
+                            'description'=>$request->input('description'),
+                            'batch'=>$request->input('batch')
+
+
+                        ]);
                             
         $item->save();
         return redirect()->route('assistant items');

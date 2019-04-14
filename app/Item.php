@@ -39,7 +39,10 @@ class Item extends Eloquent
 		'price' => 'float',
 		'cost' => 'float',
 		'quantity' => 'int',
-		'expiration_date' => 'date'
+		'expiration_date' => 'date',
+        'batch' => 'varchar',
+        'purchase_date' => 'date',
+        'description' => 'varchar'
 	];
 
 	protected $fillable = [
@@ -49,8 +52,23 @@ class Item extends Eloquent
 		'price',
 		'cost',
 		'quantity',
-		'expiration_date'
+		'expiration_date',
+        'batch',
+        'purchase_date',
+        'description'
 	];
+
+
+	public function scopeSearch($query, $search){
+        return $query
+            ->where('name','like','%'.$search.'%')
+            ->orWhere('description','like','%'.$search.'%')
+            ->orWhereHas('brand',function($q)use($search){
+                $q->where('name','like','%'.$search.'%');})
+            ->orWhereHas('item_type',function($q)use($search){
+                $q->where('name','like','%'.$search.'%');
+            });
+    }
 
 	public function brand()
 	{

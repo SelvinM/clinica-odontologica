@@ -35,18 +35,20 @@ class Item extends Eloquent
 	protected $casts = [
 		'brand_id' => 'int',
 		'item_type_id' => 'int',
-		'price' => 'float',
 		'cost' => 'float',
-		'quantity' => 'int'
+		'quantity' => 'int',
 	];
 
 	protected $fillable = [
 		'brand_id',
 		'item_type_id',
 		'name',
-		'price',
 		'cost',
-		'quantity'
+		'quantity',
+		'expiration_date',
+		'batch',
+		'purchase_date',
+		'description',
 	];
 
 	public function brand()
