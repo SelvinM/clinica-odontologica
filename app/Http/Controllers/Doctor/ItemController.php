@@ -2,24 +2,32 @@
 
 namespace App\Http\Controllers\Doctor;
 
+
+
 use App\Item;
 use App\ItemType;
 use App\Brand;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\ItemStoreRequest;
+use App\Http\Requests\ItemUpdateRequest;
+use App\Http\Controllers\Controller; 
 
 class ItemController extends Controller
 {
-    /**
+    /**  
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('doctor.items');
+        $search = $request->input('search');
+        $items = Item::orderBy('name','asc')
+            ->search($search)
+            ->paginate(20);
+        return view('doctor.items',compact('items','search'));
     }
-
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -38,9 +46,24 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemStoreRequest $request)
     {
-        //
+        $item = new Item([
+                            'brand_id'=>$request->input('brand_id'),
+                            'item_type_id'=>$request->input('item_type_id'),
+                            'name'=>$request->input('name'),
+                            'cost'=>$request->input('cost'),
+                            'quantity'=>$request->input('quantity'),
+                            'expiration_date'=>$request->input('expiration_date'),
+                            'purchase_date'=>$request->input('purchase_date'),
+                            'description'=>$request->input('description'),
+                            'batch'=>$request->input('batch')
+
+
+                        ]);
+                            
+        $item->save();
+        return redirect()->route('doctor items');
     }
 
     /**
@@ -51,6 +74,7 @@ class ItemController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**
@@ -61,8 +85,10 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-
-        return view('doctor.edit_item');
+        $item=Item::find($id);
+        $types_items=ItemType::all();
+        $brands=Brand::all();
+        return view('doctor.edit_item',compact('item','types_items','brands'));
     }
 
     /**
@@ -72,9 +98,10 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(ItemUpdateRequest $request, Item $item)
+    {   
+        $item->update($request->except(['']));
+        return redirect()->route('doctor items');
     }
 
     /**
@@ -83,8 +110,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Item $item)
     {
-        //
+        $item->delete();
+        return redirect()->route('doctor items');
     }
 }

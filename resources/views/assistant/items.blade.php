@@ -14,7 +14,7 @@
 		
 		<div class="col">
             <form method="get">
-                <input type="text" id="search" name="search" placeholder="Buscar...">
+                <input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar..." autofocus="">
                 <input type="submit" style="display: none" />
             </form>
         </div>
@@ -26,11 +26,13 @@
 					<th>Material</th>
 					<th>Tipo</th>
 					<th>Marca</th>
-					<th>Precio</th>
+					<th>Lote</th>
 					<th>Costo</th>
 					<th>Cantidad</th>
-					<th>Fecha de agregación</th>
-					<th>Fecha de caducidad</th>
+					<th>Descripción</th>
+					<th>Fecha agregación</th>
+					<th>Fecha compra</th>
+					<th>Fecha caducidad</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
@@ -41,10 +43,14 @@
 						<td>{{ $item->name }}</td>
 						<td>{{ $item->item_type->name }}</td>
 						<td>{{ $item->brand->name }}</td>
-						<td>{{ $item->price }}</td>
+						<td>{{ $item->batch }}</td>
 						<td>{{ $item->cost }}</td>
 						<td>{{ $item->quantity }}</td>
+						<td>{{ $item->description }}</td>
 						<td>{{ $item->created_at }}</td>
+						<td>@if(isset($item->purchase_date))
+								{{date( 'Y-m-d', strtotime($item->purchase_date))}}
+							@endif</td>
 						<td>@if(isset($item->expiration_date))
 								{{date( 'Y-m-d', strtotime($item->expiration_date))}}
 							@endif
