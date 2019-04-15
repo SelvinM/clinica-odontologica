@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration {
 			$table->string('name', 45);
 			$table->decimal('cost', 10);
 			$table->integer('quantity');
-			$table->string('batch',12);
+			$table->string('batch', 12);
 			$table->dateTime('purchase_date')->nullable();
 			$table->dateTime('expiration_date')->nullable();
 			$table->string('description', 500)->nullable();
