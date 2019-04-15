@@ -9,23 +9,27 @@
 			<tr>
 				<td>
 					<form class="well form-horizontal">
+					@csrf
+					@method('PUT') 
 						<fieldset>
 							<legend>Editar cita</legend>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
-								<select class="form-control" >
-									<option selected="">Enrique Flores</option>
-									<option>Mario Molina</option>
-									<option>Maria Perez</option>
-								</select>
+								<input name="name" class="form-control"  type="text">
+							</div>
+							<div class="form-group input-group">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text"><i class="fa  fa-info-circle"></i> </span>
+  								</div>
+  								<textarea class="form-control" name="description" placeholder="Descripcion cita (opcional)"  aria-label="With textarea">{{ old('description') }}</textarea>
 							</div>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
 								</div>
-								<input type="datetime-local" name="" value="2018-06-12T19:30" class="form-control">
+								<input type="datetime-local" name="date" value="2018-06-12T19:30" class="form-control">
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block"> Editar  </button>

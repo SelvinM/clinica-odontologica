@@ -26,6 +26,7 @@ Auth::routes();
 Route::get('/d_citas', 'Doctor\AppointmentController@index')->name('doctor appointments');
 Route::get('/d_citas/agregar','Doctor\AppointmentController@create')->name('doctor create appointment');
 Route::get('/d_citas/editar/{appointment}','Doctor\AppointmentController@edit')->name('doctor edit appointment');
+Route::delete('/d_citas/eliminar/{cita}', 'Doctor\AppointmentController@destroy')->name('doctor destroy appointment');
 
 //CRUD productos
 Route::get('/d_productos','Doctor\ItemController@index')->name('doctor items');

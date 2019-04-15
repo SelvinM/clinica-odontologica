@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers\Doctor;
 
+use App\User;
+use App\Patient;
+use App\Appointment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AppointmentController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource. 
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('doctor.appointments');
+        #$search = $request->input('search');
+        $appointments = Appointment::orderBy('date','asc')
+            #->search($search)
+            ->paginate(20);
+        return view('doctor.appointments',compact('appointments','search'));
     }
 
     /**
@@ -78,8 +85,10 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
-        //
+        $appointment = Appointment::find($id);
+        $appointment->delete();
+        return redirect()->route('doctor appointments');
     }
 }

@@ -11,10 +11,17 @@
 					<form class="well form-horizontal">
 						<fieldset>
 							<legend>Registrar nueva cita</legend>
+							@csrf
 							<div class="form-group input-group">
   								<a class="btn btn-success btn-block" role="button" href="{{ route('doctor create patient') }}" aria-label="Left Align"><span <i class="fa fa-user-plus"></span> Agregar paciente</a>
   							</div>
   							<h6 class="center">O</h6>
+  							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa  fa-search"></i> </span>
+								</div>
+									<input name="filtro" class="form-control" placeholder="Filtrar pacientes por nombre, dirección, telefono"  type="text">
+							</div>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -27,10 +34,16 @@
 								</select>
 							</div>
 							<div class="form-group input-group">
+  								<div class="input-group-prepend">
+    								<span class="input-group-text"><i class="fa  fa-info-circle"></i> </span>
+  								</div>
+  								<textarea class="form-control" name="description" placeholder="Descripcion cita (opcional)"  aria-label="With textarea">{{ old('description') }}</textarea>
+							</div>
+							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
 								</div>
-								<input type="datetime-local" name="" class="form-control">
+								<input type="datetime-local" name="date" class="form-control">
 							</div>
 
 							<div class="form-group">

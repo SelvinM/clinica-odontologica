@@ -13,7 +13,7 @@
 		</div>
 		<div class="col">
             <form method="get">
-                <input type="text" id="search" name="search" placeholder="Buscar...">
+                <input type="text" id="search" value="{{ isset($search) ? $search : ''}}" autofocus="" name="search" placeholder="Buscar...">
                 <input type="submit" style="display: none" />
             </form>
         </div>
@@ -25,81 +25,34 @@
 					<th>Registrada por</th>
 					<th>Paciente</th>
 					<th>E-mail del paciente</th>
-					<th>Fecha y hora</th>
-					<th>Estado</th>
+					<th>Descripción</th>
+					<th>Fecha registro</th>
+					<th>Fecha cita</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Pendiente</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('doctor edit appointment',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Pendiente</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('doctor edit appointment',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Pendiente</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('doctor edit appointment',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td>Pendiente</td>
-					<td>
-						<a class="btn-edit btn btn-success" href="{{ route('doctor edit appointment',1) }}"></a>
-					</td>
-					<td>
-						<form method="post" action="">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete btn btn-danger"></button>
-						</form>
-					</td>
-				</tr>
+				@foreach($appointments as $appointment)
+					<tr>
+						<td>{{$appointment->appointer}}</td>
+						<td>{{$appointment->patient->name}}</td>
+						<td>{{$appointment->patient->email}}</td>
+						<td>{{$appointment->description}}</td>
+						<td>{{$appointment->created_at}}</td>
+						<td>{{$appointment->date}}</td>
+						<td>
+							<a class="btn-edit btn btn-success" href="{{ route('doctor edit appointment',$appointment->id) }}"></a>
+						</td>
+						<td>
+							<form method="post" action="{{ route('doctor destroy appointment',$appointment->id) }}">
+								@csrf
+								@method('DELETE')
+								<button type="submit" class="btn-delete btn btn-danger"></button>
+							</form>
+						</td>
+					</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>

@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div class="container form-sm">
-	<table class="table table-striped"> 
+	<table class="table table-striped">  
 		<tbody>
 			<tr>
 				<td>

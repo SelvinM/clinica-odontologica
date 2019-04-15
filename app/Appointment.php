@@ -4,7 +4,7 @@
  * Created by Illiminate Model.
  * Date: Mon, 01 Apr 2019 00:54:25 +0000.
  */
-
+ 
 namespace App;
 
 use Auth;
