@@ -34,8 +34,8 @@ class Appointment extends Eloquent
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'appointer' => 'int',
-		'doctor' => 'int',
+		'appointe_idr' => 'int',
+		'doctor_id' => 'int',
 		'patient_id' => 'int'
 	];
 
@@ -44,8 +44,8 @@ class Appointment extends Eloquent
 	];
 
 	protected $fillable = [
-		'appointer',
-		'doctor',
+		'appointer_id',
+		'doctor_id',
 		'patient_id',
 		'date',
 		'description'
@@ -67,10 +67,16 @@ class Appointment extends Eloquent
             file_put_contents(public_path('/fullcalendar/demos/json/events.json'), json_encode($json_arr));
 	}
 	
-	public function user()
+	public function appointer()
 	{
-		return $this->belongsTo(\App\User::class, 'doctor');
+		return $this->belongsTo(\App\User::class);
 	}
+
+	public function doctor()
+	{
+		return $this->belongsTo(\App\User::class);
+	}
+
 
 	public function patient()
 	{

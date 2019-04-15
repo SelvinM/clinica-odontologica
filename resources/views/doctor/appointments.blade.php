@@ -35,7 +35,7 @@
 			<tbody>
 				@foreach($appointments as $appointment)
 					<tr>
-						<td>{{$appointment->appointer}}</td>
+						<td>{{$appointment->appointer->name}}</td>
 						<td>{{$appointment->patient->name}}</td>
 						<td>{{$appointment->patient->email}}</td>
 						<td>{{$appointment->description}}</td>
