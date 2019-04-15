@@ -7,9 +7,9 @@
  
 namespace App;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model as Eloquent;
-
+use DB;
 /**
  * Class Appointment
  * 
@@ -50,17 +50,28 @@ class Appointment extends Eloquent
 		'date',
 		'description'
 	];
-
+ 
 	public static function Appointments(){
 		if (Auth::user()->role_id==2) {
-			$appointments = Appointment::all()->where('doctor',Auth::id());
+			$appointments = DB::table('appointments')
+			->leftjoin('patients','appointments.patient_id','=','patients.id')
+            ->where('appointments.doctor_id', '=', Auth::user()->id)
+             ->select('appointments.*', 'patients.name as namepatient')
+            ->get();
+
+
 		}else{
-			$appointments = Appointment::all()->where('appointer',Auth::id());
+			$appointments = DB::table('appointments')
+			->leftjoin('patients','appointments.patient_id','=','patients.id')
+			->leftjoin('users','appointments.doctor_id','=','users.assigned_doctor')
+            ->where('users.id', '=', Auth::user()->id)
+             ->select('appointments.*', 'patients.name as namepatient')
+            ->get();
 		}
             
             #$json_arr=array($appointments);
             foreach ($appointments as $appointment) {
-                $json_arr[]=array("id"=>$appointment->id,"title"=>$appointment->patient->name,"description"=>$appointment->description,"start"=>"".$appointment->date."","editable"=>false);
+                $json_arr[]=array("id"=>$appointment->id,"title"=>$appointment->namepatient,"description"=>$appointment->description,"start"=>"".$appointment->date."","editable"=>false);
             } 
 
             file_get_contents(public_path('/fullcalendar/demos/json/events.json'));
