@@ -40,7 +40,8 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('admin.create_user',compact('roles'));
+        $doctors = User::where('role_id', 2)->get();
+        return view('admin.create_user',compact('roles','doctors'));
     }
 
     /**
@@ -57,6 +58,7 @@ class UserController extends Controller
         if($user_deleted == NULL){
             $user = new User([
                                  'role_id'=>$role_id,
+                                 'assigned_doctor_id'=>$request->input('assigned_doctor_id'),
                                  'name'=>$request->input('name'),
                                  'email'=>$request->input('email'),
                                  'password'=>Hash::make($request->input('password'))]);

@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id','assigned_doctor',
+        'name', 'email', 'password','role_id','assigned_doctor_id',
     ];
 
     /**
@@ -59,6 +59,10 @@ class User extends Authenticatable
     public function appointments()
     {
         return $this->hasMany(\App\Appointment::class);
+    }
+
+    public function assigned_doctor(){
+        return $this->belongsTo(\App\User::class);
     }
 
 }

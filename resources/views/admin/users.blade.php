@@ -25,6 +25,7 @@
 					<th>Nombre</th>
 					<th>Email</th>
 					<th>Rol</th>
+					<th>Doctor asignado</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
@@ -36,6 +37,13 @@
 					<td>{{ $user->name }}</td>
 					<td>{{ $user->email }}</td>
 					<td>{{ $user->role->name }}</td>
+					<td>
+						@if($user->role_id != 3)
+						--- N/A ---
+						@else
+						{{ $user->assigned_doctor->name }}
+						@endif
+					</td>
 					<td>
 						<a class="btn-edit btn btn-success" href="{{route('usuarios.edit',$user->id)}}"></a>
 					</td>

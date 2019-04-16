@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             'role_id' => 3,
-            'assigned_doctor' => 2,
+            'assigned_doctor_id' => 2,
             'name' => 'Assistant',
             'email' => 'assistant@email.com',
             'password' => bcrypt('secret'), // secret
