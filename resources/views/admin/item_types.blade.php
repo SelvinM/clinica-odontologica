@@ -24,7 +24,8 @@
 			<thead>
 				<tr>
 					<th width="45px">#</th>
-					<th>Tipo</th>									
+					<th width="200px">Tipo</th>
+					<th>Descripción</th>									
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
@@ -34,6 +35,7 @@
 				<tr>
 					<td>{{$loop->iteration}}</td>
 					<td>{{$item_type->name}}</td>
+					<td><a href="">mostrar</a></td>
 					<td>
 						
 						<a class="btn-edit btn btn-success" href="{{ route('admin edit item type',$item_type->id) }}"></a>

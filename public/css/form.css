@@ -38,3 +38,10 @@
     resize: none;
     min-height: 300px;
 }
+
+label{
+    color: #696969;
+    margin-left: 40px;
+    float: left;
+}
+
