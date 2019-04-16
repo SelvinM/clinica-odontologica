@@ -10,9 +10,9 @@
 				<td>
 					<form class="well form-horizontal">
 						<fieldset>
-							<legend>Descripción y notas de Enrique Flores</legend>
+							<legend>Descripción y notas de {{ $patient->name }}</legend>
 							<div class="form-group input-group">
-								<textarea class="form-control form-textarea" readonly="">hola</textarea>
+								<textarea class="form-control form-textarea" readonly="">{{ $patient->description }}</textarea>
 							</div>
 						</fieldset>
 					</form>

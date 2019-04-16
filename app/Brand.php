@@ -32,7 +32,7 @@ class Brand extends Eloquent
 	];
 
 	protected $fillable = [
-		'name'
+		'name',
 	];
 
 	public function items()

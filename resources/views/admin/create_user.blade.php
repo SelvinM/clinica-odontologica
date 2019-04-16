@@ -3,7 +3,7 @@
 <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">← Usuarios</a>
 @endsection
 @section('content')
-<div class="container form-sm">
+<div class="container form-md">
   <table class="table table-striped">
     <tbody>
       <tr>
@@ -49,7 +49,11 @@
               <span>{{ $errors->first('role_id') }}</span>
             </div>
             @endif
+            @if( old('role_id') == $role->id )
+            <div id="assigned-doctor-div" style="display: block;">
+            @else
             <div id="assigned-doctor-div" style="display: none;">
+            @endif
               <div class="form-group input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user-md"></i> </span>
@@ -94,7 +98,6 @@
     </tbody>
   </table>
 </div>
-
 <script>
 function showHide(elem) {
 if(elem.value == 3) {

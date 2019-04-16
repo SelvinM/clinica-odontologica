@@ -6,7 +6,7 @@
 @section('bg procedure types link','bg-light')  
 {{-- @section('bg payment methods link','bg-active') @section('payment methods selected','→') --}}
 @section('content')
-<div class="table-md center">
+<div class="table-sm center">
 	<div class="table-top row">
 		<div class="col">
 			<a class="btn btn-primary btn-add" href="{{ route('admin create brand') }}"></a>

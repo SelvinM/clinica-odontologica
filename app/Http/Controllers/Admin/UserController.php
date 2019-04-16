@@ -94,7 +94,8 @@ class UserController extends Controller
     {
         $user=User::find($id);
         $roles = Role::all();
-        return view('admin.edit_user',compact('user','roles'));
+        $doctors = User::where('id','!=',$user->id)->where('role_id', 2)->get();
+        return view('admin.edit_user',compact('user','roles','doctors'));
     }
 
     /**
