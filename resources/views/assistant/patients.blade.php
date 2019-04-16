@@ -44,7 +44,10 @@
 						<td>{{ $patient->home_address }}</td>
 						<td>{{ $patient->gender->name }}</td>
 						<td>{{ $patient->blood_type->name}}</td>
-						<td>{{ $patient->birthdate}}</td>
+						<td>
+						@if(isset($patient->birthdate))
+								{{date( 'd-m-Y', strtotime($patient->birthdate))}}
+							@endif</td>
 						<td><a href="{{ route('assistant patient notes',$patient->id) }}">mostrar</a></td>
 						<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
 						<td>

@@ -25,7 +25,8 @@ class PatientController extends Controller
     public function index(Request $request)
     {
         //$search = $request->input('search');
-        $patients = Patient::orderBy('name','asc')
+         $id_doctor = DB::table('users')->select('assigned_doctor_id')->where('id', '=', Auth::id())->first();
+        $patients = Patient::orderBy('name','asc')->where("doctor_id","=",$id_doctor->assigned_doctor_id)
             //->search($search)
             ->paginate(20);
         return view('assistant.patients', compact('patients','search'));
@@ -40,7 +41,7 @@ class PatientController extends Controller
     {
         $genders=Gender::all();
         $blood_types=BloodType::all();
-        $id_doctor = DB::table('users')->select('assigned_doctor')->where('id', '=', Auth::id())->first();
+        $id_doctor = DB::table('users')->select('assigned_doctor_id')->where('id', '=', Auth::id())->first();
         return view('assistant.create_patient',compact('blood_types','genders','id_doctor'));
     }
 
@@ -57,10 +58,10 @@ class PatientController extends Controller
                             'blood_type_id'=>$request->input('blood_type_id'),
                             'description'=>$request->input('description'),
                             'name'=>$request->input('name'),
+                            'email'=>$request->input('email'),
                             'home_address'=>$request->input('home_address'),
                             'birthdate'=>$request->input('birthdate'),
-                            'phone'=>$request->input('phone'),
-                            'email'=>$request->input('email'),
+                            'phone'=>$request->input('phone'),                            
                             'doctor_id'=>$request->input('id_doctor')]);
                             
         $patient->save();
@@ -79,7 +80,7 @@ class PatientController extends Controller
         $patient=Patient::find($id);
         $blood_types=BloodType::all();
         $genders=Gender::all();
-        return view('assistant patient notes',compact('patient','blood_types','genders'));
+        return view('assistant.patient_notes',compact('patient','blood_types','genders'));
     }
 
     /**

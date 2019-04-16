@@ -11,7 +11,7 @@
 					<form class="well form-horizontal"method="post" action="{{ route('assistant store patient') }}"> @csrf
 						<fieldset>
 							<legend>Crear perfil de paciente</legend>
-							<input name="id_doctor" class="form-control" value="{{$id_doctor->assigned_doctor}}{{ old('id_doctor') }}" type="hidden">
+							<input name="id_doctor" class="form-control" value="{{$id_doctor->assigned_doctor_id}}" type="hidden">
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -48,6 +48,7 @@
 			           		<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+									<span class="input-group-text">Fecha de nacimiento</span>
 								</div>
 								<input name="birthdate" class="form-control" placeholder="Fecha de nacimiento" value="{{ old('birthdate') }}" type="date">
 							</div>
