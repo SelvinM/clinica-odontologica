@@ -13,7 +13,7 @@
             		@method('PUT')
 						<fieldset>
 							<legend>Editar perfil de paciente</legend>
-							<input name="id_doctor" class="form-control" placeholder="Nombre completo" value="{{$patient->doctor_id}}" type="hidden">
+							<input name="id_doctor" class="form-control" value="{{$patient->doctor_id}}" type="hidden">
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>

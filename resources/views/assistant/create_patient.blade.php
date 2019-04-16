@@ -11,7 +11,7 @@
 					<form class="well form-horizontal"method="post" action="{{ route('assistant store patient') }}"> @csrf
 						<fieldset>
 							<legend>Crear perfil de paciente</legend>
-							<input name="id_doctor" class="form-control" placeholder="Nombre completo" value="{{$id_doctor->assigned_doctor}}{{ old('email') }}" type="hidden">
+							<input name="id_doctor" class="form-control" value="{{$id_doctor->assigned_doctor}}{{ old('id_doctor') }}" type="hidden">
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
