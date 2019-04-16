@@ -34,7 +34,6 @@ class Patient extends Eloquent
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'insurance_type_id' => 'int',
 		'gender_id' => 'int',
 		'blood_type_id' => 'float',
 		'description' => 'VARCHAR',
@@ -47,7 +46,6 @@ class Patient extends Eloquent
 	];
 
 	protected $fillable = [
-		'insurance_type_id',
 		'gender_id',
 		'blood_type_id',
 		'description',
@@ -58,12 +56,7 @@ class Patient extends Eloquent
 		'phone',
 		'doctor_id'
 	];
-
-	public function insurance_type()
-	{
-		return $this->belongsTo(\App\InsuranceType::class);
-	}
-
+	
 	public function blood_type()
 	{
 		return $this->belongsTo(\App\BloodType::class);
