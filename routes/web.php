@@ -26,7 +26,10 @@ Auth::routes();
 Route::get('/d_citas', 'Doctor\AppointmentController@index')->name('doctor appointments');
 Route::get('/d_citas/agregar','Doctor\AppointmentController@create')->name('doctor create appointment');
 Route::get('/d_citas/editar/{appointment}','Doctor\AppointmentController@edit')->name('doctor edit appointment');
-Route::delete('/d_citas/eliminar/{cita}', 'Doctor\AppointmentController@destroy')->name('doctor destroy appointment');
+Route::post('/d_citas/guardar','Doctor\AppointmentController@store')->name('doctor store appointment');
+Route::put('/d_citas/actualizar/{appointment}', 'Doctor\AppointmentController@update')->name('doctor update appointment');
+Route::delete('/d_citas/eliminar/{appointment}', 'Doctor\AppointmentController@destroy')->name('doctor destroy appointment');
+
 
 //CRUD productos
 Route::get('/d_productos','Doctor\ItemController@index')->name('doctor items');
@@ -55,6 +58,9 @@ Route::get('/d_pacientes/historial/agregar','Doctor\PatientLogController@create'
 Route::get('/a_citas', 'Assistant\AppointmentController@index')->name('assistant appointments');
 Route::get('/a_citas/agregar','Assistant\AppointmentController@create')->name('assistant create appointment');
 Route::get('/a_citas/editar/{appointment}','Assistant\AppointmentController@edit')->name('assistant edit appointment');
+Route::post('/a_citas/guardar','Assistant\AppointmentController@store')->name('assistant store appointment');
+Route::put('/a_citas/actualizar/{appointment}', 'Assistant\AppointmentController@update')->name('assistant update appointment');
+Route::delete('/a_citas/eliminar/{appointment}', 'Assistant\AppointmentController@destroy')->name('assistant destroy appointment');
 
 //CRUD pacientes
 Route::get('/a_pacientes', 'Assistant\PatientController@index')->name('assistant patients');

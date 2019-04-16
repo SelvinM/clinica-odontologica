@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Doctor;
 
 use App\User;
-use App\Patient;
+use App\Patient; 
 use App\Appointment;
 use Illuminate\Http\Request;
+use App\Http\Requests\AppointmentStoreRequest;
+use App\Http\Requests\AppointmentUpdateRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class AppointmentController extends Controller
@@ -15,11 +18,12 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        #$search = $request->input('search');
+        $search = $request->input('search');
         $appointments = Appointment::orderBy('date','asc')
-            #->search($search)
+            ->search($search)
+            ->where('doctor_id', Auth::user()->id)
             ->paginate(20);
         return view('doctor.appointments',compact('appointments','search'));
     }
@@ -31,7 +35,8 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('doctor.create_appointment');
+        $patients = Patient::paginate(10);
+        return view('doctor.create_appointment',compact('patients'));
     }
 
     /**
@@ -40,9 +45,19 @@ class AppointmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AppointmentStoreRequest $request)
     {
-        //
+            $appointment = new Appointment([
+                            'appointer_id'=>Auth::user()->id,
+                            'doctor_id'=>Auth::user()->id,
+                            'patient_id'=>$request->input('patient_id'),
+                            'date'=>$request->input('date'),
+                            'description'=>$request->input('description')
+
+                        ]);
+                            
+        $appointment->save();
+        return redirect()->route('doctor appointments');
     }
 
     /**
@@ -64,7 +79,8 @@ class AppointmentController extends Controller
      */
     public function edit($id)
     {
-        return view('doctor.edit_appointment');
+        $appointment=Appointment::find($id);
+        return view('doctor.edit_appointment',compact('appointment'));
     }
 
     /**
@@ -74,9 +90,10 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AppointmentUpdateRequest $request, Appointment $appointment)
     {
-        //
+        $appointment->update($request->except(['']));
+        return redirect()->route('doctor appointments');
     }
 
     /**

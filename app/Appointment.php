@@ -34,13 +34,13 @@ class Appointment extends Eloquent
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'appointe_idr' => 'int',
+		'appointer_id' => 'int',
 		'doctor_id' => 'int',
 		'patient_id' => 'int'
 	];
 
 	protected $dates = [
-		'date'
+		'date'=>'datetime'
 	];
 
 	protected $fillable = [
@@ -50,12 +50,22 @@ class Appointment extends Eloquent
 		'date',
 		'description'
 	];
+
+	public function scopeSearch($query, $search){
+        return $query
+            ->where('date','like','%'.$search.'%')
+            ->orWhere('description','like','%'.$search.'%')
+            ->orWhereHas('patient',function($q)use($search){
+                $q->where('name','like','%'.$search.'%');
+            });
+    }
  
 	public static function Appointments(){
 		if (Auth::user()->role_id==2) {
 			$appointments = DB::table('appointments')
 			->leftjoin('patients','appointments.patient_id','=','patients.id')
             ->where('appointments.doctor_id', '=', Auth::user()->id)
+            ->whereNull('appointments.deleted_at')
              ->select('appointments.*', 'patients.name as namepatient')
             ->get();
 
@@ -65,6 +75,7 @@ class Appointment extends Eloquent
 			->leftjoin('patients','appointments.patient_id','=','patients.id')
 			->leftjoin('users','appointments.doctor_id','=','users.assigned_doctor')
             ->where('users.id', '=', Auth::user()->id)
+            ->whereNull('appointments.deleted_at')
              ->select('appointments.*', 'patients.name as namepatient')
             ->get();
 		}

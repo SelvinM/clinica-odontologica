@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Doctor;
 
 
 
-use App\Item;
+use App\Item; 
 use App\ItemType;
 use App\Brand;
 use Illuminate\Http\Request;
@@ -58,7 +58,7 @@ class ItemController extends Controller
                             'purchase_date'=>$request->input('purchase_date'),
                             'description'=>$request->input('description'),
                             'batch'=>$request->input('batch')
-
+ 
 
                         ]);
                             

@@ -9,7 +9,7 @@ class ItemStoreRequest extends FormRequest
     public function authorize()
     {
         return true;
-    }
+    } 
 
     public function rules()
     {

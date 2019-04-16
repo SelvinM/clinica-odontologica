@@ -7,7 +7,7 @@
 	<table class="table table-striped">  
 		<tbody>
 			<tr>
-				<td>
+				<td> 
 					<form class="well form-horizontal" method="post" action="{{ route('doctor store item') }}"> @csrf
 						<legend>Registrar nuevo material</legend>
 						<div class="form-group input-group">
