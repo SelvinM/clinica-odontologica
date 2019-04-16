@@ -69,7 +69,7 @@ class Appointment extends Eloquent
             ->get();
 		}
             
-            #$json_arr=array($appointments);
+            $json_arr=array($appointments);
             foreach ($appointments as $appointment) {
                 $json_arr[]=array("id"=>$appointment->id,"title"=>$appointment->namepatient,"description"=>$appointment->description,"start"=>"".$appointment->date."","editable"=>false);
             } 

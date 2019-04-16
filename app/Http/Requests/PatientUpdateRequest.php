@@ -14,7 +14,7 @@ class PatientUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'insurance_type_id'=>'required|integer',
+            
             'gender_id'=>'required|integer',
             'blood_type_id'=>'required|integer',
             'name'=>'required|max:8000', 
@@ -30,8 +30,7 @@ class PatientUpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'insurance_type_id.required' => "El paciente debe tener un tipo de seguro",
-            'insurance_type_id.integer' => "El paciente debe tener un tipo de seguro",
+            
             'gender_id.required' => "El paciente debe tener un genero",
             'gender_id.integer' => "El paciente debe tener un genero",
             'description.required' => "El campo 'Descripcion' es obligatorio",

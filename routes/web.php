@@ -60,7 +60,7 @@ Route::get('/a_citas/editar/{appointment}','Assistant\AppointmentController@edit
 Route::get('/a_pacientes', 'Assistant\PatientController@index')->name('assistant patients');
 Route::get('/a_pacientes/agregar','Assistant\PatientController@create')->name('assistant create patient');
 Route::get('/a_pacientes/editar/{patient}','Assistant\PatientController@edit')->name('assistant edit patient');
-Route::view('/a_pacientes/apuntes','assistant.patient_notes')->name('assistant patient notes');
+Route::view('/a_pacientes/apuntes/{patient}','assistant.patient_notes')->name('assistant patient notes');
 Route::put('/a_pacientes/actualizar/{patient}','Assistant\PatientController@update')->name('assistant update patient');
 Route::post('/a_pacientes/guardar','Assistant\PatientController@store')->name('assistant store patient');
 Route::delete('/a_pacientes/eliminar/{patient}','Assistant\PatientController@destroy')->name('assistant destroy patient');

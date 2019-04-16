@@ -101,25 +101,9 @@
 			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-plus-circle"></i> </span>
-								</div>
-								<select name="insurance_type_id" class="form-control">
-									<option selected="">Seleccione el tipo de seguro</option>
-									@foreach($insurance_types as $insurance_type)
-										<option value="{{ $insurance_type->id }}" {{ old('insurance_type_id') == $insurance_type->id ? 'selected' : '' }}>{{ $insurance_type->name }}</option>
-     								@endforeach
-								</select>
-							</div>
-							@if($errors->has('insurance_type_id'))
-			            		<div class="alert alert-danger">
-			                		<span>{{ $errors->first('insurance_type_id') }}</span>
-			            		</div>
-			           		@endif
-							<div class="form-group input-group">
-								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-sticky-note"></i> </span>
 								</div>
-								<textarea name="description" class="form-control form-textarea" placeholder="Ingrese una descripcion" value="{{ old('description') }}"></textarea>
+								<textarea name="description" class="form-control form-textarea" placeholder="Ingrese una descripcion">{{ old('description') }}</textarea>
 							</div>
 							@if($errors->has('description'))
 			            		<div class="alert alert-danger">
