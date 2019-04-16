@@ -56,6 +56,15 @@ class Patient extends Eloquent
 		'phone',
 		'doctor_id'
 	];
+
+
+	public function scopePatforapp($query, $search){ //Patforapp -> patients for appointments (Juan)
+        return $query
+            ->where('name','like','%'.$search.'%')
+            ->orWhere('home_address','like','%'.$search.'%')
+            ->orwhere('phone', 'like', '%'.$search.'%');
+    }
+	
 	
 	public function blood_type()
 	{

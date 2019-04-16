@@ -24,7 +24,7 @@ class AppointmentController extends Controller
         $appointments = Appointment::orderBy('date','asc')
             ->search($search)
             ->where('doctor_id', Auth::user()->id)
-            ->paginate(20);
+            ->paginate(15);
         return view('doctor.appointments',compact('appointments','search'));
     }
 
@@ -32,10 +32,11 @@ class AppointmentController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function create()
     {
-        $patients = Patient::paginate(10);
+        $patients = Patient::orderBy('name','asc')
+        ->paginate(10);
         return view('doctor.create_appointment',compact('patients'));
     }
 

@@ -4,7 +4,7 @@
  * Created by Illiminate Model.
  * Date: Mon, 01 Apr 2019 00:54:25 +0000.
  */
- 
+  
 namespace App;
 
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +59,7 @@ class Appointment extends Eloquent
                 $q->where('name','like','%'.$search.'%');
             });
     }
+
  
 	public static function Appointments(){
 		$json_arr=array();

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Assistant;
 
 use App\User;
 use App\Patient; 
-use App\Appointment;
+use App\Appointment; 
 use Illuminate\Http\Request;
 use App\Http\Requests\AppointmentStoreRequest;
 use App\Http\Requests\AppointmentUpdateRequest;
@@ -29,7 +29,8 @@ class AppointmentController extends Controller
             ->where('a.date','like','%'.$search.'%')
             ->orWhere('a.description','like','%'.$search.'%')
             ->orwhere('b.name', 'like', '%'.$search.'%')
-             ->select('a.*', 'b.name as namepatient','b.email as email','d.name as nameuser')
+            ->select('a.*', 'b.name as namepatient','b.email as email','d.name as nameuser')
+            ->limit(15)
             ->get();
 
 
@@ -41,21 +42,18 @@ class AppointmentController extends Controller
 
 
     /**
-    $appointments = DB::table('appointments')
-            ->leftjoin('users','appointments.doctor_id','=','users.assigned_doctor')
-            ->search($search)
-            ->where('users.id', '=', Auth::user()->id)
-             ->select('appointments.*')
-             ->paginate(20);
-            ->get();
+  
 
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $patients = Patient::paginate(10);
+    public function create(Request $request)
+    { 
+        #$search = $request->input('filtro');
+        $patients = Patient::orderBy('name','asc')
+        #->patforapp($search) //patforapp= patient for appointment
+        ->paginate(10);
         return view('assistant.create_appointment',compact('patients'));
     }
 
@@ -80,6 +78,8 @@ class AppointmentController extends Controller
         $appointment->save();
         return redirect()->route('assistant appointments');
     }
+
+    
 
     /**
      * Display the specified resource.

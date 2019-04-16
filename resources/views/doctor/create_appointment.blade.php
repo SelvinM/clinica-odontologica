@@ -19,13 +19,16 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa  fa-search"></i> </span>
 								</div>
-									<input name="filtro" class="form-control" placeholder="Filtrar pacientes por nombre, dirección, telefono"  type="text">
+									<input id="filtro" name="filtro" class="form-control dynamic" data-dependent="patient_id"  placeholder="Filtrar por nombre, dirección, telefono"  type="text" autofocus="">
+							</div>
+							<div class="form-group">
+								<button type="submit" id="buscar"  class="btn btn-info btn-block"> Filtrar pacientes  </button>
 							</div>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div> 
-								<select name="patient_id" class="form-control" >
+								<select name="patient_id" id="patient_id" class="form-control" >
 									<option value="">Escoja el paciente</option>
 									@foreach($patients as $patient)
 										<option value="{{ $patient->id }}" {{ old('patient_id') == $patient->id ? 'selected' : '' }}>{{ $patient->name }}</option>

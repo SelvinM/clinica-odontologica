@@ -31,6 +31,7 @@ Route::put('/d_citas/actualizar/{appointment}', 'Doctor\AppointmentController@up
 Route::delete('/d_citas/eliminar/{appointment}', 'Doctor\AppointmentController@destroy')->name('doctor destroy appointment');
 
 
+
 //CRUD productos
 Route::get('/d_productos','Doctor\ItemController@index')->name('doctor items');
 Route::get('/d_productos/agregar','Doctor\ItemController@create')->name('doctor create item');
@@ -61,6 +62,7 @@ Route::get('/a_citas/editar/{appointment}','Assistant\AppointmentController@edit
 Route::post('/a_citas/guardar','Assistant\AppointmentController@store')->name('assistant store appointment');
 Route::put('/a_citas/actualizar/{appointment}', 'Assistant\AppointmentController@update')->name('assistant update appointment');
 Route::delete('/a_citas/eliminar/{appointment}', 'Assistant\AppointmentController@destroy')->name('assistant destroy appointment');
+Route::post('dynamic_dependent/fetch', 'DynamicDependent@fetch')->name('assistant fetch');
 
 //CRUD pacientes
 Route::get('/a_pacientes', 'Assistant\PatientController@index')->name('assistant patients');

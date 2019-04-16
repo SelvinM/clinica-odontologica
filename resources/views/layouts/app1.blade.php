@@ -5,6 +5,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="description" content="">
   <meta name="author" content="">
  
@@ -117,6 +118,23 @@
 
 
     $(document).ready(function() {
+      $('#buscar').on('click',function(e){
+        e.preventDefault();
+           var valor = $('#filtro').val();
+           var dependent = $('#filtro').data('dependent');
+            $('#patient_id').prop("disabled", true);
+           $.ajax({
+              url:"{{ route('assistant fetch') }}",
+              method:"POST",
+              data:{valor:valor, _token: '{{csrf_token()}}' },
+              success:function(result){
+                $('#patient_id').removeAttr("disabled");
+                $('#'+dependent).html(result);
+              }
+        
+           })
+        
+       });
       
     /*
     function enviar(title,start,end){
