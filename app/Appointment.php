@@ -61,6 +61,7 @@ class Appointment extends Eloquent
     }
  
 	public static function Appointments(){
+		$json_arr=array();
 		if (Auth::user()->role_id==2) {
 			$appointments = DB::table('appointments')
 			->leftjoin('patients','appointments.patient_id','=','patients.id')
