@@ -67,7 +67,7 @@ class AppointmentController extends Controller
     {
         $appointment = new Appointment([
                             'appointer_id'=>Auth::user()->id,
-                            'doctor_id'=>Auth::user()->assigned_doctor,
+                            'doctor_id'=>Auth::user()->assigned_doctor_id,
                             'patient_id'=>$request->input('patient_id'),
                             'date'=>$request->input('date'),
                             'description'=>$request->input('description')

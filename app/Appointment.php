@@ -75,7 +75,7 @@ class Appointment extends Eloquent
 		}else{
 			$appointments = DB::table('appointments')
 			->leftjoin('patients','appointments.patient_id','=','patients.id')
-			->leftjoin('users','appointments.doctor_id','=','users.assigned_doctor')
+			->leftjoin('users','appointments.doctor_id','=','users.assigned_doctor_id')
             ->where('users.id', '=', Auth::user()->id)
             ->whereNull('appointments.deleted_at')
              ->select('appointments.*', 'patients.name as namepatient')
