@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Route::get('/inicio', 'HomeController@index')->name('home');
 Route::view('/perfil','profile')->name('profile');
-
+Route::get('/descripcion','HomeController@showDescription')->name('show description');
 Auth::routes(); 
 
 //==================================================RUTAS DOCTOR================================================

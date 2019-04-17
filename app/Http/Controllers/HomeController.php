@@ -36,4 +36,9 @@ class HomeController extends Controller
             return view('assistant.dashboard');
         }
     }
+
+    public function showDescription(Request $request){
+        $description = $request->description;
+        return view('description',compact('description'));
+    }
 }

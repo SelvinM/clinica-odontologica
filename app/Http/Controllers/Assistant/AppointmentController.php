@@ -24,7 +24,7 @@ class AppointmentController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $appointments = DB::table('appointments as a')
+        /*$appointments = DB::table('appointments as a')
             ->where(function ($query) {
                 $query->where('a.appointer_id', '=',Auth::user()->id)
                       ->orWhere('a.appointer_id', '=',Auth::user()->assigned_doctor_id);
@@ -38,7 +38,12 @@ class AppointmentController extends Controller
             ->whereNull('a.deleted_at')
             ->select('a.*', 'b.name as namepatient','b.email as email','d.name as nameuser')
             ->limit(15)
-            ->get();
+            ->get();*/
+
+        $appointments = Appointment::where('doctor_id',Auth::user()->assigned_doctor_id)
+            ->orderBy('created_at','desc')
+            ->search($search)
+            ->paginate(20);
 
 
         return view('assistant.appointments',compact('appointments','search'));

@@ -35,6 +35,7 @@
 }
 
 .form-textarea{
+    text-align: top;
     resize: none;
     min-height: 300px;
 }
