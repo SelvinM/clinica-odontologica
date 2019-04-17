@@ -70,7 +70,7 @@ class Appointment extends Eloquent
             ->whereNull('appointments.deleted_at')
              ->select('appointments.*', 'patients.name as namepatient')
             ->get();
-
+ 
 
 		}else{
 			$appointments = DB::table('appointments')
