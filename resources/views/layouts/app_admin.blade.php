@@ -5,7 +5,7 @@
   <div class="list-group list-group-flush">
     <a href="{{ route('usuarios.index') }}" class="list-group-item list-group-item-action @yield('bg users link')"> @yield('users selected') Usuarios</a>
     <a href="{{ route('admin brands') }}" class="list-group-item list-group-item-action @yield('bg brands link')">@yield('brands selected') Marcas</a>
-    <a href="{{ route('admin item types') }}" class="list-group-item list-group-item-action @yield('bg item types link')"> @yield('item types selected') Tipos de inventario</a>
+    <a href="{{ route('admin item types') }}" class="list-group-item list-group-item-action @yield('bg item types link')"> @yield('item types selected') Tipos de producto</a>
     <a href="{{ route('admin procedure types') }}" class="list-group-item list-group-item-action @yield('bg procedure types link')">@yield('procedure types selected') Tipos de procedimiento</a>
   </div>
 </div>
