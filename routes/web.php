@@ -44,7 +44,10 @@ Route::delete('/d_productos/eliminar/{item}', 'Doctor\ItemController@destroy')->
 Route::get('/d_pacientes', 'Doctor\PatientController@index')->name('doctor patients');
 Route::get('/d_pacientes/editar/{patient}','Doctor\PatientController@edit')->name('doctor edit patient');
 Route::get('/d_pacientes/agregar','Doctor\PatientController@create')->name('doctor create patient');
-Route::view('/d_pacientes/apuntes','doctor.patient_notes')->name('doctor patient notes');
+Route::get('/d_pacientes/apuntes/{patient}','Doctor\PatientController@show')->name('doctor patient notes');
+Route::delete('/d_pacientes/eliminar/{patient}','Doctor\PatientController@destroy')->name('doctor destroy patient');
+Route::put('/d_pacientes/actualizar/{patient}','Doctor\PatientController@update')->name('doctor update patient');
+Route::post('/d_pacientes/guardar','Doctor\PatientController@store')->name('doctor store patient');
 
 //CRUD historial paciente
 Route::get('/d_pacientes/historial','Doctor\PatientLogController@index')->name('doctor patient logs');

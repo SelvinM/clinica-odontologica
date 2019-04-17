@@ -58,10 +58,11 @@ class Patient extends Eloquent
 	];
 
 
-	public function scopePatforapp($query, $search){ //Patforapp -> patients for appointments (Juan)
+	public function scopeSearch($query, $search){ 
         return $query
             ->where('name','like','%'.$search.'%')
             ->orWhere('home_address','like','%'.$search.'%')
+            ->orWhere('email','like','%'.$search.'%')
             ->orwhere('phone', 'like', '%'.$search.'%');
     }
 	

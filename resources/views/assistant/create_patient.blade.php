@@ -8,7 +8,7 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal"method="post" action="{{ route('assistant store patient') }}"> @csrf
+					<form class="well form-horizontal" method="post" action="{{ route('assistant store patient') }}"> @csrf
 						<fieldset>
 							<legend>Crear perfil de paciente</legend>
 							<input name="id_doctor" class="form-control" value="{{$id_doctor->assigned_doctor_id}}" type="hidden">

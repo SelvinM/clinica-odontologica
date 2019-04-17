@@ -8,77 +8,109 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal">
+					<form class="well form-horizontal"method="post" action="{{ route('doctor store patient') }}"> @csrf
 						<fieldset>
 							<legend>Crear perfil de paciente</legend>
+							<input name="id_doctor" class="form-control" value="{{$id_doctor}}" type="hidden">
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
-								<input name="" class="form-control" placeholder="Nombre completo" type="text">
+								<input name="name" class="form-control" placeholder="Nombre completo" value="{{ old('name') }}" type="text">
 							</div>
+							@if($errors->has('name'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('name') }}</span>
+			           			</div>
+			            	@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 								</div>
-								<input name="" class="form-control" placeholder="Correo" type="email">
+								<input name="email" class="form-control" placeholder="Correo" value="{{ old('email') }}" type="email">
 							</div>
+							@if($errors->has('email'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('email') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 								</div>
-								<input name="" class="form-control" placeholder="Número telefónico" type="text">
+								<input name="phone" class="form-control" placeholder="Número telefónico" value="{{ old('phone') }}" type="text">
 							</div>
+							@if($errors->has('phone'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('phone') }}</span>
+			            		</div>
+			           		@endif
+			           		<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+									<span class="input-group-text">Fecha de nacimiento</span>
+								</div>
+								<input name="birthdate" class="form-control" placeholder="Fecha de nacimiento" value="{{ old('birthdate') }}" type="date">
+							</div>
+							@if($errors->has('birthdate'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('birthdate') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-home"></i> </span>
 								</div>
-								<input name="" class="form-control" placeholder="Dirección (opcional)" type="text">
+								<input name="home_address" class="form-control" placeholder="Dirección" value="{{ old('home_address') }}" type="text">
 							</div>
+							@if($errors->has('home_address'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('home_address') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-tint"></i> </span>
 								</div>
-								<select class="form-control" >
-									<option>Tipo de sangre</option>
-									<option>A+</option>
-									<option>A-</option>
-									<option>B+</option>
-									<option>B-</option>
-									<option>O+</option>
-									<option>O-</option>
-									<option>AB+</option>
-									<option>AB-</option>
+								<select  name="blood_type_id"  class="form-control">
+									<option selected="">Seleccione el tipo de sangre</option>
+									@foreach($blood_types as $blood_type)
+										<option value="{{ $blood_type->id }}" {{ old('blood_type_id') == $blood_type->id ? 'selected' : '' }}>{{ $blood_type->name }}</option>
+     								@endforeach
 								</select>
 							</div>
+							@if($errors->has('blood_type_id'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('blood_type_id') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-plus-circle"></i> </span>
+									<span class="input-group-text"> <i class="fa fa-tint"></i> </span>
 								</div>
-								<select class="form-control">
-									<option>Tipo de seguro</option>
-									<option>Opcion1</option>
-									<option>Opcion2</option>
+								<select  name="gender_id"  class="form-control">
+									<option selected="">Seleccione el tipo de genero</option>
+									@foreach($genders as $gender)
+										<option value="{{ $gender->id }}" {{ old('gender_id') == $gender->id ? 'selected' : '' }}>{{ $gender->name }}</option>
+     								@endforeach
 								</select>
 							</div>
-							<div class="form-group input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-								</div>
-								<input class="form-control" placeholder="Crear contraseña" type="password">
-							</div>
-							<div class="form-group input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-								</div>
-								<input class="form-control" placeholder="Repetir contraseña" type="password">
-							</div>
+							@if($errors->has('gender_id'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('gender_id') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-sticky-note"></i> </span>
 								</div>
-								<textarea class="form-control form-textarea" placeholder="Descripción y apuntes (opcional)"></textarea>
+								<textarea name="description" class="form-control form-textarea" placeholder="Ingrese una descripcion">{{ old('description') }}</textarea>
 							</div>
+							@if($errors->has('description'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('description') }}</span>
+			            		</div>
+			           		@endif
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block"> Crear  </button>
 							</div>
