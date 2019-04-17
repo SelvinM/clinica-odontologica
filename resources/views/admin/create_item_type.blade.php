@@ -15,7 +15,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-flask"></i> </span>
 							</div>
-							<input name="name" class="form-control" placeholder="Ingrese el nombre del tipo de inventario" type="text" autofocus="">
+							<input name="name" class="form-control" placeholder="Ingrese el nombre del tipo de producto" type="text" autofocus="">
 						</div>
 						@if($errors->has('name'))
 				            <div class="alert alert-danger">
