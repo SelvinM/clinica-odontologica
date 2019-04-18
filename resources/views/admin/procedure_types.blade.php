@@ -12,7 +12,7 @@
 		</div>
 		<div class="col">
             <form method="get">
-                <input type="text" id="search" name="search" placeholder="Buscar...">
+                <input type="text" id="search" name="search" placeholder="Buscar..." value="{{ isset($search) ? $search : ''}}" autofocus="">
                 <input type="submit" style="display: none" />
             </form>
         </div>
@@ -21,7 +21,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Codigo</th>
+					<th>#</th>
 					<th>Tipo de procedimiento</th>
 					<th>Descripción</th>
 					<th width="60px">Editar</th>
@@ -29,22 +29,29 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach($procedure_types as $procedure_type)
 				<tr>
-					<td>Datos</td>
-					<td>Datos</td>
-					<td><a href="">mostrar</a></td>
+					<td>{{ $loop->iteration }}</td>
+					<td>{{ $procedure_type->name }}</td>
 					<td>
-						<a class="btn-edit btn btn-success" href="{{route('admin edit procedure type',1)}}"></a>
+						<form action="{{ route('show description') }}" method="GET" id="dates">
+							@csrf
+							<input type="hidden" name="description"  value="{{ $procedure_type->description }}">
+							<button type="submit" class="btn btn-link">mostrar</button>
+						</form>
 					</td>
 					<td>
-						<form method="post" action="">
+						<a class="btn-edit btn btn-success" href="{{ route('admin edit procedure type', $procedure_type->id)  }}"></a>
+					</td>
+					<td>
+						<form method="post" action="{{route('admin destroy procedure type', $procedure_type->id)}}">
 							@csrf
 							@method('DELETE')
 							<button type="submit" class="btn-delete btn btn-danger"></button>
 						</form>
 					</td>
 				</tr>
-				
+				@endforeach
 			</tbody>
 		</table>
 	</div>

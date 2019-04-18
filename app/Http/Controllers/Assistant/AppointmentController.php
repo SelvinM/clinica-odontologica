@@ -24,26 +24,11 @@ class AppointmentController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        /*$appointments = DB::table('appointments as a')
-            ->where(function ($query) {
-                $query->where('a.appointer_id', '=',Auth::user()->id)
-                      ->orWhere('a.appointer_id', '=',Auth::user()->assigned_doctor_id);
-            })
-            ->leftjoin('patients as b','a.patient_id','=','b.id')
-            ->leftjoin('users as c','a.doctor_id','=','c.id')
-            ->leftjoin('users as d','a.appointer_id','=','d.id')
-            ->where('a.date','like','%'.$search.'%')
-            ->orWhere('a.description','like','%'.$search.'%')
-            ->orwhere('b.name', 'like', '%'.$search.'%')
-            ->whereNull('a.deleted_at')
-            ->select('a.*', 'b.name as namepatient','b.email as email','d.name as nameuser')
-            ->limit(15)
-            ->get();*/
 
         $appointments = Appointment::where('doctor_id',Auth::user()->assigned_doctor_id)
-            ->orderBy('created_at','desc')
+            ->orderBy('date','asc')
             ->search($search)
-            ->paginate(20);
+            ->paginate(15);
 
 
         return view('assistant.appointments',compact('appointments','search'));
@@ -62,10 +47,7 @@ class AppointmentController extends Controller
      */
     public function create(Request $request)
     { 
-        #$search = $request->input('filtro');
-        $patients = Patient::orderBy('name','asc')
-        #->patforapp($search) //patforapp= patient for appointment
-        ->paginate(10);
+        $patients = Patient::orderBy('name','asc');
         return view('assistant.create_appointment',compact('patients'));
     }
 

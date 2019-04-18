@@ -38,6 +38,7 @@
     text-align: top;
     resize: none;
     min-height: 300px;
+    text-align: justify;
 }
 
 label{

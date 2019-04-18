@@ -4,12 +4,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Item;
 use App\ItemType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\ItemTypeRequest;
+use App\Http\Requests\ItemTypeStoreRequest;
+use App\Http\Requests\ItemTypeUpdateRequest;
+
 
 class ItemTypeController extends Controller
 {
@@ -44,7 +45,7 @@ class ItemTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ItemTypeRequest $request)
+    public function store(ItemTypeStoreRequest $request)
     {
         //
 
@@ -53,10 +54,11 @@ class ItemTypeController extends Controller
             ->first();
         
         if ($item_type_delete == NULL) {
-            $tipo = new ItemType;
+            $item_type = new ItemType;
 
-            $tipo->name = $request->name;
-            $tipo->save();
+            $item_type->name = $request->name;
+            $item_type->description = $request->description;
+            $item_type->save();
         } else {
             $item_type_delete->restore();
             $item_type_delete->update($request->except(['']));
@@ -95,20 +97,18 @@ class ItemTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ItemTypeRequest $request, $id)
+    public function update(ItemTypeUpdateRequest $request, ItemType $item_type)
     {
-        $item_type = ItemType::find($id);
-
         $item_type_delete = ItemType::onlyTrashed()
-            ->where('name', $request->name)
+            ->where('name', $request->input('name'))
             ->first();
         
-        if ($item_type_delete == NULL) {
+        if ($item_type_deleted == NULL) {
             $item_type->update($request->except(['']));
         } else {
             $item_type->delete();
-            $item_type_delete->restore();
-            $item_type_delete->update($request->except(['']));
+            $item_type_deleted->restore();
+            $item_type_deleted->update($request->except(['']));
         }
 
         return redirect()->route('admin item types');

@@ -16,7 +16,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-money-bill-alt"></i> </span>
 							</div>
-							<input name="name" class="form-control" placeholder="Ingrese la marca" type="text" autofocus="" value="{{$brand->name}}">
+							<input name="name" class="form-control" placeholder="Ingrese la marca" type="text" autofocus="" value="{{$brand->name}}"{{ old('name') == $brand->name ? 'selected' : ''  }}>
 							
 						</div>
 

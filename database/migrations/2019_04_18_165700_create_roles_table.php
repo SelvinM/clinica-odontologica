@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateBloodTypesTable extends Migration {
+class CreateRolesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,10 @@ class CreateBloodTypesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('blood_types', function(Blueprint $table)
+		Schema::create('roles', function(Blueprint $table)
 		{
 			$table->integer('id')->unsigned()->primary();
-			$table->string('name', 3);
+			$table->string('name', 10)->unique('name_UNIQUE');
 		});
 	}
 
@@ -27,7 +27,7 @@ class CreateBloodTypesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('blood_types');
+		Schema::drop('roles');
 	}
 
 }

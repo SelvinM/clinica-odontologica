@@ -8,49 +8,29 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal">
+					<form class="well form-horizontal" method="post" action="{{route('admin store procedure type')}}">
 						@csrf
-						<legend>Registrar nuevo tipo de procedimiento</legend>
+						<legend>Nuevo tipo de procedimiento</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
+								<span class="input-group-text"> <i class="fa  fa-flask"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="Ingrese el codigo de procedimiento" type="text">
+							<input name="name" class="form-control" placeholder="Ingrese el tipo de procedimiento" type="text">
 						</div>
-						<div class="form-group input-group">
+						@if($errors->has('name'))
+				            <div class="alert alert-danger">
+				                <span>{{ $errors->first('name') }}</span>
+				            </div>
+            			@endif
+            			<div class="form-group input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
+								<span class="input-group-text"> <i class="fa fa-info-circle"></i> </span>
 							</div>
-                            <select class="form-control">
-								<option selected=""> Seleccione el tipo</option>
-								<option>Apicectomía</option>
-								<option>Blanqueamiento dental</option>
-								<option>Empaste</option>
-								<option>Endodoncia</option>
-								<option>Exodoncia</option>
-								<option>Explorador dental</option>
-								<option>Gingivectomía</option>
-								<option>Gingivoplastia</option>
-								<option>Higiene bucodental</option>
-								<option>Implante dental</option>
-								<option>Limpieza dental</option>
-								<option>Ostectomía</option>
-								<option>Remineralización de los dientes</option>
-								<option>Sitio/estado</option>
-								<option>Tartrectomía</option>
-								<option>Técnica de elevación del colgajo</option>
-								<option>Técnica de elevación del seno maxilar</option>
-								<option>Técnica de regeneración ósea guiada</option>
-								<option>Terapia de fluoruro</option>					
-							</select>
-						</div>											
-
+							<input name="description" class="form-control form-textarea" placeholder="Ingrese una descripción (opcional)" type="textfield" >
+							
+						</div>
  						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block"> Guardar </button>
-						</div>
-
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block"> Cancelar  </button>
+							<button type="submit" class="btn btn-primary btn-block"> Guardar  </button>
 						</div>
 
 					</form>

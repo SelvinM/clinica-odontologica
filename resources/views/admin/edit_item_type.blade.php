@@ -12,17 +12,26 @@
 						@csrf
             			@method('PUT')
 						<legend>Editar tipo de producto</legend>
+						<label>Tipo de producto:</label>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-flask"></i> </span>
 							</div>
-							<input name="name" class="form-control" value="{{$item_type->name}}" type="text" autofocus="">
+							<input name="name" class="form-control" value="{{$item_type->name}}"{{ old('name') == $item_type->name ? 'selected' : ''  }} type="text" autofocus="" >
 						</div>
 						@if($errors->has('name'))
 				            <div class="alert alert-danger">
 				                <span>{{ $errors->first('name') }}</span>
 				            </div>
             			@endif
+            			<label>Descripción(opcional):</label>
+            			<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-info-circle"></i> </span>
+							</div>
+							<input name="description" class="form-control form-textarea" placeholder="Ingrese una descripción (opcional)" type="textfield" autofocus="" value="{{$item_type->description}}"{{ old('name') == $item_type->description ? 'selected' : ''  }}>
+							
+						</div>
  						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block"> Guardar cambios  </button>
 						</div>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ItemTypeRequest extends FormRequest
+class BrandUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,16 @@ class ItemTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required'
+            'name'=>'required|unique:brands,name,'.$this->brand->id.',id,deleted_at,NULL',
         ];
     }
-
 
     public function messages()
     {
         return [
-            'name.required' => "El campo 'tipo de material' es obligatorio"
+            'name.required' => "El campo 'Marca' es obligatorio",
+            'name.unique' => "Esta marca ya existe"
         ];
     }
 }
+

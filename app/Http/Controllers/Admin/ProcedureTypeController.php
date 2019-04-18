@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProcedureTypeStoreRequest;
+use App\Http\Requests\ProcedureTypeUpdateRequest;
+use App\ProcedureType;
+
 
 class ProcedureTypeController extends Controller
 {
@@ -12,9 +16,13 @@ class ProcedureTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.procedure_types');
+        $search = $request->input('search');
+        $procedure_types = ProcedureType::search($search)
+            ->orderBy('name', 'asc')
+            ->paginate(20);
+        return view('admin.procedure_types',compact('procedure_types'));
     }
 
     /**
@@ -33,9 +41,24 @@ class ProcedureTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProcedureTypeStoreRequest $request)
     {
-        //
+         $procedure_type_deleted = ProcedureType::onlyTrashed()
+            ->where('name', $request->input('name'))
+            ->first();
+        
+        if ($procedure_type_deleted == NULL) {
+            $procedure_type = new ProcedureType;
+
+            $procedure_type->name = $request->name;
+            $procedure_type->description = $request->description;
+            $procedure_type->save();
+        } else {
+            $procedure_type_deleted->restore();
+            $procedure_type_deleted->update($request->except(['']));
+        }
+        
+        return redirect()->route('admin procedure types');
     }
 
     /**
@@ -55,9 +78,10 @@ class ProcedureTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.edit_procedure_type');
+        $procedure_type = ProcedureType::find($id);
+        return view('admin.edit_procedure_type',compact('procedure_type'));
     }
 
     /**
@@ -67,19 +91,28 @@ class ProcedureTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProcedureTypeUpdateRequest $request, ProcedureType $procedure_type)
     {
-        //
+        $procedure_type_deleted = ProcedureType::onlyTrashed()
+            ->where('name', $request->name)
+            ->first();
+        
+        if ($procedure_type_deleted == NULL) {
+            $procedure_type->update($request->except(['']));
+        } else {
+            $procedure_type->delete();
+            $procedure_type_deleted->restore();
+            $procedure_type_deleted->update($request->except(['']));
+        }
+
+        return redirect()->route('admin procedure types');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+        $procedure_type = ProcedureType::find($id);
+        $procedure_type->delete();
+        return redirect()->route('admin procedure types');
     }
 }

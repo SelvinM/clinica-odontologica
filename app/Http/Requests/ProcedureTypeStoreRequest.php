@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PaymentMethodRequest extends FormRequest
+class ProcedureTypeStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,16 @@ class PaymentMethodRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required'
+            'name'=>'required|unique:procedure_types,name,NULL,id,deleted_at,NULL'
         ];
     }
-
 
     public function messages()
     {
         return [
-            'name.required' => "El campo 'tipo de método de pago' es obligatorio"
+            'name.required' => "El campo 'Tipo de procedimiento' es obligatorio",
+            'name.unique' => "Este tipo de procedimiento ya existe"
         ];
     }
 }
+

@@ -15,7 +15,7 @@ class CreateGendersTable extends Migration {
 		Schema::create('genders', function(Blueprint $table)
 		{
 			$table->integer('id')->primary();
-			$table->string('name', 10);
+			$table->string('name', 10)->unique('name_UNIQUE');
 		});
 	}
 

@@ -8,7 +8,8 @@ use App\Brand;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\BrandRequest;
+use App\Http\Requests\BrandStoreRequest;
+use App\Http\Requests\BrandUpdateRequest;
 
 class BrandController extends Controller
 {
@@ -43,7 +44,7 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BrandRequest $request)
+    public function store(BrandStoreRequest $request)
     {
         //
 
@@ -52,10 +53,10 @@ class BrandController extends Controller
             ->first();
         
         if ($brand_delete == NULL) {
-            $marca = new Brand;
+            $brand = new Brand;
 
-            $marca->name = $request->name;
-            $marca->save();
+            $brand->name = $request->name;
+            $brand->save();
         } else {
             $brand_delete->restore();
             $brand_delete->update($request->except(['']));
@@ -94,10 +95,8 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BrandRequest $request, $id)
+    public function update(BrandUpdateRequest $request, Brand $brand)
     {
-        $brand = Brand::find($id);
-
         $brand_delete = brand::onlyTrashed()
             ->where('name', $request->name)
             ->first();
