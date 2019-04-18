@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Assistant;
 
 use App\Patient;
-
+ 
 use App\BloodType;
 
 use App\Gender;

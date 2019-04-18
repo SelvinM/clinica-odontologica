@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Assistant;
 
 use App\User;
-use App\Patient; 
+use App\Patient;  
 use App\Appointment; 
 use Illuminate\Http\Request;
 use App\Http\Requests\AppointmentStoreRequest;
@@ -45,9 +45,14 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     { 
-        $patients = Patient::orderBy('name','asc');
+        $id_doctor = DB::table('users')->select('assigned_doctor_id')->where('id', '=', Auth::id())->first();
+        $patients = DB::table('patients as a')
+        ->where("doctor_id",$id_doctor->assigned_doctor_id)
+        ->limit(10)
+        ->whereNull('a.deleted_at')
+        ->get();
         return view('assistant.create_appointment',compact('patients'));
     }
 
@@ -100,6 +105,7 @@ class AppointmentController extends Controller
             // definir nombre de la variable y mensaje de error:     
             $errors->add('exist', 'Existe una cita guardada a esa hora ');
             // estos no son errores, lo hago para capturar lo datos enviados y reinsertarlos al formulario
+            // para no tener que ingresar los datos de nuevo
             $errors->add('date_old', $date);
             $errors->add('patient_old',$patient_old);
             $errors->add('description_old', $description_old);

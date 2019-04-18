@@ -3,7 +3,7 @@
 <a href="{{ route('assistant appointments') }}" class="btn btn-secondary">← Citas</a>
 @endsection
 @section('content')
-<div class="container form-sm">
+<div class="container form-sm"> 
 	<table class="table table-striped">
 		<tbody>
 			<tr> 
@@ -83,6 +83,7 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block"> Crear  </button>
 							</div>
+							<input id="opc" type="hidden" value="asistente">
 					</form>
 				</td>
 			</tr>

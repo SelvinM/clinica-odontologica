@@ -16,7 +16,7 @@
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('js/bootstrap.min.js') }}" rel="stylesheet">
-
+ 
   
     
 
@@ -122,11 +122,12 @@
         e.preventDefault();
            var valor = $('#filtro').val();
            var dependent = $('#filtro').data('dependent');
+           var opc= $('#opc').val();
             $('#patient_id').prop("disabled", true);
            $.ajax({
               url:"{{ route('assistant fetch') }}",
               method:"POST",
-              data:{valor:valor, _token: '{{csrf_token()}}' },
+              data:{valor:valor,opc:opc, _token: '{{csrf_token()}}' },
               success:function(result){
                 $('#patient_id').removeAttr("disabled");
                 $('#'+dependent).html(result);
