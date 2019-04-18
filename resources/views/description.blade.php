@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('toggle')
-<a  class="btn btn-secondary" href="{{ URL::previous() }}">Regresar</a>
+<a  class="btn btn-secondary" href="{{ URL::previous() }}">← Regresar</a>
 @endsection
 @section('content')
 <div class="container form-md">
