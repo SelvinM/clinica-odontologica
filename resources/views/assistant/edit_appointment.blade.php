@@ -52,6 +52,11 @@
 			                		<span>{{ $errors->first('date') }}</span>
 			            		</div>
 			            	@endif
+			            	@if($errors->has('exist'))
+			            		<div class="alert alert-danger">
+			                		<span>{{ $errors->first('exist') }}</span>
+			            		</div>
+			            	@endif
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block"> Guardar cambios  </button>
 							</div>

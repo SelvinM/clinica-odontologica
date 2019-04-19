@@ -185,7 +185,7 @@ class AppointmentController extends Controller
             $errors->add('date_old', $date);
             $errors->add('name_old',$name_old);
             $errors->add('description_old', $description_old);
-            return redirect()->route('assistant update appointment')->withErrors($errors);
+            return redirect()->back()->withErrors($errors);
         }
     }
 
