@@ -3,7 +3,7 @@
 <a href="{{ route('doctor patients') }}" class="btn btn-secondary">← Pacientes</a>
 @endsection
 @section('content')
-<div class="table-md center">
+<div class="table-lg center">
 	<h2>Expediente de Enrique Flores</h2>
 	<br>
 	<div class="table-top row">

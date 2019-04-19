@@ -12,10 +12,7 @@
 						<fieldset>
 							<legend>Descripción</legend>
 							<div class="form-group input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-info-circle"></i> </span>
-								</div>
-								<input readonly name="name" class="form-control form-textarea" value="{{ $description }}" type="textarea" >
+								<textarea class="form-control form-textarea" readonly="">{{ $description }}</textarea>
 							</div>
 							
 						</fieldset>

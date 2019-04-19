@@ -81,7 +81,7 @@
 			            		</div>
 			            	@endif
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block"> Crear  </button>
+								<button type="submit" class="btn btn-primary btn-block"> Guardar  </button>
 							</div>
 							<input id="opc" type="hidden" value="asistente">
 					</form>

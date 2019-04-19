@@ -23,7 +23,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Material</th>
+					<th>Producto</th>
 					<th>Tipo</th>
 					<th>Marca</th>
 					<th>Lote</th>

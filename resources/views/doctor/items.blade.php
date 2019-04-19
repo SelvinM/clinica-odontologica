@@ -6,7 +6,7 @@
 @section('bg items link','bg-active')@section('items selected','→')
 @section('bg users link','bg-light')
 @section('content')
-<div class="table-md center">
+<div class="table-lg center">
 	<div class="table-top row">
 		<div class="col">
 			<a class="btn btn-primary btn-add" href="{{ route('doctor create item') }}"></a>
@@ -22,7 +22,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Material</th>
+					<th>Producto</th>
 					<th>Tipo</th>
 					<th>Marca</th>
 					<th>Lote</th>

@@ -10,7 +10,7 @@
 				<td>
 					<form class="well form-horizontal" method="post" action="{{ route('assistant store patient') }}"> @csrf
 						<fieldset>
-							<legend>Crear perfil de paciente</legend>
+							<legend>Registrar nuevo paciente</legend>
 							<input name="id_doctor" class="form-control" value="{{$id_doctor->assigned_doctor_id}}" type="hidden">
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
@@ -112,7 +112,7 @@
 			            		</div>
 			           		@endif
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block"> Crear  </button>
+								<button type="submit" class="btn btn-primary btn-block"> Guardar  </button>
 							</div>
 						</fieldset>
 					</form>
