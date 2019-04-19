@@ -6,7 +6,7 @@
 @section('bg items link','bg-light')
 @section('bg users link','bg-light')
 @section('content')
-<div class="table-md center">
+<div class="table-lg center">
 	<div class="table-top row">
 		<div class="col">
 			<a class="btn btn-primary btn-add" href="{{ route('doctor create appointment') }}"></a>

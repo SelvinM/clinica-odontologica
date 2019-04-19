@@ -9,12 +9,12 @@
 			<tr>
 				<td>
 					<form class="well form-horizontal" method="post" action="{{ route('assistant store item') }}"> @csrf
-						<legend>Registrar nuevo material</legend>
+						<legend>Registrar nuevo producto</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
 							</div>
-							<input name="name" class="form-control" placeholder="Material" value="{{ old('name') }}" type="text">
+							<input name="name" class="form-control" placeholder="Nombre del producto" value="{{ old('name') }}" type="text">
 						</div>
 						@if($errors->has('name'))
 			            <div class="alert alert-danger">
@@ -37,7 +37,7 @@
 								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
 							</div>
 							<select name="item_type_id"  class="form-control">
-									<option selected=""> Seleccione el tipo de material</option>
+									<option selected=""> Seleccione el tipo de producto</option>
 									@foreach($types_items as $type_item)
 										<option value="{{ $type_item->id }}" {{ old('item_type_id') == $type_item->id ? 'selected' : '' }}>{{ $type_item->name }}</option>
      								@endforeach
@@ -53,7 +53,7 @@
 								<span class="input-group-text"> <i class="fa  fa-trademark"></i> </span>
 							</div>
 							<select name="brand_id"  class="form-control">
-								<option selected=""> Seleccione la marca del material</option>
+								<option selected=""> Seleccione la marca del producto</option>
 								@foreach($brands as $brand)
 									<option value="{{ $brand->id }}" {{ old('brand_id') == $brand->id ? 'selected' : '' }}>{{ $brand->name }}</option>
 								@endforeach
@@ -123,7 +123,7 @@
 			            </div>
 			            @endif
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block"> Crear  </button>
+							<button type="submit" class="btn btn-primary btn-block"> Guardar  </button>
 						</div>
 					</form>
 				</td>

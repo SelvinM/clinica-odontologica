@@ -10,7 +10,7 @@
 				<td>
 					<form class="well form-horizontal">
 						<fieldset>
-							<legend>Crear entrada a expediente de Enrique Flores</legend>
+							<legend>Registrar nueva entrada al expediemte de Enrique Flores</legend>
 
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
@@ -19,7 +19,7 @@
 								<textarea class="form-control form-textarea" placeholder="Descripción y apuntes"></textarea>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block"> Crear  </button>
+								<button type="submit" class="btn btn-primary btn-block"> Guardar  </button>
 							</div>
 						</fieldset>
 					</form>

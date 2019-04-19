@@ -124,7 +124,7 @@
 			            	</div>
 			            	@endif
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block"> Editar</button>
+								<button type="submit" class="btn btn-primary btn-block"> Guardar cambios</button>
 							</div>
 						 </fieldset>
 					</form>
