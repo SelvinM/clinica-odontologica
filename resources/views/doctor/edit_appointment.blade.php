@@ -33,7 +33,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
 								</div>
-								<input type="datetime" name="date" value="{{$appointment->date}}" class="form-control">
+								<input type="datetime-local" name="date" value="{{date( 'Y-m-d\TH:i:s', strtotime($appointment->date))}}" class="form-control">
 							</div>
 							@if($errors->has('date'))
 			            		<div class="alert alert-danger">
