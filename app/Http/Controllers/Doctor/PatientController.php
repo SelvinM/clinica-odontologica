@@ -7,6 +7,7 @@ use App\Patient;
 use App\BloodType;
 use App\Gender;
 use App\User;
+use App\Appointment; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\PatientStoreRequest;
@@ -113,8 +114,11 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy($id)
     {
+        $appointment=Appointment::where('patient_id',$id);
+        $appointment->delete();
+        $patient = Patient::find($id);
         $patient->delete();
         return redirect()->route('doctor patients');
     }

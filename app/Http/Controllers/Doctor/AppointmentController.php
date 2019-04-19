@@ -22,8 +22,10 @@ class AppointmentController extends Controller
      */
     public function index(Request $request)
     {
+        $today = now()->format('Y-m-d');
         $search = $request->input('search');
         $appointments = Appointment::where('doctor_id',Auth::user()->id)
+            ->where('date','>=',$today)
            ->orderBy('date','asc')
            ->search($search)
            ->paginate(15);

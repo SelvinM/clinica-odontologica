@@ -62,11 +62,13 @@ class Appointment extends Eloquent
 
  
 	public static function Appointments(){
+		$today = now()->format('Y-m-d');
 		$json_arr=array();
 		if (Auth::user()->role_id==2) {
 			$appointments = DB::table('appointments')
 			->leftjoin('patients','appointments.patient_id','=','patients.id')
             ->where('appointments.doctor_id', '=', Auth::user()->id)
+            ->where('appointments.date','>=',$today)
             ->whereNull('appointments.deleted_at')
              ->select('appointments.*', 'patients.name as namepatient')
             ->get();
@@ -77,6 +79,7 @@ class Appointment extends Eloquent
 			->leftjoin('patients','appointments.patient_id','=','patients.id')
 			->leftjoin('users','appointments.doctor_id','=','users.assigned_doctor_id')
             ->where('users.id', '=', Auth::user()->id)
+            ->where('appointments.date','>=',$today)
             ->whereNull('appointments.deleted_at')
              ->select('appointments.*', 'patients.name as namepatient')
             ->get();

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Assistant;
 use App\Patient;
  
 use App\BloodType;
-
+use App\Appointment; 
 use App\Gender;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -116,8 +116,11 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy($id) 
     {
+        $appointment=Appointment::where('patient_id',$id);
+        $appointment->delete();
+        $patient = Patient::find($id);
         $patient->delete();
         return redirect()->route('assistant patients');
     }

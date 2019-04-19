@@ -15,7 +15,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-info-circle"></i> </span>
 								</div>
-								<input readonly name="name" class="form-control form-textarea" value="{{ $description }}" type="textarea" >
+								<textarea  rows="10" name="name" disabled="" class="form-control" name="description"   aria-label="With textarea">{{ $description }}</textarea>
 							</div>
 							
 						</fieldset>

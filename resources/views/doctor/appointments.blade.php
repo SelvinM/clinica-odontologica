@@ -16,7 +16,7 @@
                 <input type="text" id="search" value="{{ isset($search) ? $search : ''}}" autofocus="" name="search" placeholder="Buscar...">
                 <input type="submit" style="display: none" />
             </form>
-        </div>
+        </div> 
 	</div>
 	<div class="table-responsive" >
 		<table>
@@ -38,7 +38,13 @@
 						<td>{{$appointment->appointer->name}}</td>
 						<td>{{$appointment->patient->name}}</td>
 						<td>{{$appointment->patient->email}}</td>
-						<td>{{$appointment->description}}</td>
+						<td>
+							<form action="{{ route('show description') }}" method="GET" id="dates">
+							@csrf
+								<input type="hidden" name="description"  value="{{ $appointment->description }}">
+								<button type="submit" class="btn btn-link">mostrar</button>
+							</form>
+						</td>
 						<td>{{$appointment->created_at}}</td>
 						<td>{{$appointment->date}}</td>
 						<td>
