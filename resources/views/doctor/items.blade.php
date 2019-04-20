@@ -8,15 +8,20 @@
 @section('content')
 <div class="table-lg center">
 	<div class="table-top row">
-		<div class="col">
+		<div class="col input-group">
 			<a class="btn btn-primary btn-add" href="{{ route('doctor create item') }}"></a>
+			<form action="{{ route('doctor items pdf') }}" method="get">
+				<button type="submit" class="btn btn-pdf" style="background-color: transparent;"></button>
+			</form>
 		</div>
+		
+		
 		<div class="col">
-            <form method="get">
-                <input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar..." autofocus="">
-                <input type="submit" style="display: none" />
-            </form>
-        </div>
+			<form method="get">
+				<input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar..." autofocus="">
+				<input type="submit" style="display: none" />
+			</form>
+		</div>
 	</div>
 	<div class="table-responsive" >
 		<table>
@@ -37,7 +42,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			@foreach($items as $item)
+				@foreach($items as $item)
 				<tr>
 					<td>{{ $item->name }}</td>
 					<td>{{ $item->item_type->name }}</td>
@@ -48,10 +53,10 @@
 					<td>{{ $item->description }}</td>
 					<td>{{ $item->created_at }}</td>
 					<td>@if(isset($item->purchase_date))
-							{{date( 'Y-m-d', strtotime($item->purchase_date))}}
-						@endif</td>
+						{{date( 'Y-m-d', strtotime($item->purchase_date))}}
+					@endif</td>
 					<td>@if(isset($item->expiration_date))
-							{{date( 'Y-m-d', strtotime($item->expiration_date))}}
+						{{date( 'Y-m-d', strtotime($item->expiration_date))}}
 						@endif
 					</td>
 					<td>
@@ -65,7 +70,7 @@
 						</form>
 					</td>
 				</tr>
-			@endforeach
+				@endforeach
 			</tbody>
 		</table>
 	</div>

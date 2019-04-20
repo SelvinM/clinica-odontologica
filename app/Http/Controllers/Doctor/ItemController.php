@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Doctor;
 
 
-
+use PDF;
 use App\Item; 
 use App\ItemType;
 use App\Brand;
@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ItemStoreRequest;
 use App\Http\Requests\ItemUpdateRequest;
 use App\Http\Controllers\Controller; 
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -22,7 +23,8 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $items = Item::orderBy('name','asc')
+        $items = Item::where('doctor_id',Auth::id())
+            ->orderBy('name','asc')
             ->search($search)
             ->paginate(20);
         return view('doctor.items',compact('items','search'));
@@ -49,6 +51,7 @@ class ItemController extends Controller
     public function store(ItemStoreRequest $request)
     {
         $item = new Item([
+                            'doctor_id'=>Auth::id(),
                             'brand_id'=>$request->input('brand_id'),
                             'item_type_id'=>$request->input('item_type_id'),
                             'name'=>$request->input('name'),
@@ -115,4 +118,15 @@ class ItemController extends Controller
         $item->delete();
         return redirect()->route('doctor items');
     }
+
+    public function showPDF(Request $request){
+        $items = Item::where('doctor_id',Auth::id())
+            ->orderBy('item_type_id','asc');
+
+        $item_types = ItemType::orderBy('name','asc')->get();
+        $pdf = PDF::loadView('pdf', compact('items','item_types'));
+        return $pdf->stream('Inventario.pdf');
+        
+    }
+
 }

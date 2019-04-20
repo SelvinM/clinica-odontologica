@@ -14,8 +14,8 @@ class AddForeignKeysToProceduresItemsTable extends Migration {
 	{
 		Schema::table('procedures_items', function(Blueprint $table)
 		{
-			$table->foreign('items_id', 'fk_items')->references('id')->on('items')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('procedures_id', 'fk_procedures')->references('id')->on('procedures')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('item_id', 'fk_items')->references('id')->on('items')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('procedure_id', 'fk_procedures')->references('id')->on('procedures')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 

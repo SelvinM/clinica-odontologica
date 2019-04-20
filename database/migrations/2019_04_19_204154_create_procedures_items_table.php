@@ -14,9 +14,9 @@ class CreateProceduresItemsTable extends Migration {
 	{
 		Schema::create('procedures_items', function(Blueprint $table)
 		{
-			$table->integer('items_id')->unsigned()->index('fk_items_idx');
-			$table->integer('procedures_id')->unsigned();
-			$table->primary(['procedures_id','items_id']);
+			$table->integer('item_id')->unsigned()->index('fk_items_idx');
+			$table->integer('procedure_id')->unsigned();
+			$table->primary(['procedure_id','item_id']);
 		});
 	}
 

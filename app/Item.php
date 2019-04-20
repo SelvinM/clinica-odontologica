@@ -34,6 +34,7 @@ class Item extends Eloquent
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
+		'doctor_id' => 'int',
 		'brand_id' => 'int',
 		'item_type_id' => 'int',
 		'price' => 'float',
@@ -50,6 +51,7 @@ class Item extends Eloquent
 	];
 
 	protected $fillable = [
+		'doctor_id',
 		'brand_id',
 		'item_type_id',
 		'name',

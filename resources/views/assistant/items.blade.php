@@ -8,8 +8,11 @@
 @section('content')
 <div class="table-lg center">
 	<div class="table-top row">
-		<div class="col">
+		<div class="col input-group">
 			<a class="btn btn-primary btn-add" href="{{ route('assistant create item') }}"></a>
+			<form action="{{ route('assistant items pdf') }}" method="get">
+				<button type="submit" class="btn btn-pdf" style="background-color: transparent;"></button>
+			</form>
 		</div>
 		
 		<div class="col">

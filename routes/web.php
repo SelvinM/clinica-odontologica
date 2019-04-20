@@ -39,6 +39,7 @@ Route::get('/d_productos/editar/{item}','Doctor\ItemController@edit')->name('doc
 Route::post('/d_productos/guardar', 'Doctor\ItemController@store')->name('doctor store item');
 Route::put('/d_productos/actualizar/{item}', 'Doctor\ItemController@update')->name('doctor update item');
 Route::delete('/d_productos/eliminar/{item}', 'Doctor\ItemController@destroy')->name('doctor destroy item');
+Route::get('/d_productos/reporte','Doctor\ItemController@showPDF')->name('doctor items pdf');
 
 //CRUD pacientes
 Route::get('/d_pacientes', 'Doctor\PatientController@index')->name('doctor patients');
@@ -88,6 +89,7 @@ Route::get('/a_productos/agregar','Assistant\ItemController@create')->name('assi
 Route::post('/a_productos/guardar','Assistant\ItemController@store')->name('assistant store item');
 Route::put('/a_productos/actualizar/{item}','Assistant\ItemController@update')->name('assistant update item');
 Route::delete('/a_productos/eliminar/{item}','Assistant\ItemController@destroy')->name('assistant destroy item');
+Route::get('/a_productos/reporte','Assistant\ItemController@showPDF')->name('assistant items pdf');
 
 
 //==================================================RUTAS ADMIN================================================

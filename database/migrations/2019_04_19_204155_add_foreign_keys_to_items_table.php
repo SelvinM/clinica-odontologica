@@ -16,6 +16,7 @@ class AddForeignKeysToItemsTable extends Migration {
 		{
 			$table->foreign('brand_id', 'fk_items_brands')->references('id')->on('brands')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('item_type_id', 'fk_items_item_types')->references('id')->on('item_types')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('doctor_id', 'fk_items_users')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -31,6 +32,7 @@ class AddForeignKeysToItemsTable extends Migration {
 		{
 			$table->dropForeign('fk_items_brands');
 			$table->dropForeign('fk_items_item_types');
+			$table->dropForeign('fk_items_users');
 		});
 	}
 

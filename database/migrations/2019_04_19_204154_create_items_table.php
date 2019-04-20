@@ -21,6 +21,7 @@ class CreateItemsTable extends Migration {
 			$table->decimal('cost', 10);
 			$table->integer('quantity');
 			$table->string('batch', 12);
+			$table->integer('doctor_id')->unsigned()->index('fk_items_users_idx');
 			$table->dateTime('purchase_date')->nullable();
 			$table->dateTime('expiration_date')->nullable();
 			$table->string('description', 500)->nullable();
