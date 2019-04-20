@@ -51,9 +51,10 @@ Route::put('/d_pacientes/actualizar/{patient}','Doctor\PatientController@update'
 Route::post('/d_pacientes/guardar','Doctor\PatientController@store')->name('doctor store patient');
 
 //CRUD historial paciente
-Route::get('/d_pacientes/historial','Doctor\PatientLogController@index')->name('doctor patient logs');
+Route::get('/d_pacientes/historial/{patient_log}','Doctor\PatientLogController@index')->name('doctor patient logs');
 Route::get('/d_pacientes/historial/editar/{patient_log}','Doctor\PatientLogController@edit')->name('doctor edit patient log');
 Route::get('/d_pacientes/historial/agregar','Doctor\PatientLogController@create')->name('doctor create patient log');
+Route::delete('/d_cita/eliminar/{patient}','Doctor\PatientLogController@destroy')->name('doctor destroy appointment log');
 
 
  

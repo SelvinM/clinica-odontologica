@@ -30,7 +30,6 @@
 					<th>Tipo de sangre</th>
 					<th>Fecha de cumpleaños</th>
 					<th>Apuntes</th>
-					<th>Historial clínico</th>
 					<th width="60px">Editar</th>
 					<th width="60px">Borrar</th>
 				</tr>
@@ -49,7 +48,6 @@
 								{{date( 'd-m-Y', strtotime($patient->birthdate))}}
 							@endif</td>
 						<td><a href="{{ route('assistant patient notes',$patient->id) }}">mostrar</a></td>
-						<td><a href="{{ route('assistant patient logs') }}">mostrar</a></td>
 						<td>
 							<a class="btn-edit btn btn-success" href="{{ route('assistant edit patient',$patient->id) }}"></a>
 						</td>
