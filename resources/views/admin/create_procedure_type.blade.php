@@ -13,7 +13,7 @@
 						<legend>Nuevo tipo de procedimiento</legend>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa  fa-flask"></i> </span>
+								<span class="input-group-text"> <i class="fa fa-tasks"></i> </span>
 							</div>
 							<input name="name" class="form-control" placeholder="Ingrese el tipo de procedimiento" type="text">
 						</div>

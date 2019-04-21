@@ -118,7 +118,7 @@ class UserController extends Controller
             $user_deleted->update($request->except(['']));
         }
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('home');
     }
 
     /**
@@ -132,5 +132,24 @@ class UserController extends Controller
         $user=User::find($id);
         $user->delete();
         return redirect()->route('usuarios.index');
+    }
+
+    public function editProfile(){
+        return view('edit_profile');
+
+    }
+
+    public function updateProfile(UserUpdateProfileRequest $request, User $user){
+        $email = $request->input('email');
+        $user_deleted = User::onlyTrashed()->where('email',$email)->first();
+        if($user_deleted == NULL){
+            $user->update($request->except(['']));
+        }else{
+            $user->delete();
+            $user_deleted->restore();
+            $user_deleted->update($request->except(['']));
+        }
+
+        return redirect()->route('home');
     }
 }

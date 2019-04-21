@@ -15,7 +15,7 @@ class UserUpdateProfileRequest extends FormRequest
     {
          return [
             'name'=>'required',
-            'email'=>'required|unique:users,email,'.$id.',id,deleted_at,NULL',
+            'email'=>'required|unique:users,email,'.$this->user->id.',id,deleted_at,NULL',
         ];
     }
 
@@ -25,6 +25,6 @@ class UserUpdateProfileRequest extends FormRequest
             'name.required' => "El campo 'Nombre' es obligatorio",
             'email.required' => "El campo 'Correo' es obligatorio". $this->tag,
             'email.unique' => 'Este correo ya esta en uso',
-        ];
+        ];        
     }
 }

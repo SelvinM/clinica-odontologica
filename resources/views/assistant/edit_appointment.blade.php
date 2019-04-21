@@ -12,6 +12,7 @@
 					@csrf 
 					@method('PUT') 
 							<legend>Editar cita</legend>
+							<label>Paciente:</label>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -22,6 +23,7 @@
 			                		<input name="name" value="{{$appointment->patient->name}}" disabled="" class="form-control"  type="text">
 			            		@endif
 							</div>
+							<label>Descripción:</label>
 							<div class="form-group input-group">
   								<div class="input-group-prepend">
     								<span class="input-group-text"><i class="fa  fa-info-circle"></i> </span>
@@ -37,6 +39,7 @@
 			                		<span>{{ $errors->first('description') }}</span>
 			            		</div>
 			            	@endif
+			            	<label>Fecha y hora:</label>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>

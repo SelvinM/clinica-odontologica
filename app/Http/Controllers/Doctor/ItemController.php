@@ -121,7 +121,7 @@ class ItemController extends Controller
 
     public function showPDF(Request $request){
         $items = Item::where('doctor_id',Auth::id())
-            ->orderBy('item_type_id','asc');
+            ->orderBy('item_type_id','asc')->get();
 
         $item_types = ItemType::orderBy('name','asc')->get();
         $pdf = PDF::loadView('pdf', compact('items','item_types'));

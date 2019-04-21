@@ -86,8 +86,5 @@ class Item extends Eloquent
 		return $this->belongsTo(\App\ItemType::class);
 	}
 
-	public function procedures()
-	{
-		return $this->belongsToMany(\App\Procedure::class, 'procedures_items', 'items_id', 'procedures_id');
-	}
+	
 }

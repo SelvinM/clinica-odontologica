@@ -16,18 +16,18 @@ $costo_total = 0;
 		<tr>
 			<th>Producto</th>
 			<th>Marca</th>
-			<th>Lote</th>
 			<th>Costo</th>
 			<th>Cantidad</th>
+			<th>Costo total</th>
 		</tr>
 		@foreach($items as $item)
 		@if($item->item_type->name == $item_type->name)
 		<tr>
 			<td>{{ $item->name }}</td>
 			<td>{{ $item->brand->name }}</td>
-			<td>{{ $item->batch }}</td>
 			<td>{{ $item->cost }}</td>
 			<td>{{ $item->quantity }}</td>
+			<td>{{ $item->cost * $item->quantity }}</td>
 		</tr>
 		<?php
 			$costo_tipo = $costo_tipo +  ($item->cost * $item->quantity);

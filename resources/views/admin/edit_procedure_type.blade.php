@@ -15,7 +15,7 @@
 						<label>Tipo de procedimiento:</label>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa  fa-money-bill-alt"></i> </span>
+								<span class="input-group-text"> <i class="fa fa-tasks "></i> </span>
 							</div>
 							<input name="name" class="form-control" placeholder="Ingrese el tipo de procedimiento" type="text" autofocus="" value="{{$procedure_type->name}}"{{ old('name') == $procedure_type->name ? 'selected' : ''  }}>
 							

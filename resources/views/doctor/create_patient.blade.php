@@ -3,7 +3,7 @@
 <a href="{{ route('doctor patients') }}" class="btn btn-secondary">← Pacientes</a>
 @endsection
 @section('content')
-<div class="container form-lg">
+<div class="container form-md">
 	<table class="table table-striped">
 		<tbody>
 			<tr>

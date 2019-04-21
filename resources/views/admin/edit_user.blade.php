@@ -3,7 +3,7 @@
 <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">← Usuarios</a>
 @endsection
 @section('content')
-<div class="container form-md">
+<div class="container form-sm">
   <table class="table table-striped">
     <tbody>
       <tr>
@@ -18,7 +18,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                 </div>
-                <input name="name" class="form-control" value="{{ $user->name }}" type="text" autofocus="">
+                <input name="name" class="form-control" value="{{ $user->name }}"{{ old('name') == $user->name ? 'selected' : ''  }} type="text" autofocus="">
               </div>
               @if($errors->has('name'))
               <div class="alert alert-danger">
@@ -30,7 +30,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                 </div>
-                <input name="email" class="form-control" value="{{ $user->email }}" type="email">
+                <input name="email" class="form-control" value="{{ $user->email }}"{{ old('email') == $user->email ? 'selected' : ''  }} type="email">
               </div>
               @if($errors->has('email'))
               <div class="alert alert-danger">
@@ -47,7 +47,7 @@
                   @if($user->role_id == $role->id)
                   <option selected="selected" value="{{ $role->id }}" >{{ $role->name }}</option>
                   @else
-                  <option value="{{ $role->id }}" >{{ $role->name }}</option>
+                  <option value="{{ $role->id }}"{{ old('role_id') == $role->id ? 'selected' : '' }} >{{ $role->name }}</option>
                   @endif
                   @endforeach
                 </select>
@@ -67,7 +67,7 @@
                   @if($user->assigned_doctor_id == $doctor->id)
                   <option selected="selected" value="{{ $doctor->id }}" >{{ $doctor->name }}</option>
                   @else
-                  <option value="{{ $doctor->id }}" >{{ $doctor->name }}</option>
+                  <option value="{{ $doctor->id }}"{{ old('assigned_doctor_id') == $doctor->id ? 'selected' : '' }} >{{ $doctor->name }}</option>
                   @endif
                   @endforeach
                 </select>
@@ -79,7 +79,7 @@
               @endif
             </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block"> Editar usuario  </button>
+                <button type="submit" class="btn btn-primary btn-block"> Guardar cambios  </button>
               </div>
             </fieldset>
           </form>

@@ -27,9 +27,9 @@ class AppointmentController extends Controller
         $search = $request->input('search');
         $appointments = Appointment::where('doctor_id',Auth::user()->assigned_doctor_id)
             ->where('date','>=',$today)
-            ->orderBy('date','asc')
-            ->search($search)
-            ->paginate(15);
+           ->orderBy('date','asc')
+           ->search($search)
+           ->paginate(15);
 
 
         return view('assistant.appointments',compact('appointments','search'));

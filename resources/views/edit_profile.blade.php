@@ -8,30 +8,35 @@
 		<tbody>
 			<tr>
 				<td>
-					<form class="well form-horizontal">
+					<form class="well form-horizontal" method="post" action="{{ route('update profile',Auth::id()) }}">
+						@method('PUT')
+						@csrf
 						<fieldset>
 							<legend>Mi perfil</legend>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
-								<input readonly name="name" class="form-control" value="{{ Auth::user()->name }}" type="text" >
+								<input name="name" class="form-control" value="{{ Auth::user()->name }}"{{ old('name') == Auth::user()->name ? 'selected' : ''  }}type="text" >
 							</div>
+							@if($errors->has('name'))
+							<div class="alert alert-danger">
+								<span>{{ $errors->first('name') }}</span>
+							</div>
+							@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 								</div>
-								<input readonly name="" class="form-control" value="{{ Auth::user()->email }}" type="email">
+								<input name="email" class="form-control" value="{{ Auth::user()->email }}"{{ old('email') == Auth::user()->email ? 'selected' : ''  }} type="email">
 							</div>
-							
-							<div class="form-group input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-building"></i> </span>
-								</div>
-								<input readonly name="" class="form-control" value="{{ Auth::user()->role->name }}" type="text">
+							@if($errors->has('email'))
+							<div class="alert alert-danger">
+								<span>{{ $errors->first('email') }}</span>
 							</div>
+							@endif
 							<div class="form-group">
-								<a href="{{ route('edit profile') }}" class="btn btn-primary btn-block"> Editar perfil  </a>
+								<button type="submit" class="btn btn-primary btn-block"> Guardar cambios  </button>
 							</div>
 						</fieldset>
 					</form>

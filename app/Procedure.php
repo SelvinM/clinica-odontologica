@@ -40,8 +40,5 @@ class Procedure extends Eloquent
 		return $this->belongsTo(\App\Appointment::class);
 	}
 
-	public function items()
-	{
-		return $this->belongsToMany(\App\Item::class, 'procedures_items', 'procedures_id', 'items');
-	}
+	
 }

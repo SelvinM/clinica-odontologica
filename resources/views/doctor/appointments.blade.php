@@ -5,6 +5,8 @@
 @section('bg patients link','bg-light')
 @section('bg items link','bg-light')
 @section('bg users link','bg-light')
+@section('bg procedures link','bg-light')
+
 @section('content')
 <div class="table-lg center">
 	<div class="table-top row">

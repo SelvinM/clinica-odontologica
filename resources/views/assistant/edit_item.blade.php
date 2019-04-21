@@ -12,6 +12,7 @@
 					@csrf
 					@method('PUT') 
 						<legend>Editar producto</legend>
+						<label>Nombre del producto:</label>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
@@ -23,6 +24,7 @@
 			                <span>{{ $errors->first('name') }}</span>
 			            </div>
 			            @endif
+			            <label>Descripción:</label>
 			            <div class="form-group input-group">
   							<div class="input-group-prepend">
     							<span class="input-group-text"><i class="fa  fa-info-circle"></i> </span>
@@ -34,6 +36,7 @@
 			                <span>{{ $errors->first('description') }}</span>
 			            </div>
 			            @endif
+			            <label>Tipo:</label>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-wrench"></i> </span>
@@ -54,6 +57,7 @@
 			                <span>{{ $errors->first('item_type_id') }}</span>
 			            </div>
 			            @endif
+			            <label>Marca:</label>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-trademark"></i> </span>
@@ -74,6 +78,7 @@
 			                <span>{{ $errors->first('brand_id') }}</span>
 			            </div>
 			            @endif
+			            <label>Costo:</label>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-dollar-sign"></i> </span>
@@ -85,6 +90,7 @@
 			                <span>{{ $errors->first('cost') }}</span>
 			            </div>
 			            @endif
+			            <label>Cantidad:</label>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-align-justify"></i> </span>
@@ -96,6 +102,7 @@
 			                <span>{{ $errors->first('quantity') }}</span>
 			            </div>
 			            @endif
+			            <label>Lote:</label>
 			            <div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-lock"></i> </span>
@@ -107,7 +114,7 @@
 			                <span>{{ $errors->first('batch') }}</span>
 			            </div>
 			            @endif
-			            <h5>Fecha de compra:</h5>
+			            <label>Fecha de compra:</label>
 						<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
@@ -124,7 +131,7 @@
 			                <span>{{ $errors->first('purchase_date') }}</span>
 			            </div>
 			            @endif
-							<h5>Fecha de caducidad:</h5>
+							<label>Fecha de caducidad:</label>
 						<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
