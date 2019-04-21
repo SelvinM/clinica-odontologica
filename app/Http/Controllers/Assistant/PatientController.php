@@ -25,7 +25,7 @@ class PatientController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-         $id_doctor = DB::table('users')->select('assigned_doctor_id')->where('id', '=', Auth::id())->first();
+        $id_doctor = DB::table('users')->select('assigned_doctor_id')->where('id', '=', Auth::id())->first();
         $patients = Patient::orderBy('name','asc')->where("doctor_id","=",$id_doctor->assigned_doctor_id)
             ->search($search)
             ->paginate(20);

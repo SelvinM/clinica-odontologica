@@ -51,7 +51,7 @@
 								{{date( 'd-m-Y', strtotime($patient->birthdate))}}
 							@endif</td>
 						<td><a href="{{ route('doctor patient notes',$patient->id) }}">mostrar</a></td>
-						<td><a href="{{ route('doctor patient logs') }}">mostrar</a></td>
+						<td><a href="{{ route('doctor patient logs',$patient->id) }}">mostrar</a></td>
 						<td>
 							<a class="btn-edit btn btn-success" href="{{ route('doctor edit patient',$patient->id) }}"></a>
 						</td>

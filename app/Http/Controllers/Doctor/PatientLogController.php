@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\Doctor;
 
+use App\User;
+use App\Patient;  
+use App\Appointment; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
 use App\Http\Controllers\Controller;
 
 class PatientLogController extends Controller
@@ -12,9 +17,17 @@ class PatientLogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('doctor.patient_logs');
+        //$search = $request->input('search');
+        $patient=Patient::find($id); 
+        $today = now()->format('Y-m-d');
+        $appointments = DB::table('appointments as a')->where("a.patient_id","=",$id)
+            ->whereNull('a.deleted_at')
+            ->where('date','<=',$today)
+            //->search($search)
+            ->paginate(20);
+        return view('doctor.patient_logs',compact('appointments','patient'));
     }
 
     /**
@@ -46,7 +59,7 @@ class PatientLogController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('doctor.patient_logs');
     }
 
     /**
@@ -69,7 +82,7 @@ class PatientLogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 
     }
 
     /**
@@ -80,6 +93,8 @@ class PatientLogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $appointment = Appointment::find($id);
+        $appointment->delete();
+        return redirect()->back();
     }
 }
