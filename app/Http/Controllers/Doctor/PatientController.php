@@ -22,6 +22,11 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        date_default_timezone_set('US/Central');
+    }
+    
     public function index(Request $request)
     {
         $search = $request->input('search');
