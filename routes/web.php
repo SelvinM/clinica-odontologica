@@ -11,16 +11,17 @@
 |
 */
 
-Route::get('/', function () { 
-    return view('auth.login');
+//Rutas para todos los roles
+Auth::routes();
+Route::group(['middleware'=>['auth','prevent-back-history']], function(){
+	Route::view('/perfil','profile')->name('profile');
+	Route::get('/perfil/editar','Admin\UserController@editProfile')->name('edit profile');
+	Route::put('/perfil/update/{user}','Admin\UserController@updateProfile')->name('update profile');
+	Route::get('/descripcion','HomeController@showDescription')->name('show description');
 });
+
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::view('/perfil','profile')->name('profile');
-Route::get('/perfil/editar','Admin\UserController@editProfile')->name('edit profile');
-Route::put('/perfil/update/{user}','Admin\UserController@updateProfile')->name('update profile');
-Route::get('/descripcion','HomeController@showDescription')->name('show description');
-Auth::routes(); 
 
 //==================================================RUTAS DOCTOR================================================
 Route::group(['middleware'=>['check.doctor.role','prevent-back-history']], function(){
