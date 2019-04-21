@@ -45,10 +45,10 @@
 			                		<span>{{ $errors->first('phone') }}</span>
 			            		</div>
 			           		@endif
+			           		<label>Fecha de nacimiento:</label>
 			           		<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
-									<span class="input-group-text">Fecha de nacimiento</span>
 								</div>
 								<input name="birthdate" class="form-control" placeholder="Fecha de nacimiento" value="{{ old('birthdate') }}" type="date">
 							</div>

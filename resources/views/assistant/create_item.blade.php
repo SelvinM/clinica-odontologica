@@ -98,7 +98,7 @@
 			                <span>{{ $errors->first('batch') }}</span>
 			            </div>
 			            @endif
-							<h5>Fecha de compra:</h5>
+							<label>Fecha de compra:</label>
 						<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
@@ -110,7 +110,7 @@
 			                <span>{{ $errors->first('purchase_date') }}</span>
 			            </div>
 			            @endif
-							<h5>Fecha de caducidad:</h5>
+							<label>Fecha de caducidad:</label>
 						<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
