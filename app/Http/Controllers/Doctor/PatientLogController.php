@@ -82,7 +82,7 @@ class PatientLogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 
     }
 
     /**
@@ -95,10 +95,6 @@ class PatientLogController extends Controller
     {
         $appointment = Appointment::find($id);
         $appointment->delete();
-        $patient_logs = DB::table('appointments as a')
-                    ->select('p.id as id')
-                    ->join('patients as p','p.id','a.patient_id')
-                    ->where("a.id","=",$id);
-        return redirect()->route('doctor patient logs',compact($patient_logs));
+        return redirect()->back();
     }
 }
