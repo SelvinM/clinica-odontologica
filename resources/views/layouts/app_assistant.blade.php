@@ -7,7 +7,7 @@
     <a href="{{ route('assistant appointments') }}" class="list-group-item list-group-item-action @yield('bg appointments link')"> @yield('appointments selected') Citas</a>
     <a href="{{ route('assistant patients') }}" class="list-group-item list-group-item-action @yield('bg patients link')">@yield('patients selected') Pacientes</a>
     <a href="{{ route('assistant items') }}" class="list-group-item list-group-item-action @yield('bg items link')">@yield('items selected') Inventario</a>
-    <a href="{{ route('doctor procedures') }}" class="list-group-item list-group-item-action @yield('bg procedures link')">@yield('procedures selected') Procedimientos</a>
+    <a href="{{ route('assistant procedures') }}" class="list-group-item list-group-item-action @yield('bg procedures link')">@yield('procedures selected') Procedimientos</a>
   </div>
 </div>
 @endsection
