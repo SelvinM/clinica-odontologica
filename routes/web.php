@@ -19,7 +19,7 @@ Route::group(['middleware'=>['auth','prevent-back-history']], function(){
 	Route::put('/perfil/update/{user}','Admin\UserController@updateProfile')->name('update profile');
 	Route::get('/descripcion','HomeController@showDescription')->name('show description');
 });
-
+Route::get('/','HomeController@index')->name('root');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -52,7 +52,6 @@ Route::group(['middleware'=>['check.doctor.role','prevent-back-history']], funct
 	Route::get('/d_procedimientos', 'Doctor\ProcedureController@index')->name('doctor procedures');
 	Route::get('/d_procedimientos/editar/{patient}','Doctor\ProcedureController@edit')->name('doctor edit procedure');
 	Route::get('/d_procedimientos/agregar','Doctor\ProcedureController@create')->name('doctor create procedure');
-	Route::get('/d_procedimientos/apuntes/{procedure}','Doctor\ProcedureController@show')->name('doctor procedure notes');
 	Route::delete('/d_procedimientos/eliminar/{procedure}','Doctor\ProcedureController@destroy')->name('doctor destroy procedure');
 	Route::put('/d_procedimientos/actualizar/{procedure}','Doctor\ProcedureController@update')->name('doctor update procedure');
 	Route::post('/d_procedimientos/guardar','Doctor\ProcedureController@store')->name('doctor store procedure');
@@ -93,10 +92,9 @@ Route::group(['middleware'=>['check.assistant.role','prevent-back-history']], fu
 	Route::delete('/a_productos/eliminar/{item}','Assistant\ItemController@destroy')->name('assistant destroy item');
 	Route::get('/a_productos/reporte','Assistant\ItemController@showPDF')->name('assistant items pdf');
 	//CRUD procedimientos 
-	Route::get('/a_procedimientos', 'Doctor\ProcedureController@index')->name('assistant procedures');
+	Route::get('/a_procedimientos', 'Assistant\ProcedureController@index')->name('assistant procedures');
 	Route::get('/a_procedimientos/editar/{patient}','Assistant\ProcedureController@edit')->name('assistant edit procedure');
 	Route::get('/a_procedimientos/agregar','Assistant\ProcedureController@create')->name('assistant create procedure');
-	Route::get('/a_procedimientos/apuntes/{procedure}','Assistant\ProcedureController@show')->name('assistant procedure notes');
 	Route::delete('/a_procedimientos/eliminar/{procedure}','Assistant\ProcedureController@destroy')->name('assistant destroy procedure');
 	Route::put('/a_procedimientos/actualizar/{procedure}','Assistant\ProcedureController@update')->name('assistant update procedure');
 	Route::post('/a_procedimientos/guardar','Assistant\ProcedureController@store')->name('assistant store procedure');
