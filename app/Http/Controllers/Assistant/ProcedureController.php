@@ -3,7 +3,6 @@
 /* Recodar que este hace referenia a tipos de materiales *** OJO ***/
 
 namespace App\Http\Controllers\Assistant;
-use App\ProcedureType;
 use App\Procedure;
 use App\Appointment;
 use App\ProcedureType;
