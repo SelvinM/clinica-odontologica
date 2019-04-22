@@ -87,7 +87,12 @@ class Appointment extends Eloquent
             
             #$json_arr=array($appointments);
             foreach ($appointments as $appointment) {
-                $json_arr[]=array("id"=>$appointment->id,"title"=>$appointment->namepatient,"description"=>$appointment->description,"start"=>"".$appointment->date."","editable"=>false);
+            	if ($appointment->description==null) {
+            		$json_arr[]=array("id"=>$appointment->id,"title"=>$appointment->namepatient,"description"=>"--Sin descripción--","start"=>"".$appointment->date."","editable"=>false);
+            	}else{
+            		$json_arr[]=array("id"=>$appointment->id,"title"=>$appointment->namepatient,"description"=>$appointment->description,"start"=>"".$appointment->date."","editable"=>false);
+            	}
+                
             } 
 
             file_get_contents(public_path('/fullcalendar/demos/json/events.json'));

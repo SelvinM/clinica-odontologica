@@ -22,7 +22,7 @@ Route::group(['middleware'=>['auth','prevent-back-history']], function(){
 Route::get('/','HomeController@index')->name('root');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::post('dynamic_dependent/fetch', 'DynamicDependent@fetch')->name('ajax fetch'); // filtrado de pacientes ajax
 //==================================================RUTAS DOCTOR================================================
 Route::group(['middleware'=>['check.doctor.role','prevent-back-history']], function(){
 	//CRUD citas
@@ -32,6 +32,7 @@ Route::group(['middleware'=>['check.doctor.role','prevent-back-history']], funct
 	Route::post('/d_citas/guardar','Doctor\AppointmentController@store')->name('doctor store appointment');
 	Route::put('/d_citas/actualizar/{appointment}', 'Doctor\AppointmentController@update')->name('doctor update appointment');
 	Route::delete('/d_citas/eliminar/{appointment}', 'Doctor\AppointmentController@destroy')->name('doctor destroy appointment');
+
 	//CRUD productos
 	Route::get('/d_productos','Doctor\ItemController@index')->name('doctor items');
 	Route::get('/d_productos/agregar','Doctor\ItemController@create')->name('doctor create item');
@@ -59,6 +60,7 @@ Route::group(['middleware'=>['check.doctor.role','prevent-back-history']], funct
 	Route::get('/d_pacientes/historial','Doctor\PatientLogController@index')->name('doctor patient logs');
 	Route::get('/d_pacientes/historial/editar/{patient_log}','Doctor\PatientLogController@edit')->name('doctor edit patient log');
 	Route::get('/d_pacientes/historial/agregar','Doctor\PatientLogController@create')->name('doctor create patient log');
+
 });
 
 //==================================================RUTAS ASISTENTE================================================
@@ -70,7 +72,6 @@ Route::group(['middleware'=>['check.assistant.role','prevent-back-history']], fu
 	Route::post('/a_citas/guardar','Assistant\AppointmentController@store')->name('assistant store appointment');
 	Route::put('/a_citas/actualizar/{appointment}', 'Assistant\AppointmentController@update')->name('assistant update appointment');
 	Route::delete('/a_citas/eliminar/{appointment}', 'Assistant\AppointmentController@destroy')->name('assistant destroy appointment');
-	Route::post('dynamic_dependent/fetch', 'DynamicDependent@fetch')->name('assistant fetch');
 	//CRUD pacientes
 	Route::get('/a_pacientes', 'Assistant\PatientController@index')->name('assistant patients');
 	Route::get('/a_pacientes/agregar','Assistant\PatientController@create')->name('assistant create patient');

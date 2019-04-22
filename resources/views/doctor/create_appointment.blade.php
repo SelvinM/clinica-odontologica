@@ -3,16 +3,16 @@
 <a href="{{ route('doctor appointments') }}" class="btn btn-secondary">← Citas</a>
 @endsection
 @section('content')
-<div class="container form-sm">
-	<table class="table table-striped"> 
+<div class="container form-sm"> 
+	<table class="table table-striped">
 		<tbody>
 			<tr> 
 				<td>
 					<form class="well form-horizontal" method="post" action="{{ route('doctor store appointment') }}">
-							@csrf
+							@csrf 
 							<legend>Registrar nueva cita</legend>
 							<div class="form-group input-group">
-  								<a class="btn btn-success btn-block" role="button" href="{{ route('doctor create patient') }}" aria-label="Left Align"><span> <i class="fa fa-user-plus"></span> Agregar paciente</a>
+  								<a class="btn btn-success btn-block" role="button" href="{{ route('doctor create patient') }}" aria-label="Left Align"><span <i class="fa fa-user-plus"></span> Agregar paciente</a>
   							</div>
   							<h6 class="center">O</h6>
   							<div class="form-group input-group">

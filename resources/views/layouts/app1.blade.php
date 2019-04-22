@@ -125,13 +125,14 @@
            var opc= $('#opc').val();
             $('#patient_id').prop("disabled", true);
            $.ajax({
-              url:"{{ route('assistant fetch') }}",
+              url:"{{ route('ajax fetch') }}",
               method:"POST",
               data:{valor:valor,opc:opc, _token: '{{csrf_token()}}' },
               success:function(result){
                 $('#patient_id').removeAttr("disabled");
                 $('#'+dependent).html(result);
               }
+              
         
            })
         
