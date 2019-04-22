@@ -70,6 +70,7 @@ class AppointmentController extends Controller
             ->where('a.date','like','%'.$hora[0].'%__:%__') //'%18:%__:%__'
             ->Where('a.date','like','%'.$fecha[0].'%') //'%2019-05-02%'
             ->where('a.doctor_id', '=',Auth::user()->id)
+            ->whereNull('a.deleted_at')
             ->select('a.date')
             ->get();
 

@@ -80,6 +80,7 @@ class AppointmentController extends Controller
         $citas = DB::table('appointments as a')
             ->where('a.date','like','%'.$hora[0].'%__:%__') //'%18:%__:%__'
             ->Where('a.date','like','%'.$fecha[0].'%') //'%2019-05-02%'
+            ->whereNull('a.deleted_at')
             ->where(function ($query) {
                 $query->where('a.appointer_id', '=',Auth::user()->id)
                       ->orWhere('a.appointer_id', '=',Auth::user()->assigned_doctor_id);
