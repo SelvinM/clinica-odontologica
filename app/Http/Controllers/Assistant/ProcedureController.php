@@ -102,9 +102,13 @@ class ProcedureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProcedureUpdateRequest $request, Procedure $procedure)
+    public function update(ProcedureUpdateRequest $request, $id)
     {
-        $procedure->update($request->except(['']));
+        $procedure = Procedure::find($id);
+        $procedure->procedure_type_id = $request->input('procedure_type_id');
+        $procedure->appointment_id = $request->input('appointment_id');
+        $procedure->price = $request->input('price');
+        $procedure->save();
         return redirect()->route('assistant procedures');
     }
 

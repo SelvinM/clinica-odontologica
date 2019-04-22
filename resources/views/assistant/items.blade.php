@@ -46,8 +46,16 @@
 				@foreach($items as $item)
 					<tr>
 						<td>{{ $item->name }}</td>
+						@if($item->item_type->deleted_at===NULL)
 						<td>{{ $item->item_type->name }}</td>
+						@else
+						<td>{{ '<tipo de producto eliminado por el administrador>' }}</td>
+						@endif
+						@if($item->brand->deleted_at===NULL)
 						<td>{{ $item->brand->name }}</td>
+						@else
+						<td>{{ '<Marca eliminada por el administrador>' }}</td>
+						@endif
 						<td>{{ $item->batch }}</td>
 						<td>{{ $item->cost }}</td>
 						<td>{{ $item->quantity }}</td>

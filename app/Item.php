@@ -78,12 +78,12 @@ class Item extends Eloquent
 
 	public function brand()
 	{
-		return $this->belongsTo(\App\Brand::class);
+		return $this->belongsTo(\App\Brand::class)->withTrashed();
 	}
 
 	public function item_type()
 	{
-		return $this->belongsTo(\App\ItemType::class);
+		return $this->belongsTo(\App\ItemType::class)->withTrashed();
 	}
 
 	

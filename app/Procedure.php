@@ -44,12 +44,12 @@ class Procedure extends Eloquent
 
 	public function procedure_type()
 	{
-		return $this->belongsTo(\App\ProcedureType::class);
+		return $this->belongsTo(\App\ProcedureType::class)->withTrashed();
 	}
 
 	public function Appointment()
 	{
-		return $this->belongsTo(\App\Appointment::class);
+		return $this->belongsTo(\App\Appointment::class)->withTrashed();
 	}
 
 	

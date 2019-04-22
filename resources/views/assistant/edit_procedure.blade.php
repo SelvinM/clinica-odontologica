@@ -3,7 +3,7 @@
 <a href="{{ route('assistant procedures') }}" class="btn btn-secondary">← Inventario</a>
 @endsection
 @section('content')
-<div class="container form-sm">
+<div class="container form-md">
 	<table class="table table-striped">
 		<tbody>
 			<tr>
@@ -58,7 +58,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa  fa-dollar-sign"></i> </span>
 							</div>
-							<input name="price" class="form-control" placeholder="Precio" value="{{ $procedure->price }}"{{ old('price') == $procedure->price ? 'selected' : ''  }} type="text">
+							<input name="price" class="form-control" placeholder="Precio" value="{{ $procedure->price }}"  type="text">
 						</div>
 						@if($errors->has('price'))
 						<div class="alert alert-danger">

@@ -37,9 +37,21 @@
 			<tbody>
 				@foreach($appointments as $appointment)
 				<tr>
+					@if($appointment->appointer->deleted_at===NULL)
 					<td>{{$appointment->appointer->name}}</td>
+					@else
+					<td>{{ '<usuario eliminado por el administrador>' }}</td>
+					@endif
+					@if($appointment->patient->deleted_at===NULL)
 					<td>{{$appointment->patient->name}}</td>
+					@else
+					<td>{{ '<paciente eliminado>' }}</td>
+					@endif
+					@if($appointment->patient->deleted_at===NULL)
 					<td>{{$appointment->patient->email}}</td>
+					@else
+					<td>{{ '<paciente eliminado>' }}</td>
+					@endif
 					<td>
 						<form action="{{ route('show description') }}" method="GET" id="dates">
 							@csrf

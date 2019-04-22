@@ -6,7 +6,6 @@
 @section('bg items link','bg-light')
 @section('bg users link','bg-light')
 @section('bg procedures link','bg-light')
-
 @section('content')
 <div class="table-lg center">
 	<div class="table-top row">
@@ -14,11 +13,11 @@
 			<a class="btn btn-primary btn-add" href="{{ route('doctor create appointment') }}"></a>
 		</div>
 		<div class="col">
-            <form method="get">
-                <input type="text" id="search" value="{{ isset($search) ? $search : ''}}" autofocus="" name="search" placeholder="Buscar...">
-                <input type="submit" style="display: none" />
-            </form>
-        </div> 
+			<form method="get">
+				<input type="text" id="search" value="{{ isset($search) ? $search : ''}}" autofocus="" name="search" placeholder="Buscar...">
+				<input type="submit" style="display: none" />
+			</form>
+		</div>
 	</div>
 	<div class="table-responsive" >
 		<table>
@@ -36,30 +35,42 @@
 			</thead>
 			<tbody>
 				@foreach($appointments as $appointment)
-					<tr>
-						<td>{{$appointment->appointer->name}}</td>
-						<td>{{$appointment->patient->name}}</td>
-						<td>{{$appointment->patient->email}}</td>
-						<td>
-							<form action="{{ route('show description') }}" method="GET" id="dates">
+				<tr>
+					@if($appointment->appointer->deleted_at===NULL)
+					<td>{{$appointment->appointer->name}}</td>
+					@else
+					<td>{{ '<usuario eliminado por el administrador>' }}</td>
+					@endif
+					@if($appointment->patient->deleted_at===NULL)
+					<td>{{$appointment->patient->name}}</td>
+					@else
+					<td>{{ '<paciente eliminado>' }}</td>
+					@endif
+					@if($appointment->patient->deleted_at===NULL)
+					<td>{{$appointment->patient->email}}</td>
+					@else
+					<td>{{ '<paciente eliminado>' }}</td>
+					@endif
+					<td>
+						<form action="{{ route('show description') }}" method="GET" id="dates">
 							@csrf
-								<input type="hidden" name="description"  value="{{ $appointment->description }}">
-								<button type="submit" class="btn btn-link">mostrar</button>
-							</form>
-						</td>
-						<td>{{$appointment->created_at}}</td>
-						<td>{{$appointment->date}}</td>
-						<td>
-							<a class="btn-edit btn btn-success" href="{{ route('doctor edit appointment',$appointment->id) }}"></a>
-						</td>
-						<td>
-							<form method="post" action="{{ route('doctor destroy appointment',$appointment->id) }}">
-								@csrf
-								@method('DELETE')
-								<button type="submit" class="btn-delete btn btn-danger"></button>
-							</form>
-						</td>
-					</tr>
+							<input type="hidden" name="description"  value="{{ $appointment->description }}">
+							<button type="submit" class="btn btn-link">mostrar</button>
+						</form>
+					</td>
+					<td>{{$appointment->created_at}}</td>
+					<td>{{$appointment->date}}</td>
+					<td>
+						<a class="btn-edit btn btn-success" href="{{ route('doctor edit appointment',$appointment->id) }}"></a>
+					</td>
+					<td>
+						<form method="post" action="{{ route('doctor destroy appointment',$appointment->id) }}">
+							@csrf
+							@method('DELETE')
+							<button type="submit" class="btn-delete btn btn-danger"></button>
+						</form>
+					</td>
+				</tr>
 				@endforeach
 			</tbody>
 		</table>

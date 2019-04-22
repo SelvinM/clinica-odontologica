@@ -28,7 +28,7 @@
 					<th>E-mail</th>
 					<th>Teléfono</th>
 					<th>Dirección</th>
-					<th>Genero</th>
+					<th>Sexo</th>
 					<th>Tipo de sangre</th>
 					<th>Fecha de cumpleaños</th>
 					<th>Apuntes</th>

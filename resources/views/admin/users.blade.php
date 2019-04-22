@@ -2,8 +2,8 @@
 @section('title',config('app.name', 'Laravel'))
 @section('bg users link','bg-active')@section('users selected','→')
 @section('bg brands link','bg-light')
-@section('bg item types link','bg-light')  
-@section('bg procedure types link','bg-light')  
+@section('bg item types link','bg-light')
+@section('bg procedure types link','bg-light')
 @section('content')
 <div class="table-md center">
 	<div class="table-top row">
@@ -11,11 +11,11 @@
 			<a class="btn btn-primary btn-add" href="{{ route('usuarios.create') }}"></a>
 		</div>
 		<div class="col">
-            <form method="get">
-                <input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar..." autofocus="">
-                <input type="submit" style="display: none" />
-            </form>
-        </div>
+			<form method="get">
+				<input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar..." autofocus="">
+				<input type="submit" style="display: none" />
+			</form>
+		</div>
 	</div>
 	<div class="table-responsive table-hover" >
 		<table>
@@ -31,7 +31,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			@foreach($users as $user)
+				@foreach($users as $user)
 				<tr>
 					<td>{{$loop->iteration}}</td>
 					<td>{{ $user->name }}</td>
@@ -40,6 +40,8 @@
 					<td>
 						@if($user->role_id != 3)
 						--- N/A ---
+						@elseif($user->assigned_doctor->deleted_at!=NULL || $user->assigned_doctor->role_id != 2)
+						{{ '<doctor eliminado>' }}
 						@else
 						{{ $user->assigned_doctor->name }}
 						@endif
@@ -47,6 +49,8 @@
 					<td>
 						<a class="btn-edit btn btn-success" href="{{route('usuarios.edit',$user->id)}}"></a>
 					</td>
+					
+					
 					<td>
 						<form method="post" action="{{ route('usuarios.destroy',$user->id) }}">
 							@csrf
@@ -55,10 +59,9 @@
 						</form>
 					</td>
 				</tr>
-			@endforeach
+				@endforeach
 			</tbody>
 		</table>
 	</div>
 </div>
-
 @endsection

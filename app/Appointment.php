@@ -101,18 +101,18 @@ class Appointment extends Eloquent
 	
 	public function appointer()
 	{
-		return $this->belongsTo(\App\User::class);
+		return $this->belongsTo(\App\User::class)->withTrashed();
 	}
 
 	public function doctor()
 	{
-		return $this->belongsTo(\App\User::class);
+		return $this->belongsTo(\App\User::class)->withTrashed();
 	}
 
 
 	public function patient()
 	{
-		return $this->belongsTo(\App\Patient::class);
+		return $this->belongsTo(\App\Patient::class)->withTrashed();
 	}
 
 	public function procedures()

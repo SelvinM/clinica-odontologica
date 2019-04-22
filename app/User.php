@@ -62,7 +62,10 @@ class User extends Authenticatable
     }
 
     public function assigned_doctor(){
-        return $this->belongsTo(\App\User::class);
+        return $this->belongsTo(\App\User::class)->withTrashed();
     }
 
+    public function assigned_doctors(){
+        return $this->hasMany(\App\User::class);
+    }
 }

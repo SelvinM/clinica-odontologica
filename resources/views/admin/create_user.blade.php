@@ -3,7 +3,7 @@
 <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">← Usuarios</a>
 @endsection
 @section('content')
-<div class="container form-md">
+<div class="container form-sm">
   <table class="table table-striped">
     <tbody>
       <tr>
