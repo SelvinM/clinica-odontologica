@@ -24,7 +24,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('doctor.create_image');
     }
 
     /**
@@ -35,7 +35,7 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         return view('doctor.images');
     }
 
     /**

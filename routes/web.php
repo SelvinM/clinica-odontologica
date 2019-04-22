@@ -64,6 +64,8 @@ Route::group(['middleware'=>['check.doctor.role','prevent-back-history']], funct
 
 	//CRUD imegenes
 	Route::get('/imagen','Doctor\ImageController@index')->name('images');
+	Route::get('/imagen/agregar','Doctor\ImageController@create')->name('images create');
+	Route::post('/imagen/guardar','Doctor\ImageController@store')->name('images store');
 });
 
 //==================================================RUTAS ASISTENTE================================================
