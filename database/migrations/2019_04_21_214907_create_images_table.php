@@ -17,6 +17,7 @@ class CreateImagesTable extends Migration {
 			$table->integer('id', true);
 			$table->binary('image');
 			$table->integer('appointment_id')->unsigned()->index('fk_images_appointments_idx');
+			$table->string('description', 500)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
