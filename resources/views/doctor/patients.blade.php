@@ -15,7 +15,7 @@
 		</div>
 		<div class="col">
             <form method="get">
-                <input type="text" id="search" name="search" placeholder="Buscar...">
+                <input type="text" value="{{ isset($search) ? $search : ''}}" id="search" name="search" placeholder="Buscar...">
                 <input type="submit" style="display: none" />
             </form>
         </div>
