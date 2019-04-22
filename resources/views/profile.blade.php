@@ -11,19 +11,21 @@
 					<form class="well form-horizontal">
 						<fieldset>
 							<legend>Mi perfil</legend>
+							<label>Nombre: </label>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
 								<input readonly name="name" class="form-control" value="{{ Auth::user()->name }}" type="text" >
 							</div>
+							<label>Correo electrónico:</label>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 								</div>
 								<input readonly name="" class="form-control" value="{{ Auth::user()->email }}" type="email">
 							</div>
-							
+							<label>Rol de usuario:</label>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-building"></i> </span>

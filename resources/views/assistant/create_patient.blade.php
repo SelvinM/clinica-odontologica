@@ -86,7 +86,7 @@
 			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-tint"></i> </span>
+									<span class="input-group-text"> <i class="fa fa-venus-mars"></i> </span>
 								</div>
 								<select  name="gender_id"  class="form-control">
 									<option selected="">Seleccione el tipo de genero</option>

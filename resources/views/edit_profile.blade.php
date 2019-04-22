@@ -12,7 +12,8 @@
 						@method('PUT')
 						@csrf
 						<fieldset>
-							<legend>Mi perfil</legend>
+							<legend>Editar perfil</legend>
+							<label>Nombre:</label>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -24,6 +25,7 @@
 								<span>{{ $errors->first('name') }}</span>
 							</div>
 							@endif
+							<label>Correo electrónico:</label>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>

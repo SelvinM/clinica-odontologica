@@ -45,12 +45,12 @@
 			                		<span>{{ $errors->first('phone') }}</span>
 			            		</div>
 			           		@endif
+			           		<label>Fecha de nacimiento:</label>
 			           		<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
-									<span class="input-group-text">Fecha de nacimiento</span>
 								</div>
-								<input name="birthdate" class="form-control" placeholder="Fecha de nacimiento" value="{{ old('birthdate') }}" type="date">
+								<input name="birthdate" class="form-control" value="{{ old('birthdate') }}" type="date">
 							</div>
 							@if($errors->has('birthdate'))
 			            		<div class="alert alert-danger">
@@ -86,10 +86,10 @@
 			           		@endif
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-tint"></i> </span>
+									<span class="input-group-text"> <i class="fa fa-venus-mars"></i> </span>
 								</div>
 								<select  name="gender_id"  class="form-control">
-									<option selected="">Seleccione el tipo de genero</option>
+									<option selected="">Seleccione el sexo</option>
 									@foreach($genders as $gender)
 										<option value="{{ $gender->id }}" {{ old('gender_id') == $gender->id ? 'selected' : '' }}>{{ $gender->name }}</option>
      								@endforeach
