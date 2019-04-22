@@ -11,7 +11,7 @@
 |
 */
 
-//Rutas para todos los roles
+//Rutas para todos los roles 
 Auth::routes();
 Route::group(['middleware'=>['auth','prevent-back-history']], function(){
 	Route::view('/perfil','profile')->name('profile');
@@ -57,10 +57,10 @@ Route::group(['middleware'=>['check.doctor.role','prevent-back-history']], funct
 	Route::put('/d_procedimientos/actualizar/{procedure}','Doctor\ProcedureController@update')->name('doctor update procedure');
 	Route::post('/d_procedimientos/guardar','Doctor\ProcedureController@store')->name('doctor store procedure');
 	//CRUD historial paciente
-	Route::get('/d_pacientes/historial','Doctor\PatientLogController@index')->name('doctor patient logs');
+	Route::get('/d_pacientes/historial/{patient_id}','Doctor\PatientLogController@index')->name('doctor patient logs');
 	Route::get('/d_pacientes/historial/editar/{patient_log}','Doctor\PatientLogController@edit')->name('doctor edit patient log');
 	Route::get('/d_pacientes/historial/agregar','Doctor\PatientLogController@create')->name('doctor create patient log');
-
+	Route::delete('/d_pacientes/historial/eliminar/{appointment}', 'Doctor\PatientLogController@destroy')->name('doctor destroy appointment log');
 });
 
 //==================================================RUTAS ASISTENTE================================================
