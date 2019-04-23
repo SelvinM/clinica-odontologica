@@ -1,23 +1,44 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="" class="btn btn-secondary">← Imagenes</a>
+<a href="{{url()->previous()}}" class="btn btn-secondary">← Expediente</a>
 @endsection
 @section('content')
 
-<table class="table table-bordered table-striped">
- <tr>
-  <th width="10%">Image</th>
-  <th width="35%">First Name</th>
-  <th width="35%">Last Name</th>
-  <th width="30%">Action</th>
- </tr>
-  <tr>
-   <td><img src="" class="img-thumbnail" width="75" /></td>
-   <td></td>
-   <td></td>
-   <td>
-    
-   </td>
-  </tr>
-</table>
+<div class="table-lg center">
+  <div class="table-top row">
+    <div class="col">
+      <a class="btn btn-primary btn-add" href="{{ route('images create',$title) }}"></a>
+    </div>
+  </div>
+<div class="table-responsive table-bordered table-striped" >
+    <table>
+      <thead>
+        <tr>
+          <th width="30%">Imagen</th>
+          <th width="40%">Descripción</th>
+          <th width="15%">Ver</th>
+          <th width="15%">Borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($images as $image)
+          <tr>
+            <td><img src="{{ URL::to('/') }}/Expedientes/{{ $image->image }}" class="img-thumbnail" width="105" /></td>
+            <td>{{ $image->description }}</td>
+            <td>
+              <a class="btn btn-success" href="{{ route('images show',$image->id) }}"> <span <i class="fa fa-eye"></span></a>
+            </td>
+            <td>
+              <form method="post" action="{{ route('images destroy',$image->id) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn-delete btn btn-danger"></button>
+              </form>
+            </td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>  
+</div>
 @endsection

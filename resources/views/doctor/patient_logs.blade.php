@@ -28,7 +28,7 @@
 				@foreach($appointments as $appointment)
 				<tr>
 					<td>{{ $appointment->date }}</td>
-					<td><a href="{{ route('images') }}">mostrar</a></td>
+					<td><a href="{{ route('images',$appointment->id) }}">mostrar</a></td>
 					<td>
 						<form action="{{ route('show description') }}" method="GET" id="dates">
 							@csrf

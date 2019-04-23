@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers\Doctor;
 
+
+use App\Image;
+use DB;
 use Illuminate\Http\Request;
+use App\Http\Requests\ImageStoreRequest;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\ImageServiceProvider;
 use App\Http\Controllers\Controller;
 
 class ImageController extends Controller
@@ -12,9 +18,13 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('doctor.images');
+        $images=DB::table('images as a')
+        ->where('a.appointment_id',$id)
+        ->whereNull('a.deleted_at')
+        ->get();
+        return view('doctor.images',compact('images'))->withTitle($id);
     }
 
     /**
@@ -22,9 +32,9 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create($id)
+    { 
+        return view('doctor.create_image')->withTitle($id);
     }
 
     /**
@@ -33,9 +43,25 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImageStoreRequest $request,$id)
     {
-        //
+
+        $image=$request->file('image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        \Image::make($image)->save( public_path('/Expedientes/' . $filename ) );
+    
+         $image = new Image([
+                            'description'=>$request->input('description'),
+                            'image'=>$filename,
+                            'appointment_id'=>$id
+
+                        ]);           
+            $image->save();
+        $images=DB::table('images as a')
+        ->where('a.appointment_id',$id)
+        ->whereNull('a.deleted_at')
+        ->get();
+         return view('doctor.images',compact('images'))->withTitle($id);
     }
 
     /**
@@ -46,7 +72,11 @@ class ImageController extends Controller
      */
     public function show($id)
     {
-        //
+        $images=DB::table('images as a')
+        ->where('a.appointment_id',10)
+        ->whereNull('a.deleted_at')
+        ->get();
+        return view('doctor.show_image',compact('images'));
     }
 
     /**
@@ -80,6 +110,10 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $image=DB::table('images')
+        ->where('id','=',$id)
+        ->whereNull('deleted_at')
+        ->update(['deleted_at' => now()]);
+        return redirect()->back();
     }
 }
