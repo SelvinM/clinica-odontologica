@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{ route('assistant procedures') }}" class="btn btn-secondary">← Inventario</a>
+<a href="{{ route('assistant procedures') }}" class="btn btn-secondary">← Procedimientos</a>
 @endsection
 @section('content')
 <div class="container form-md">

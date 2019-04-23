@@ -107,7 +107,7 @@
 									@if($gender->id == $patient->gender_id)
 									<option value="{{ $gender->id }}" selected="">{{ $gender->name }}</option>
 									@else
-									<option value="{{ $gender->id }}" {{ old('gender_id') == $patient->gender_id ? 'selected' : '' }}>{{ $gender->name }}</option>
+									<option value="{{ $gender->id }}" {{ old('gender_id') == $patient->gender ? 'selected' : '' }}>{{ $gender->name }}</option>
 									@endif
 									@endforeach
 								</select>
