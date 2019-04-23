@@ -43,6 +43,14 @@
     padding: 0 10px;
   }
 
+  .imgs {
+  padding-top: 30px;
+  padding-bottom:30px; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
   /* .fc-content-skeleton */ 
 
 </style>

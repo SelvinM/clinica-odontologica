@@ -63,9 +63,11 @@ Route::group(['middleware'=>['check.doctor.role','prevent-back-history']], funct
 	Route::delete('/d_pacientes/historial/eliminar/{appointment}', 'Doctor\PatientLogController@destroy')->name('doctor destroy appointment log');
 
 	//CRUD imegenes
-	Route::get('/imagen','Doctor\ImageController@index')->name('images');
-	Route::get('/imagen/agregar','Doctor\ImageController@create')->name('images create');
-	Route::post('/imagen/guardar','Doctor\ImageController@store')->name('images store');
+	Route::get('/imagen/{appointment_id}','Doctor\ImageController@index')->name('images');
+	Route::get('/imagen/agregar/{appointment_id}','Doctor\ImageController@create')->name('images create'); //
+	Route::post('/imagen/guardar/{appointment_id}','Doctor\ImageController@store')->name('images store');
+	Route::delete('/imagen/eliminar/{appointment_id}', 'Doctor\ImageController@destroy')->name('images destroy');
+	Route::get('/imagen/ver/{appointment_id}','Doctor\ImageController@show')->name('images show');
 });
 
 //==================================================RUTAS ASISTENTE================================================
