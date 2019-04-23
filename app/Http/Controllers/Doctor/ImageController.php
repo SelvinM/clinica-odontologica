@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageServiceProvider;
 use App\Http\Controllers\Controller;
 
-class ImageController extends Controller
+class ImageController extends Controller 
 { 
     /**
      * Display a listing of the resource.
@@ -46,13 +46,14 @@ class ImageController extends Controller
      */
     public function store(ImageStoreRequest $request,$appointment_id)
     {
+        $description=$request->get('description');
         $appointment_id=request()->route('appointment_id');
         $image=$request->file('image');
         $filename = time() . '.' . $image->getClientOriginalExtension();
         \Image::make($image)->save( public_path('/Expedientes/' . $filename ) );
     
          $image = new Image([
-                            'description'=>$request->input('description'),
+                            'description'=>$description,
                             'image'=>$filename,
                             'appointment_id'=>$appointment_id
 

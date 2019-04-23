@@ -7,9 +7,9 @@
 <div class="container form-sm"> 
   <table class="table table-striped">
     <tbody>
-      <tr> 
+      <tr>  
         <td>
-          <form class="well form-horizontal" enctype="multipart/form-data" method="post" action="{{ route('images store',['patient_id'=>Route::current()->parameters['patient_id'] ,'appointment_id'=>Route::current()->parameters['appointment_id']]) }}">
+          <form class="well form-horizontal" method="POST" role="form" enctype="multipart/form-data"  action="{{ route('images store',['patient_id'=>Route::current()->parameters['patient_id'] ,'appointment_id'=>Route::current()->parameters['appointment_id']]) }}">
               @csrf 
               <legend>Registrar nueva imagen</legend>
               <div class="form-group input-group">
@@ -24,10 +24,8 @@
                 </div>
               @endif 
               <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"> <i class="fa  fa-info-circle"></i> </span>
-                </div> 
-                <textarea class="form-control" name="description" placeholder="Descripción imagen (opcional)"  aria-label="With textarea">{{ old('description') }}</textarea>
+                
+                <input type="hidden" class="form-control" id="description" name="description" placeholder="Descripción imagen (opcional)" ></input>
               </div> 
               @if($errors->has('description'))
                 <div class="alert alert-danger">

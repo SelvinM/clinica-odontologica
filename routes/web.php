@@ -12,7 +12,7 @@
 */
  
 //Rutas para todos los roles 
-Auth::routes();
+Auth::routes(); 
 Route::group(['middleware'=>['auth','prevent-back-history']], function(){
 	Route::view('/perfil','profile')->name('profile');
 	Route::get('/perfil/editar','Admin\UserController@editProfile')->name('edit profile');
@@ -69,11 +69,6 @@ Route::group(['middleware'=>['check.doctor.role','prevent-back-history']], funct
 	Route::post('/d_pacientes/historial/{patient_id}/imagen/{appointment_id}','Doctor\ImageController@store')->name('images store');
 	Route::delete('/d_pacientes/historial/{patient_id}/imagen/eliminar/{appointment_id}', 'Doctor\ImageController@destroy')->name('images destroy');
 
-	//Route::get('/imagen/{appointment_id}','Doctor\ImageController@index')->name('images');
-	//Route::get('/imagen/ver/{appointment_id}','Doctor\ImageController@show')->name('images show');
-	//Route::get('/imagen/agregar/{appointment_id}','Doctor\ImageController@create')->name('images create'); //
-	//Route::post('/imagen/guardar/{appointment_id}','Doctor\ImageController@store')->name('images store');
-	//Route::delete('/imagen/eliminar/{appointment_id}', 'Doctor\ImageController@destroy')->name('images destroy');
 });
 
 //==================================================RUTAS ASISTENTE================================================

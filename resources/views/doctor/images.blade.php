@@ -14,17 +14,16 @@
     <table>
       <thead>
         <tr>
-          <th width="30%">Imagen</th>
-          <th width="40%">Descripción</th>
-          <th width="15%">Ver</th>
-          <th width="15%">Borrar</th>
+          <th width="50%">Imagen</th>
+          <th width="25%">Ver</th>
+          <th width="25%">Borrar</th>
         </tr> 
       </thead>
       <tbody>
         @foreach($images as $image)
           <tr>
             <td><img src="{{ URL::to('/') }}/Expedientes/{{ $image->image }}" class="img-thumbnail" width="105" /></td>
-            <td>{{ $image->description }}</td>
+            
             <td>
               <a class="btn btn-success" href="{{ route('images show',['patient_id'=>Route::current()->parameters['patient_id'] ,'appointment_id'=>Route::current()->parameters['appointment_id'],'img_id'=>$image->id]) }}"> <span <i class="fa fa-eye"></span></a>
             </td>

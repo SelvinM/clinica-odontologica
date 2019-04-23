@@ -15,7 +15,7 @@ class ImageStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'=>'image|mimes:jpeg,bmp,jpg,png|max:4096', //maximo de las fotos 4 MB
+            'image'=>'required|image|mimes:jpeg,bmp,jpg,png|max:4096', //maximo de las fotos 4 MB
             'description'=>'max:300'
         ];
     }
@@ -24,6 +24,7 @@ class ImageStoreRequest extends FormRequest
     public function messages()
     {
         return [
+            'image.required'=>"La foto es obligatoria",
             'image.max'=>"La foto no debe tener mayor a 4 MB, y debe de tener una extension bmp,jpeg,jpg o png",
             'image.image'=>"La foto no debe tener un peso mayor a 4 MB, y debe de tener una extension bmp,jpeg,jpg o png",
             'image.mimes'=>"La foto no debe tener un peso mayor a 4 MB, y debe de tener una extension bmp,jpeg,jpg o png",
