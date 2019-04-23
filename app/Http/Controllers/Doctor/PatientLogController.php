@@ -30,7 +30,7 @@ class PatientLogController extends Controller
         $appointments = DB::table('appointments as a')->where("a.patient_id","=",$id)
             ->whereNull('a.deleted_at')
             ->where('date','<=',$today)
-            //->app($search)
+            ->where('date','like','%'.$search.'%')
             ->paginate(20);
         return view('doctor.patient_logs',compact('appointments','patient','search'));
     }
