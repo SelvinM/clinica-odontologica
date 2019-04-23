@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{url()->previous()}}" class="btn btn-secondary">← Imagenes</a>
+<a href="{{route('images',['patient_id'=>Route::current()->parameters['patient_id'] ,'appointment_id'=>Route::current()->parameters['appointment_id']])}}" class="btn btn-secondary">← Imagenes</a>
 @endsection
 @section('content')
 
@@ -9,7 +9,7 @@
     <tbody>
       <tr> 
         <td>
-          <form class="well form-horizontal" enctype="multipart/form-data" method="post" action="{{ route('images store',$title) }}">
+          <form class="well form-horizontal" enctype="multipart/form-data" method="post" action="{{ route('images store',['patient_id'=>Route::current()->parameters['patient_id'] ,'appointment_id'=>Route::current()->parameters['appointment_id']]) }}">
               @csrf 
               <legend>Registrar nueva imagen</legend>
               <div class="form-group input-group">

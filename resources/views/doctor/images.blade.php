@@ -1,13 +1,13 @@
 @extends('layouts.app1')
 @section('toggle')
-<a href="{{url()->previous()}}" class="btn btn-secondary">← Expediente</a>
+<a href="{{route('doctor patient logs',Route::current()->parameters['patient_id'])}}" class="btn btn-secondary">← Expediente</a>
 @endsection
 @section('content')
 
 <div class="table-lg center">
   <div class="table-top row">
     <div class="col">
-      <a class="btn btn-primary btn-add" href="{{ route('images create',$title) }}"></a>
+      <a class="btn btn-primary btn-add" href="{{ route('images create',['patient_id'=>Route::current()->parameters['patient_id'] ,'appointment_id'=>Route::current()->parameters['appointment_id']]) }}"></a>
     </div>
   </div>
 <div class="table-responsive table-bordered table-striped" >
@@ -18,7 +18,7 @@
           <th width="40%">Descripción</th>
           <th width="15%">Ver</th>
           <th width="15%">Borrar</th>
-        </tr>
+        </tr> 
       </thead>
       <tbody>
         @foreach($images as $image)
@@ -26,10 +26,10 @@
             <td><img src="{{ URL::to('/') }}/Expedientes/{{ $image->image }}" class="img-thumbnail" width="105" /></td>
             <td>{{ $image->description }}</td>
             <td>
-              <a class="btn btn-success" href="{{ route('images show',$image->id) }}"> <span <i class="fa fa-eye"></span></a>
+              <a class="btn btn-success" href="{{ route('images show',['patient_id'=>Route::current()->parameters['patient_id'] ,'appointment_id'=>Route::current()->parameters['appointment_id'],'img_id'=>$image->id]) }}"> <span <i class="fa fa-eye"></span></a>
             </td>
             <td>
-              <form method="post" action="{{ route('images destroy',$image->id) }}">
+              <form method="post" action="{{ route('images destroy',['patient_id'=>Route::current()->parameters['patient_id'] ,'appointment_id'=>$image->id]) }}">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn-delete btn btn-danger"></button>
