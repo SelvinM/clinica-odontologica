@@ -7,7 +7,7 @@ use App\Patient;
 use App\Appointment; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class PatientLogController extends Controller
@@ -22,17 +22,17 @@ class PatientLogController extends Controller
         date_default_timezone_set('US/Central');
     }
     
-    public function index($id)
+    public function index($id,Request $request)
     {
-        //$search = $request->input('search');
+        $search = $request->input('search');
         $patient=Patient::find($id); 
         $today = now()->format('Y-m-d');
         $appointments = DB::table('appointments as a')->where("a.patient_id","=",$id)
             ->whereNull('a.deleted_at')
             ->where('date','<=',$today)
-            //->search($search)
+            //->app($search)
             ->paginate(20);
-        return view('doctor.patient_logs',compact('appointments','patient'));
+        return view('doctor.patient_logs',compact('appointments','patient','search'));
     }
 
     /**
