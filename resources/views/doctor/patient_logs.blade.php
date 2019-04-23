@@ -9,7 +9,7 @@
 	<div class="table-top row">
 		<div class="col">
             <form method="get">
-                <input type="text" id="search" name="search" placeholder="Buscar...">
+                <input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar...">
                 <input type="submit" style="display: none" />
             </form>
         </div>

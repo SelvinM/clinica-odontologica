@@ -60,6 +60,11 @@ class Appointment extends Eloquent
             });
     }
 
+    public function scopeApp($query, $search){
+        return $query
+            ->where('date','like','%'.$search.'%');
+    }
+
  
 	public static function Appointments(){
 		$today = now()->format('Y-m-d');
